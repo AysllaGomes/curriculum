@@ -3,14 +3,16 @@
 <hr>
 
 <div *ngIf="certifications.length > 0">
-    <ul>
-        <li *ngFor="let certification of certifications">
-            <p><strong>{{ certification.year }}</strong> {{ certification.provider }}</p>
-            <a target="_blank" [href]="certification.url">
+    <div *ngFor="let yearGroup of groupedCertifications">
+        <h6>{{ yearGroup.year }}</h6>
+        <ul>
+            <li *ngFor="let certification of yearGroup.certifications">
+                <p><strong>{{ certification.provider }}</strong></p>
                 <p>{{ certification.title }}</p>
-            </a>
-        </li>
-    </ul>
+                <a target="_blank" [href]="certification.url">Detalhes</a>
+            </li>
+        </ul>
+    </div>
 </div>
 
 <div *ngIf="certifications.length === 0">
