@@ -16,7 +16,7 @@ export class AcademicEducationComponent implements OnInit {
 
     public academicEducations: AcademicEducationModel[] = [];
 
-    public academicEducation = 'Formação Academica';
+    public academicEducation = 'Formação Acadêmica';
 
     constructor(
         protected academicEducationService: AcademicEducationService
