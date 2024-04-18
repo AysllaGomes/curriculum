@@ -1,5 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+import { Company } from "../../shared/models/company.model";
+
+import { CompanyService } from "../../shared/service/company.service";
+
 @Component({
   selector: 'app-pages-experience',
   templateUrl: './experience.component.html',
@@ -10,8 +14,16 @@ export class ExperienceComponent implements OnInit {
     @Input()
     canShow: boolean = true;
 
-    constructor() { }
+    public experiences = 'Experiências';
 
-    ngOnInit(): void {}
+    public experiencesList: Company[] = [];
+
+    constructor(
+        protected companyService: CompanyService,
+    ) { }
+
+    ngOnInit(): void {
+        this.experiencesList = this.companyService.getCompanies();
+    }
 
 }
