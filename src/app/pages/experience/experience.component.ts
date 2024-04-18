@@ -1,14 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-experience',
+  selector: 'app-pages-experience',
   templateUrl: './experience.component.html',
   styleUrls: ['./experience.component.scss']
 })
 export class ExperienceComponent implements OnInit {
 
-  constructor() { }
+    @Input()
+    canShow: boolean = true;
 
-  ngOnInit(): void {}
+    constructor() { }
+
+    ngOnInit(): void {}
 
 }

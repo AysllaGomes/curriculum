@@ -19,6 +19,8 @@ export class CurriculumComponent implements OnInit {
 
     public database = 'Banco de Dados';
 
+    public language = 'Idiomas';
+
     constructor() {}
 
     ngOnInit(): void {}
