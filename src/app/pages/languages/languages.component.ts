@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Language } from "../../shared/interface/language.interface";
+
 @Component({
     selector: 'app-pages-languages',
     templateUrl: './languages.component.html',
@@ -7,7 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LanguagesComponent implements OnInit {
 
-    public language = 'Idiomas';
+    public language: string = 'Idiomas';
+
+    public languages: Language[] = [
+        { name: "Português", level: "Nativo" },
+        { name: "Inglês", level: "Intermediário" },
+        { name: "Espanhol", level: "Intermediário" },
+        { name: "Francês", level: "Básico" },
+        { name: "Eslovaco", level: "Básico" }
+    ];
 
     constructor() {}
 

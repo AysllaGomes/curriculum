@@ -4,10 +4,8 @@
     <hr>
 
     <ul>
-        <li>Português (Nativo)</li>
-        <li>Inglês (Intermediário)</li>
-        <li>Espanhol (Intermediário)</li>
-        <li>Francês (Básico)</li>
-        <li>Eslovaco (Básico)</li>
+        <li *ngFor="let lang of languages">
+            {{ lang.name }} ({{ lang.level }})
+        </li>
     </ul>
 </div>
