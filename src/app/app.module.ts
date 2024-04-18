@@ -11,6 +11,7 @@ import { FooterComponent } from "./pages/footer/footer.component";
 import { LanguagesComponent } from "./pages/languages/languages.component";
 import { ExperienceComponent } from "./pages/experience/experience.component";
 import { CurriculumComponent } from "./pages/curriculum/curriculum.component";
+import { SpecializationComponent } from "./pages/specialization/specialization.component";
 import { AcademicEducationComponent } from "./pages/academic-education/academic-education.component";
 import { ProfessionalSkillsComponent } from "./pages/professional-skills/professional-skills.component";
 
@@ -25,6 +26,7 @@ import { ProfessionalSkillsComponent } from "./pages/professional-skills/profess
         LanguagesComponent,
         NavbarComponent,
         ProfessionalSkillsComponent,
+        SpecializationComponent,
     ],
     imports: [
         BrowserModule,

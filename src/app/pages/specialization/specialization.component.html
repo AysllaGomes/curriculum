@@ -1,0 +1,18 @@
+<h5>{{ specialization }}</h5>
+
+<hr>
+
+<div *ngIf="certifications.length > 0">
+    <ul>
+        <li *ngFor="let certification of certifications">
+            <p><strong>{{ certification.year }}</strong> {{ certification.provider }}</p>
+            <a target="_blank" [href]="certification.url">
+                <p>{{ certification.title }}</p>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div *ngIf="certifications.length === 0">
+    <p>Nenhuma especialização encontrada.</p>
+</div>
