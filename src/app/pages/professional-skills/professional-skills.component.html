@@ -5,29 +5,11 @@
 <hr>
 
 <ul class="semponto">
-    <p>{{ front }}</p>
-
-    <li>Angular 2+</li>
-    <li>Angular JS</li>
-    <li>React</li>
-    <li>Vue.js</li>
-
-    <p style="margin-bottom: 16px; margin-top: 20px;">{{ back }}</p>
-
-    <li>Java</li>
-    <li>PHP</li>
-    <li>Node.js</li>
-    <li>C#</li>
-    <li>Kotlin</li>
-    <li>Ionic</li>
-    <li>Swift</li>
-
-    <p style="margin-bottom: 16px; margin-top: 20px;">{{ database }}</p>
-
-    <li>MongoDB</li>
-    <li>MySQL</li>
-    <li>PostgreSQL</li>
-    <li>PostgreSQL</li>
-    <li>Oracle Database</li>
-    <li>Microsoft SQL Server</li>
+    <li *ngFor="let skillGroup of skillGroups">
+        <p>{{ skillGroup.title }}</p>
+        <ul>
+            <li *ngFor="let skill of skillGroup.skills">{{ skill }}</li>
+        </ul>
+        <br/>
+    </li>
 </ul>
