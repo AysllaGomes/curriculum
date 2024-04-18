@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Language } from "../../shared/interface/language.interface";
+import { Language } from "../../shared/models/language.model";
 
 @Component({
     selector: 'app-pages-languages',
