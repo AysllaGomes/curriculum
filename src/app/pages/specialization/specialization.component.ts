@@ -46,4 +46,14 @@ export class SpecializationComponent implements OnInit {
         return groupedCertifications;
     }
 
+    toggleCollapse(year: number): void {
+        this.groupedCertifications.forEach(group => {
+            if (group.year === year) {
+                group.expanded = !group.expanded;
+            } else {
+                group.expanded = false;
+            }
+        });
+    }
+
 }

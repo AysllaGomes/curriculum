@@ -5,8 +5,8 @@
 <div *ngIf="certifications.length > 0">
     <ul class="timeline">
         <li *ngFor="let yearGroup of groupedCertifications" class="timeline-item">
-            <h6>{{ yearGroup.year }}</h6>
-            <ul>
+            <h6 (click)="toggleCollapse(yearGroup.year)" class="cursor-pointer">{{ yearGroup.year }}</h6>
+            <ul [ngClass]="{ 'd-none': !yearGroup.expanded }">
                 <li *ngFor="let certification of yearGroup.certifications">
                     <p><strong>{{ certification.provider }}</strong></p>
                     <p>{{ certification.title }}</p>
