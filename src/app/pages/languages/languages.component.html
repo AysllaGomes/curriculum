@@ -1,11 +1,14 @@
 <div class="col-sm-12">
-    <h5>{{ language }}</h5>
+    <h5 class="section-title">{{ language }}</h5>
 
     <hr>
 
-    <ul>
-        <li *ngFor="let lang of languages">
-            {{ lang.name }} ({{ lang.level }})
+    <ul class="language-list">
+        <li *ngFor="let lang of languages" class="language-item">
+            <div class="language-info">
+                <span class="language-name">{{ lang.name }}</span>
+                <span class="language-level">{{ lang.nameLevel }}</span>
+            </div>
         </li>
     </ul>
 </div>
