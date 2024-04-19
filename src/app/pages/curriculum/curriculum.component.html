@@ -4,60 +4,41 @@
     <div class="jumbotron">
         <div class="row">
             <div class="header col-md-12">
-                <div class="col-md-10">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <h3 class="font18">Ayslla Caroline Prates Gomes</h3>
-                        </div>
-
-                        <div class="cor col-sm-6">Celular: (61) 98207-882218</div>
-                        <div class="cor col-sm-6">Email: ayslla.gomes&#64;outlook.com</div>
-                    </div>
-                </div>
+                <app-pages-professional-info
+                    [name]="name"
+                    [photoUrl]="photoUrl"
+                    [phone]="phone"
+                    [email]="email"
+                    [address]="address">
+                </app-pages-professional-info>
             </div>
 
             <div class="row">
                 <hr>
-                <div class="conteudo col-sm-8">
+                <div class="main-content col-sm-8">
                     <div class="col-sm-12">
                         <h5>{{ resume }}</h5>
-
                         <hr>
-
-                        <p class="recuo">
-                            {{ about }}
-                        </p>
+                        <p class="recuo"> {{ descriptionResume }} </p>
                     </div>
 
                     <div class="col-sm-12">
-                        <app-pages-experience
-                            [canShow]="false"
-                        >
-                        </app-pages-experience>
+                        <app-pages-experience [canShow]="false"></app-pages-experience>
                     </div>
 
                     <div class="col-sm-12">
-                        <app-pages-academic-education
-                            [canShow]="false"
-                        >
-                        </app-pages-academic-education>
+                        <app-pages-academic-education [canShow]="false"></app-pages-academic-education>
                     </div>
                 </div>
 
-                <div class="lateral col-sm-4">
+                <div class="sidebar col-sm-4">
                     <div class="col-sm-12">
-
-                        <app-pages-professional-skills>
-                        </app-pages-professional-skills>
-
-                        <app-pages-languages>
-                        </app-pages-languages>
-
+                        <app-pages-professional-skills></app-pages-professional-skills>
+                        <app-pages-languages></app-pages-languages>
                     </div>
                 </div>
 
                 <app-pages-footer></app-pages-footer>
-
             </div>
         </div>
     </div>

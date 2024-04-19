@@ -1,36 +1,37 @@
-.footer {
-    margin-top: 8px;
-    align-items: center;
-    line-height: 20px;
-    display: flex;
-  }
-  .container {
-    font-family: 'Open Sans', sans-serif;
+.container {
+    margin-top: 20px;
+}
+
+.jumbotron {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.header {
+    margin-bottom: 20px;
+}
+
+.font18 {
+    font-size: 18px;
+}
+
+.contact-info {
     font-size: 14px;
-  }
-  h4 {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 16px;
-  }
-  .header {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 16px;
-    text-align: center;
-    margin-bottom: 40px;
-  }
-.font18{
-    font-family: 'Open Sans', sans-serif;
-    font-size: 28px;
-    border-bottom: burlywood 1px;
-  }
-  .cor{
-    color: #5b5bce;
-  }
-  img.logo{
-    width: 50px;
-    height: 50px;
-  }
-  .recuo { 
-    text-indent:2em;
-    text-justify: auto;
-  }
+}
+
+.main-content {
+    margin-bottom: 20px;
+}
+
+.recuo {
+    text-indent:4em;
+    margin-top: 10px;
+    text-align: justify;
+}
+
+.sidebar {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+}

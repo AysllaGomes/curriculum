@@ -7,13 +7,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CurriculumComponent implements OnInit {
 
+    public language = 'Idiomas';
+
+    public name = 'Ayslla Caroline Prates Gomes';
+
+    public photoUrl = '../../assets/images/professional/Aysh_Caroline.png';
+
+    public phone = '(61) 98207-2218';
+
+    public email = 'ayslla.gomes@outlook.com';
+
+    public address = 'Planaltina/GO';
+
     public resume = 'Resumo';
 
-    public about = `
-        Durante os últimos 25 anos, tenho consolidado minha carreira na área de Tecnologia da Informação, enquanto estabeleço minha vida em Brasília. Minha trajetória profissional tem sido marcada por uma ampla experiência no desenvolvimento de software, combinada com um papel ativo como Scrum Master, liderando equipes de desenvolvimento. Estou comprometida em buscar constantemente o aprimoramento profissional e o crescimento pessoal, alimentada por uma paixão pela inovação e pelo progresso tecnológico.
+    public descriptionResume = `
+        Como Arquiteta de Software, estou em constante busca pelo sucesso profissional, alimentada pela minha dedicação, paixão pelo aprendizado e pela minha exigência pessoal.
+        Sou uma estudiosa incansável, sempre pronta para mergulhar em novas tecnologias e encarar desafios estimulantes.
+        A cada obstáculo, vejo uma oportunidade de crescimento e superação.
+        Determinada e comprometida, estou pronta para enfrentar qualquer desafio que a carreira me apresentar.
     `;
-
-    public language = 'Idiomas';
 
     constructor() {}
 
