@@ -136,4 +136,15 @@ export class CertificationService {
             },
         ];
     }
+
+    getCertificationsCerts(): Certification[] {
+        return [
+            {
+                year: 2019,
+                provider: 'CertiProf',
+                title: 'SCRUM Foundation',
+                url: '../../../assets/certifications/CertiProf/Certificate_SCRUM.pdf'
+            },
+        ];
+    }
 }
