@@ -1,36 +1,35 @@
-.footer {
-    margin-top: 8px;
-    align-items: center;
-    line-height: 20px;
-    display: flex;
-  }
-  .container {
-    font-family: 'Open Sans', sans-serif;
+.section-title {
+    font-size: 24px;
+    color: #333;
+}
+
+.skill-groups {
+    list-style: none;
+    padding: 0;
+}
+
+.skill-group {
+    margin-bottom: 20px;
+}
+
+.group-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.skills {
+    list-style: none;
+    padding: 0;
+}
+
+.skill {
+    margin-right: 10px;
+    margin-bottom: 5px;
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #f0f0f0;
+    border-radius: 20px;
     font-size: 14px;
-  }
-  h4 {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 16px;
-  }
-  .header {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 16px;
-    text-align: center;
-    margin-bottom: 40px;
-  }
-.font18{
-    font-family: 'Open Sans', sans-serif;
-    font-size: 28px;
-    border-bottom: burlywood 1px;
-  }
-  .cor{
-    color: #5b5bce;
-  }
-  img.logo{
-    width: 50px;
-    height: 50px;
-  }
-  .recuo { 
-    text-indent:2em;
-    text-justify: auto;
-  }
+    color: #333;
+}
