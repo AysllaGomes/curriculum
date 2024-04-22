@@ -1,0 +1,29 @@
+.card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    color: #666;
+}
+
+.btn {
+    background-color: #b8b9b9;
+    border-color: #b8b9b9;
+    color: black;
+}
+
+.btn:hover {
+    background-color: #b8b9b9;
+    border-color: #f8f9fa;
+}

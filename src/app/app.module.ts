@@ -13,6 +13,7 @@ import { ExperienceComponent } from "./pages/experience/experience.component";
 import { CurriculumComponent } from "./pages/curriculum/curriculum.component";
 import { CertificationComponent } from "./pages/certification/certification.component";
 import { SpecializationComponent } from "./pages/specialization/specialization.component";
+import { PersonalProjectsComponent } from "./pages/personal-projects/personal-projects.component";
 import { ProfessionalInfoComponent } from "./pages/professional-info/professional-info.component";
 import { AcademicEducationComponent } from "./pages/academic-education/academic-education.component";
 import { ProfessionalSkillsComponent } from "./pages/professional-skills/professional-skills.component";
@@ -31,6 +32,7 @@ import { ProfessionalSkillsComponent } from "./pages/professional-skills/profess
         ProfessionalInfoComponent,
         ProfessionalSkillsComponent,
         SpecializationComponent,
+        PersonalProjectsComponent,
     ],
     imports: [
         BrowserModule,
