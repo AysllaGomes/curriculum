@@ -12,7 +12,10 @@ import { CompanyService } from "../../shared/service/company.service";
 export class ExperienceComponent implements OnInit {
 
     @Input()
-    canShow: boolean = true;
+    public canShow: boolean = true;
+
+    @Input()
+    public canShowPersonalProjects: boolean = true;
 
     public experiences = 'Experiências';
 
