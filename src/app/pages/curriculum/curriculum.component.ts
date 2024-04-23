@@ -11,7 +11,7 @@ export class CurriculumComponent implements OnInit {
 
     public name = 'Ayslla Caroline Prates Gomes';
 
-    public photoUrl = '../../assets/images/professional/Aysh_Caroline.png';
+    public photoUrl = 'https://imagedelivery.net/ecl6S1RtG9d05bcNXhwCCQ/9097113f-3290-4a78-8b3a-09c40be85f00/public';
 
     public phone = '(61) 98207-2218';
 
