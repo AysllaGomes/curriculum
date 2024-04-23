@@ -1,29 +1,22 @@
-.experiences-container {
-    background-color: #f2f2f2; /* Cor de fundo cinza */
-    padding: 20px; /* Adiciona espaço interno */
-    border-radius: 10px; /* Adiciona bordas arredondadas */
-    margin-bottom: 20px; /* Adiciona espaço entre o contêiner e outros elementos */
-}
-
 .experience {
-    margin-bottom: 20px; /* Adiciona espaço entre cada experiência */
+    margin-bottom: 20px;
 }
 
 .logo {
-    max-width: 100%; /* Garante que a largura da imagem não exceda o container */
-    height: auto; /* Mantém a proporção da imagem */
-    border-radius: 5px; /* Adiciona uma borda arredondada à imagem */
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
 }
 
 .company {
-    margin-top: 10px; /* Adiciona espaço entre o nome da empresa e a imagem */
+    margin-top: 10px;
 }
 
 .date {
-    font-style: italic; /* Deixa a data em itálico */
-    color: #888; /* Cor cinza para a data */
+    font-style: italic;
+    color: #888;
 }
 
 .position {
-    margin-top: 10px; /* Adiciona espaço entre o cargo e a data */
+    margin-top: 10px;
 }
