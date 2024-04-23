@@ -26,4 +26,8 @@ export class PersonalProjectsComponent implements OnInit {
         this.personalProjectsList = this.personalProjectService.getPersonalProjects();
     }
 
+    toggleCollapse(project: PersonalProject): void {
+        project.expanded = !project.expanded;
+    }
+
 }
