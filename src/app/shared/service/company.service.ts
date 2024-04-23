@@ -12,7 +12,7 @@ export class CompanyService {
                 company: 'IBM',
                 date: 'Junho 2022 - Atualmente',
                 position: 'Banco do Brasil',
-                logoUrl: '../../../assets/images/logo/ibm.svg',
+                logoUrl: 'docs/assets/images/logo/ibm.svg',
                 logoHeight: 100,
                 logoWidth: 100,
             },
