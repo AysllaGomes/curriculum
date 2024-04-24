@@ -10,33 +10,40 @@
                     [address]="address">
                 </app-pages-professional-info>
             </div>
+        </div>
 
-            <div class="row">
-                <hr>
-                <div class="main-content col-sm-8">
-                    <div class="col-sm-12">
-                        <h5>{{ resume }}</h5>
-                        <hr>
-                        <p class="recuo"> {{ descriptionResume }} </p>
-                    </div>
+        <div class="row">
+            <hr class="col-sm-12">
+        </div>
 
-                    <div class="col-sm-12">
-                        <app-pages-experience [canShow]="false"></app-pages-experience>
-                    </div>
-
-                    <div class="col-sm-12">
-                        <app-pages-academic-education [canShow]="false"></app-pages-academic-education>
-                    </div>
+        <div class="row">
+            <div class="main-content col-md-8">
+                <div class="col-sm-12">
+                    <h5>{{ resume }}</h5>
+                    <hr>
+                    <p class="recuo"> {{ descriptionResume }} </p>
                 </div>
 
-                <div class="sidebar col-sm-4">
-                    <div class="col-sm-12">
-                        <app-pages-professional-skills></app-pages-professional-skills>
-                        <app-pages-languages></app-pages-languages>
-                        <app-pages-certification></app-pages-certification>
-                    </div>
+                <div class="col-sm-12">
+                    <app-pages-experience [canShow]="false"></app-pages-experience>
                 </div>
 
+                <div class="col-sm-12">
+                    <app-pages-academic-education [canShow]="false"></app-pages-academic-education>
+                </div>
+            </div>
+
+            <div class="sidebar col-md-4">
+                <div class="col-sm-12">
+                    <app-pages-professional-skills></app-pages-professional-skills>
+                    <app-pages-languages></app-pages-languages>
+                    <app-pages-certification></app-pages-certification>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
                 <app-pages-footer></app-pages-footer>
             </div>
         </div>
