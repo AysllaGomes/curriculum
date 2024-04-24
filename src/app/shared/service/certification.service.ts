@@ -146,6 +146,16 @@ export class CertificationService {
     getCertificationsCerts(): Certification[] {
         return [
             {
+                year: 2021,
+                provider: 'Scrum Alliance',
+                title: 'Certificate Scrum Master',
+            },
+            {
+                year: 2020,
+                provider: 'CertiProf',
+                title: 'DevOps Essentials Professional Certificate',
+            },
+            {
                 year: 2019,
                 provider: 'CertiProf',
                 title: 'SCRUM Foundation',

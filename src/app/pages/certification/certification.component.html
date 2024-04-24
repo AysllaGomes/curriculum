@@ -7,10 +7,10 @@
         <li *ngFor="let yearGroup of certifications" class="timeline-item">
             <h6>{{ yearGroup.year }}</h6>
             <ul>
-                <li *ngFor="let certification of certifications" class="certification-item">
+                <li *ngFor="let certification of yearGroup.certifications" class="certification-item">
                     <p><strong>{{ certification.provider }}</strong></p>
                     <p>{{ certification.title }}</p>
-                    <a target="_blank" [href]="certification.url">Detalhes</a>
+                    <a *ngIf="certification.url" target="_blank" [href]="certification.url">Detalhes</a>
                 </li>
             </ul>
         </li>
