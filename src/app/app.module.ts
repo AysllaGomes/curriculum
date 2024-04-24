@@ -6,11 +6,11 @@ import { AppRoutingModule } from "./app.routes";
 
 import { AppComponent } from './app.component';
 import { AboutComponent } from "./pages/about/about.component";
-import { NavbarComponent } from "./pages/navbar/navbar.component";
-import { FooterComponent } from "./pages/footer/footer.component";
 import { LanguagesComponent } from "./pages/languages/languages.component";
-import { ExperienceComponent } from "./pages/experience/experience.component";
 import { CurriculumComponent } from "./pages/curriculum/curriculum.component";
+import { ExperienceComponent } from "./pages/experience/experience.component";
+import { FooterComponent } from "./shared/components/footer/footer.component";
+import { NavbarComponent } from "./shared/components/navbar/navbar.component";
 import { CertificationComponent } from "./pages/certification/certification.component";
 import { SpecializationComponent } from "./pages/specialization/specialization.component";
 import { PersonalProjectsComponent } from "./pages/personal-projects/personal-projects.component";

@@ -19,7 +19,7 @@ export class PersonalProjectService {
             {
                 name: 'React Hooks',
                 description: 'Nosso projeto tem como objetivo aprimorar a performance e a eficiência do React por meio de customizações cuidadosas em seu ciclo de vida. '
-                    + 'Estamos dedicados a explorar e otimizar cada aspecto do React, desde a montagem até a desmontagem dos componentes, visando alcançar o desempenho máximo possível. '
+                    + 'Estamos dedicados a explorar e otimizar cada aspecto do React, desde a montagem até a desmontagem dos components, visando alcançar o desempenho máximo possível. '
                     + 'Além disso, estamos comprometidos em adquirir e compartilhar um conhecimento profundo sobre as melhores práticas e técnicas, para que possamos aplicá-las em projetos futuros. '
                     + 'Ao focar na otimização do React, estamos preparando o terreno para desenvolver aplicações mais rápidas, responsivas e escaláveis no futuro.',
                 url: 'https://github.com/AysllaGomes/react-hooks',
