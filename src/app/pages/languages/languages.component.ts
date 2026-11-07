@@ -5,7 +5,8 @@ import { Language } from "../../shared/models/language.model";
 @Component({
     selector: 'app-pages-languages',
     templateUrl: './languages.component.html',
-    styleUrls: ['./languages.component.scss']
+    styleUrls: ['./languages.component.scss'],
+    standalone: false
 })
 export class LanguagesComponent implements OnInit {
 

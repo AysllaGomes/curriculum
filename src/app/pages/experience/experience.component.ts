@@ -5,9 +5,10 @@ import { Company } from "../../shared/models/company.model";
 import { CompanyService } from "../../shared/service/company.service";
 
 @Component({
-  selector: 'app-pages-experience',
-  templateUrl: './experience.component.html',
-  styleUrls: ['./experience.component.scss']
+    selector: 'app-pages-experience',
+    templateUrl: './experience.component.html',
+    styleUrls: ['./experience.component.scss'],
+    standalone: false
 })
 export class ExperienceComponent implements OnInit {
 

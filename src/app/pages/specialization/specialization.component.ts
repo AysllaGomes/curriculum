@@ -6,9 +6,10 @@ import { Certification } from "../../shared/models/certification.model";
 import { CertificationService } from "../../shared/service/certification.service";
 
 @Component({
-  selector: 'app-pages-specialization',
-  templateUrl: './specialization.component.html',
-  styleUrls: ['./specialization.component.scss']
+    selector: 'app-pages-specialization',
+    templateUrl: './specialization.component.html',
+    styleUrls: ['./specialization.component.scss'],
+    standalone: false
 })
 export class SpecializationComponent implements OnInit {
 

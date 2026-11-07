@@ -3,7 +3,8 @@ import { Component, OnInit } from '@angular/core';
 @Component({
     selector: 'app-pages-curriculum',
     templateUrl: './curriculum.component.html',
-    styleUrls: ['./curriculum.component.scss']
+    styleUrls: ['./curriculum.component.scss'],
+    standalone: false
 })
 export class CurriculumComponent implements OnInit {
 

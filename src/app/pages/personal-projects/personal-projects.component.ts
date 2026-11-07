@@ -5,9 +5,10 @@ import { PersonalProject } from "../../shared/models/personal-project.model";
 import { PersonalProjectService } from "../../shared/service/personal-project.service";
 
 @Component({
-  selector: 'app-pages-personal-projects',
-  templateUrl: './personal-projects.component.html',
-  styleUrls: ['./personal-projects.component.scss']
+    selector: 'app-pages-personal-projects',
+    templateUrl: './personal-projects.component.html',
+    styleUrls: ['./personal-projects.component.scss'],
+    standalone: false
 })
 export class PersonalProjectsComponent implements OnInit {
 

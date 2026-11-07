@@ -5,7 +5,8 @@ import { Skill } from "../../shared/models/skill.model";
 @Component({
     selector: 'app-pages-professional-skills',
     templateUrl: './professional-skills.component.html',
-    styleUrls: ['./professional-skills.component.scss']
+    styleUrls: ['./professional-skills.component.scss'],
+    standalone: false
 })
 export class ProfessionalSkillsComponent implements OnInit {
 

@@ -7,7 +7,8 @@ import { AcademicEducationService } from "../../shared/service/academic-educatio
 @Component({
     selector: 'app-pages-academic-education',
     templateUrl: './academic-education.component.html',
-    styleUrls: ['./academic-education.component.scss']
+    styleUrls: ['./academic-education.component.scss'],
+    standalone: false
 })
 export class AcademicEducationComponent implements OnInit {
 

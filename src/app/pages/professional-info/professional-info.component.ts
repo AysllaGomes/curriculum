@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-pages-professional-info',
-  templateUrl: './professional-info.component.html',
-  styleUrls: ['./professional-info.component.scss']
+    selector: 'app-pages-professional-info',
+    templateUrl: './professional-info.component.html',
+    styleUrls: ['./professional-info.component.scss'],
+    standalone: false
 })
 export class ProfessionalInfoComponent implements OnInit {
 
