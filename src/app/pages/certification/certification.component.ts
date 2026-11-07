@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 
 import { Certification } from "../../shared/models/certification.model";
 import { YearGroup } from "../../shared/models/year-group.model";
@@ -8,18 +8,13 @@ import { CertificationService } from "../../shared/service/certification.service
 @Component({
     selector: 'app-pages-certification',
     templateUrl: './certification.component.html',
-    styleUrls: ['./certification.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager
-})
+    styleUrls: ['./certification.component.scss'] })
 export class CertificationComponent implements OnInit {
+    protected certificationService = inject(CertificationService);
 
-    public certification: string = 'Certificação';
+    public certification = 'Certificação';
 
     public certifications: YearGroup[] = [];
-
-    constructor(
-        protected certificationService: CertificationService,
-    ) { }
 
     ngOnInit(): void {
         this.certifications = this.groupCertificationsByYear(this.certificationService.getCertificationsCerts());
@@ -39,5 +34,4 @@ export class CertificationComponent implements OnInit {
 
         return groupedCertifications;
     }
-
 }

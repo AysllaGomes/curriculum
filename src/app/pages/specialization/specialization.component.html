@@ -7,7 +7,9 @@
       <ul class="timeline">
         @for (yearGroup of groupedCertifications; track yearGroup) {
           <li class="timeline-item">
-            <h6 (click)="toggleCollapse(yearGroup.year)" class="cursor-pointer">{{ yearGroup.year }}</h6>
+            <h6>
+              <button type="button" class="year-toggle" (click)="toggleCollapse(yearGroup.year)" [attr.aria-expanded]="!!yearGroup.expanded">{{ yearGroup.year }}</button>
+            </h6>
             <ul [ngClass]="{ 'd-none': !yearGroup.expanded }">
               @for (certification of yearGroup.certifications; track certification) {
                 <li>

@@ -1,16 +1,13 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { CefrLevel, Language } from "../../shared/models/language.model";
 
 @Component({
     selector: 'app-pages-languages',
     templateUrl: './languages.component.html',
-    styleUrls: ['./languages.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager
-})
+    styleUrls: ['./languages.component.scss'] })
 export class LanguagesComponent implements OnInit {
-
-    public language: string = 'Idiomas';
+    public language = 'Idiomas';
 
     public languages: Language[] = [
         { name: "Português", nameLevel: "Nativo", level: 'C2' },
@@ -19,8 +16,6 @@ export class LanguagesComponent implements OnInit {
         { name: "Francês", nameLevel: "Básico", level: 'A1' },
         { name: "Eslovaco", nameLevel: "Básico", level: 'A1' }
     ];
-
-    constructor() { }
 
     ngOnInit(): void {
         this.languages.sort((a, b): number => {
@@ -32,5 +27,4 @@ export class LanguagesComponent implements OnInit {
             return levelComparison;
         });
     }
-
 }

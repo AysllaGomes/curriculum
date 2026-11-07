@@ -19,17 +19,29 @@ describe('SpecializationComponent', () => {
         await fixture.whenStable();
         const el: HTMLElement = fixture.nativeElement;
 
-        const titulos = el.querySelectorAll<HTMLElement>('h6');
+        const botoes = el.querySelectorAll<HTMLButtonElement>('h6 > button');
         const listas = el.querySelectorAll('.timeline-item > ul');
         expect(listas[0].classList).toContain('d-none');
+        expect(botoes[0].getAttribute('aria-expanded')).toBe('false');
 
-        titulos[0].click();
+        botoes[0].click();
         await fixture.whenStable();
         expect(listas[0].classList).not.toContain('d-none');
+        expect(botoes[0].getAttribute('aria-expanded')).toBe('true');
 
-        titulos[1].click();
+        botoes[1].click();
         await fixture.whenStable();
         expect(listas[0].classList).toContain('d-none');
         expect(listas[1].classList).not.toContain('d-none');
+        expect(botoes[0].getAttribute('aria-expanded')).toBe('false');
+    });
+
+    it('o ano é um botão acessível por teclado', async () => {
+        const fixture = TestBed.createComponent(SpecializationComponent);
+        await fixture.whenStable();
+
+        const botao = fixture.nativeElement.querySelector('h6 > button') as HTMLButtonElement;
+        expect(botao.type).toBe('button');
+        expect(botao.tabIndex).toBe(0);
     });
 });

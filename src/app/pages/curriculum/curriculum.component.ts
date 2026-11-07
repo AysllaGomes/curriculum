@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component } from '@angular/core';
 import { ProfessionalInfoComponent } from '../professional-info/professional-info.component';
 import { ExperienceComponent } from '../experience/experience.component';
 import { AcademicEducationComponent } from '../academic-education/academic-education.component';
@@ -11,11 +11,9 @@ import { FooterComponent } from '../../shared/components/footer/footer.component
     selector: 'app-pages-curriculum',
     templateUrl: './curriculum.component.html',
     styleUrls: ['./curriculum.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [ProfessionalInfoComponent, ExperienceComponent, AcademicEducationComponent, ProfessionalSkillsComponent, LanguagesComponent, CertificationComponent, FooterComponent]
 })
-export class CurriculumComponent implements OnInit {
-
+export class CurriculumComponent {
     public language = 'Idiomas';
 
     public name = 'Ayslla Caroline Prates Gomes';
@@ -36,9 +34,4 @@ export class CurriculumComponent implements OnInit {
         A cada obstáculo, vejo uma oportunidade de crescimento e superação.
         Determinada e comprometida, estou pronta para enfrentar qualquer desafio que a carreira me apresentar.
     `;
-
-    constructor() {}
-
-    ngOnInit(): void {}
-
 }

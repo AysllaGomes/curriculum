@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 
 import { Company } from "../../shared/models/company.model";
 
@@ -11,27 +11,22 @@ import { FooterComponent } from '../../shared/components/footer/footer.component
     selector: 'app-pages-experience',
     templateUrl: './experience.component.html',
     styleUrls: ['./experience.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [NgOptimizedImage, PersonalProjectsComponent, FooterComponent]
 })
 export class ExperienceComponent implements OnInit {
+    protected companyService = inject(CompanyService);
 
     @Input()
-    public canShow: boolean = true;
+    public canShow = true;
 
     @Input()
-    public canShowPersonalProjects: boolean = true;
+    public canShowPersonalProjects = true;
 
     public experiences = 'Experiências';
 
     public experiencesList: Company[] = [];
 
-    constructor(
-        protected companyService: CompanyService,
-    ) { }
-
     ngOnInit(): void {
         this.experiencesList = this.companyService.getCompanies();
     }
-
 }

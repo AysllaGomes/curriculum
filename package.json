@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build --configuration production",
     "build:pages": "ng build --configuration production --base-href /curriculum/",
-    "test": "ng test"
+    "test": "ng test",
+    "lint": "ng lint"
   },
   "engines": {
     "node": "^22.22.3 || ^24.15.0"
@@ -27,9 +28,13 @@
     "@angular/cli": "^22.2.6",
     "@angular/compiler-cli": "^22.2.5",
     "@angular/language-service": "^22.2.5",
+    "@eslint/js": "^10.0.1",
     "@types/node": "^24.19.2",
+    "angular-eslint": "22.6.0",
+    "eslint": "^10.12.0",
     "jsdom": "^31.0.0",
     "typescript": "~6.0.3",
+    "typescript-eslint": "8.71.0",
     "vitest": "^4.1.12"
   }
 }

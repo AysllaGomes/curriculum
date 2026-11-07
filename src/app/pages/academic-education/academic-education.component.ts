@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 
 import { AcademicEducationModel } from "../../shared/models/academic-education.model";
 
@@ -10,24 +10,19 @@ import { FooterComponent } from '../../shared/components/footer/footer.component
     selector: 'app-pages-academic-education',
     templateUrl: './academic-education.component.html',
     styleUrls: ['./academic-education.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [SpecializationComponent, FooterComponent]
 })
 export class AcademicEducationComponent implements OnInit {
+    protected academicEducationService = inject(AcademicEducationService);
 
     @Input()
-    public canShow: boolean = true;
+    public canShow = true;
 
     public academicEducations: AcademicEducationModel[] = [];
 
     public academicEducation = 'Formação Acadêmica';
 
-    constructor(
-        protected academicEducationService: AcademicEducationService
-    ) {}
-
     ngOnInit(): void {
         this.academicEducations = this.academicEducationService.getAcademicEducations();
     }
-
 }

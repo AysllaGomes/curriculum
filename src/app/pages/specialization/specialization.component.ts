@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 
 import { YearGroup } from "../../shared/models/year-group.model";
 import { Certification } from "../../shared/models/certification.model";
@@ -10,20 +10,16 @@ import { NgClass } from '@angular/common';
     selector: 'app-pages-specialization',
     templateUrl: './specialization.component.html',
     styleUrls: ['./specialization.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
     imports: [NgClass]
 })
 export class SpecializationComponent implements OnInit {
+    protected certificationService = inject(CertificationService);
 
     public specialization = 'Especializações';
 
     public certifications: Certification[] = [];
 
     public groupedCertifications: YearGroup[] = [];
-
-    constructor(
-        protected certificationService: CertificationService,
-    ) {}
 
     ngOnInit(): void {
         this.certifications = this.certificationService.getCertifications();
@@ -58,5 +54,4 @@ export class SpecializationComponent implements OnInit {
             }
         });
     }
-
 }
