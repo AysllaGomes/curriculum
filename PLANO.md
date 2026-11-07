@@ -18,7 +18,10 @@ Diagnóstico de origem: análise com o `repo-inspector` (MCP) + leitura do códi
 - [x] `styleUrls` do `app.component.ts` apontando para `.html`
 - [x] Projetos sem descrição não mostravam o link "Ver projeto"
 - [x] Experiências atualizadas: IBM até Dezembro 2025; Mirante Tecnologia desde Janeiro 2026
-- [~] Mirante: cliente/projeto e logo (Cloudflare Images) — por ora aparece um marcador com a inicial
+- [x] Mirante: cliente (Sicoob) e logo
+- [x] Imagens migradas do Cloudflare Images para o Cloudflare R2
+- [ ] Otimizar a foto de perfil (PNG de 371 KB exibido em 200×200 → WebP ~400×400)
+- [ ] Servir o R2 por domínio próprio em vez de `*.r2.dev` (o r2.dev tem limite de requisições e é indicado para desenvolvimento)
 - [~] Revisar skills, certificações e projetos novos para 2026
 
 ### Fase 2: Limpeza e decisão de deploy
@@ -75,3 +78,4 @@ Diagnóstico de origem: análise com o `repo-inspector` (MCP) + leitura do códi
 |---|---|---|---|
 | 07/11/2026 | 1 — Correções e limpeza | `melhorias/entrega-1` | Build validado e comparado visualmente (antes × depois, desktop e celular). `docs/` regenerado. Node fixado em 18 por compatibilidade com o Angular 16 (Node 18 está fora de suporte; sobe para 22 na Entrega 3). Pendente com a autora: revisão de conteúdo 2026 e “About” do GitHub. |
 | 07/11/2026 | 1 — Experiências 2026 | `melhorias/entrega-1` | IBM encerrada em 12/2025; Mirante Tecnologia desde 01/2026 (atual). Logo e cliente passaram a ser opcionais no modelo, com marcador de inicial quando não há logo. Push fica a cargo da autora. |
+| 07/11/2026 | 1 — Imagens no R2 | `melhorias/entrega-1` | A autora adicionou logo e cliente da Mirante (Sicoob) e migrou as 8 imagens para o Cloudflare R2 (todas validadas com HTTP 200). `docs/` regenerado. |
