@@ -46,20 +46,23 @@ Diagnóstico de origem: análise com o `repo-inspector` (MCP) + leitura do códi
 - [ ] Opcional: domínio próprio também para o site no GitHub Pages (`base-href` passa de `/curriculum/` para `/`)
 
 ## Entrega 3 — Atualização do Angular (Fase 4)
-- [ ] Node 24 LTS (Angular 22 exige Node `^22.22.3 || ^24.15.0`)
-- [ ] `ng update` uma versão major por vez (16 → 17 → 18 → 19 → 20 → 21 → 22), conferindo build e visual a cada passo
-- [ ] Migrações automáticas: standalone components, control flow (`@for`/`@if`), builder `application`
-- [ ] ⚠️ Builder `application` publica em `dist/curriculum/browser/` — ajustar o workflow
-- [ ] `rxjs` 7, `@types/node` atual
-- [ ] TSLint + codelyzer → ESLint (angular-eslint)
-- [ ] Remover Protractor; Karma → Vitest
-- [ ] `strict` no TypeScript
+- [x] Node 24 LTS (Angular 22 exige Node `^22.22.3 || ^24.15.0`)
+- [x] `ng update` uma versão major por vez (16 → 17 → 18 → 19 → 20 → 21 → 22), conferindo build e visual a cada passo
+- [x] Migrações automáticas: standalone components, control flow (`@for`/`@if`), builder `application`, `inject()`
+- [x] Builder `application` publica em `dist/curriculum/browser/` — workflow ajustado
+- [x] `rxjs` 7, `@types/node` 24
+- [x] TSLint + codelyzer → ESLint (angular-eslint), no workflow
+- [x] Remover Protractor; Karma → Vitest
+- [x] `strict` no TypeScript + `strictTemplates`
+- [x] Extra: change detection sem zone.js + OnPush; `@angular/build` no lugar de `@angular-devkit/build-angular`
+- [x] Extra: ano das especializações acessível por teclado (`<button>` + `aria-expanded`)
+- [~] A autora: atualizar o Node local para 24.15+ (hoje 24.14.0) para rodar o projeto
 
 ## Entrega 4 — Manutenção, qualidade e testes (Fases 5, 6, 7)
 
 ### Fase 5: Dados separados do código
 - [ ] Um único arquivo de dados tipado com todo o conteúdo do currículo
-- [ ] `models` de classes → interfaces
+- [x] `models` de classes → interfaces (feito na Entrega 3, exigido pelo `strict`)
 - [~] Versão em inglês (`curriculo.pt.ts` / `curriculo.en.ts`)?
 
 ### Fase 6: Qualidade do site
@@ -70,9 +73,9 @@ Diagnóstico de origem: análise com o `repo-inspector` (MCP) + leitura do códi
 - [ ] Lighthouse ≥ 90 nas quatro categorias
 
 ### Fase 7: Testes
-- [ ] Teste por componente
+- [~] Teste por componente — 16 testes em 7 arquivos (Entrega 3); faltam footer, professional-skills, academic-education
 - [ ] Teste ponta a ponta com Playwright
-- [ ] Testes rodando no workflow
+- [x] Testes rodando no workflow (Entrega 3)
 
 ---
 
@@ -90,4 +93,5 @@ Diagnóstico de origem: análise com o `repo-inspector` (MCP) + leitura do códi
 | 07/11/2026 | 1 — Foto de perfil | `melhorias/entrega-1` | `object-fit: cover` na foto (a imagem 477×597 era esticada para 200×200). WebP 400×400 gerado (371 KB → 15 KB), aguardando upload no R2. |
 | 07/11/2026 | 1 — Foto publicada | `melhorias/entrega-2` | Foto WebP 400×400 (14,7 KB) no R2 em `professional/Ayslla_Caroline.webp`. |
 | 07/11/2026 | 2 — Publicada | `main` (PR #3) | Origem do Pages trocada para GitHub Actions; deploy pelo workflow confirmado (404.html do build do Actions no ar). Uma execução do deploy clássico falhou no mesmo merge, sem impacto. |
+| 07/11/2026 | 3 — Angular 16 → 22 | `melhorias/entrega-3` | 6 saltos de versão, cada um com build e comparação de screenshots (desktop e celular) contra o Angular 16: **0% de diferença em todos**. Standalone, sem zone.js, OnPush, `strict`, Vitest (16 testes), ESLint; lint e testes no workflow. Bundle inicial 97 → 89 KB transferidos. Removidos ~750 pacotes (TSLint, codelyzer, Protractor, Karma, build-angular, zone.js…). Erros antigos revelados e corrigidos: tipo errado em `CertificationComponent` e ano das especializações inacessível por teclado. |
 | 07/11/2026 | 2 — Deploy automático | `melhorias/entrega-2` | Workflow `deploy.yml` (build em PR; build + deploy na `main`), `docs/` e `.nojekyll` removidos, script `deploy:ghdocs` → `build:pages`. Simulado localmente com `npm ci` + build. Depende de a Entrega 1 entrar na `main` antes e da troca da origem do Pages. |
