@@ -1,7 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 
 import { SiteHeaderComponent } from './site-header.component';
-import { LOCALE_STORAGE, provideLocale } from '../../data/locales';
+import { provideLocale } from '../../data/locales';
+import { BROWSER_STORAGE } from '../../shared/utils/storage';
 
 describe('SiteHeaderComponent', () => {
     it('botão "Menu" abre e fecha o menu no celular, e clicar num link fecha', async () => {
@@ -63,7 +64,7 @@ describe('SiteHeaderComponent', () => {
     it('escolher um idioma fica guardado para a próxima visita', async () => {
         const guardado = new Map<string, string>();
         TestBed.configureTestingModule({
-            providers: [{ provide: LOCALE_STORAGE, useValue: { getItem: (k: string) => guardado.get(k) ?? null, setItem: (k: string, v: string) => guardado.set(k, v) } }],
+            providers: [{ provide: BROWSER_STORAGE, useValue: { getItem: (k: string) => guardado.get(k) ?? null, setItem: (k: string, v: string) => guardado.set(k, v) } }],
         });
         const fixture = TestBed.createComponent(SiteHeaderComponent);
         await fixture.whenStable();
@@ -76,7 +77,7 @@ describe('SiteHeaderComponent', () => {
 
     it('navegador sem armazenamento: escolher um idioma não quebra nada', async () => {
         TestBed.configureTestingModule({
-            providers: [{ provide: LOCALE_STORAGE, useValue: { getItem: () => null, setItem: () => { throw new Error('QuotaExceeded'); } } }],
+            providers: [{ provide: BROWSER_STORAGE, useValue: { getItem: () => null, setItem: () => { throw new Error('QuotaExceeded'); } } }],
         });
         const fixture = TestBed.createComponent(SiteHeaderComponent);
         await fixture.whenStable();
@@ -84,5 +85,41 @@ describe('SiteHeaderComponent', () => {
 
         ingles.addEventListener('click', e => e.preventDefault());
         expect(() => ingles.dispatchEvent(new MouseEvent('click', { cancelable: true }))).not.toThrow();
+    });
+
+    describe('botão de tema', () => {
+        afterEach(() => delete document.documentElement.dataset['theme']);
+
+        it('troca escuro ↔ claro, guarda a escolha e o texto para leitores de tela acompanha', async () => {
+            const guardado = new Map<string, string>();
+            TestBed.configureTestingModule({
+                providers: [{ provide: BROWSER_STORAGE, useValue: { getItem: (k: string) => guardado.get(k) ?? null, setItem: (k: string, v: string) => guardado.set(k, v) } }],
+            });
+            const fixture = TestBed.createComponent(SiteHeaderComponent);
+            await fixture.whenStable();
+            const botao = (fixture.nativeElement as HTMLElement).querySelector<HTMLButtonElement>('.theme-toggle')!;
+
+            expect(botao.getAttribute('aria-label')).toBe('Mudar para o tema claro');
+
+            botao.click();
+            await fixture.whenStable();
+            expect(document.documentElement.dataset['theme']).toBe('light');
+            expect(guardado.get('tema')).toBe('light');
+            expect(botao.getAttribute('aria-label')).toBe('Mudar para o tema escuro');
+
+            botao.click();
+            await fixture.whenStable();
+            expect(document.documentElement.dataset['theme']).toBe('dark');
+            expect(guardado.get('tema')).toBe('dark');
+        });
+
+        it('ao abrir, reflete o tema já aplicado na página (escolha anterior)', async () => {
+            document.documentElement.dataset['theme'] = 'light';
+            const fixture = TestBed.createComponent(SiteHeaderComponent);
+            await fixture.whenStable();
+
+            expect((fixture.nativeElement as HTMLElement).querySelector('.theme-toggle')?.getAttribute('aria-label'))
+                .toBe('Mudar para o tema escuro');
+        });
     });
 });

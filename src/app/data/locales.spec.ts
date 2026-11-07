@@ -3,7 +3,8 @@ import { Location } from '@angular/common';
 import { provideRouter } from '@angular/router';
 import { RouterTestingHarness } from '@angular/router/testing';
 
-import { LOCALES, LOCALE_STORAGE, preferredLocale } from './locales';
+import { LOCALES, preferredLocale } from './locales';
+import { BROWSER_STORAGE } from '../shared/utils/storage';
 import { ALL_LABELS } from './labels';
 import { routes } from '../app.routes';
 
@@ -29,7 +30,7 @@ describe('Rotas por idioma', () => {
         TestBed.configureTestingModule({
             providers: [
                 provideRouter(routes),
-                { provide: LOCALE_STORAGE, useValue: { getItem: () => guardado, setItem: () => undefined } },
+                { provide: BROWSER_STORAGE, useValue: { getItem: () => guardado, setItem: () => undefined } },
             ],
         });
         const harness = await RouterTestingHarness.create();

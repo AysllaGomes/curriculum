@@ -11,6 +11,8 @@ export interface Labels {
     nav: { label: string; menu: string; experience: string; projects: string; skills: string; education: string; contact: string };
     /** Seletor de idioma no cabeçalho */
     language: { label: string };
+    /** Botão de tema claro/escuro (só ícone; o texto é para leitores de tela) */
+    theme: { toLight: string; toDark: string };
     hero: { at: string; contact: string; projects: string; photoAlt: string };
     about: { title: string; years: string; companies: string; courses: string; certifications: string };
     experience: { title: string; current: string; client: string };
@@ -31,6 +33,7 @@ const PT_BR: Labels = {
         experience: 'Experiência', projects: 'Projetos', skills: 'Competências', education: 'Formação', contact: 'Contato',
     },
     language: { label: 'Idioma' },
+    theme: { toLight: 'Mudar para o tema claro', toDark: 'Mudar para o tema escuro' },
     hero: { at: 'na', contact: 'Entrar em contato', projects: 'Ver projetos', photoAlt: 'Foto de' },
     about: {
         title: 'Sobre mim',
@@ -54,6 +57,7 @@ const EN: Labels = {
         experience: 'Experience', projects: 'Projects', skills: 'Skills', education: 'Education', contact: 'Contact',
     },
     language: { label: 'Language' },
+    theme: { toLight: 'Switch to light theme', toDark: 'Switch to dark theme' },
     hero: { at: 'at', contact: 'Get in touch', projects: 'View projects', photoAlt: 'Photo of' },
     about: {
         title: 'About me',
@@ -77,6 +81,7 @@ const ES: Labels = {
         experience: 'Experiencia', projects: 'Proyectos', skills: 'Competencias', education: 'Formación', contact: 'Contacto',
     },
     language: { label: 'Idioma' },
+    theme: { toLight: 'Cambiar al tema claro', toDark: 'Cambiar al tema oscuro' },
     hero: { at: 'en', contact: 'Contactar', projects: 'Ver proyectos', photoAlt: 'Foto de' },
     about: {
         title: 'Sobre mí',
@@ -100,6 +105,7 @@ const IT: Labels = {
         experience: 'Esperienza', projects: 'Progetti', skills: 'Competenze', education: 'Formazione', contact: 'Contatti',
     },
     language: { label: 'Lingua' },
+    theme: { toLight: 'Passa al tema chiaro', toDark: 'Passa al tema scuro' },
     hero: { at: 'presso', contact: 'Contattami', projects: 'Vedi progetti', photoAlt: 'Foto di' },
     about: {
         title: 'Chi sono',

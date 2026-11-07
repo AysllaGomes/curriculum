@@ -120,10 +120,10 @@ bloco final "Vamos conversar?". Cada fase termina com o site publicável e print
 - [ ] A autora: enviar o sitemap no Google Search Console (opcional) e testar a prévia no LinkedIn Post Inspector depois do deploy
 
 ### V8: Acabamento
-- [ ] Tema claro opcional (segue o sistema; botão para trocar)
-- [ ] Animações discretas, desligadas com `prefers-reduced-motion`
-- [~] Revisão no celular, foco visível, contraste AA (feitos na V2–V4: link "Pular para o conteúdo", foco visível, contraste ≥ 4.5:1, testado a 360 px); falta Lighthouse ≥ 90
-- [x] Testes dos componentes novos (menu, números, seções, âncoras do menu, sem telefone) — 36 testes
+- [x] Tema claro opcional: segue o sistema; botão no cabeçalho para trocar, escolha lembrada e aplicada antes da primeira pintura (sem piscar). Destaque `#3B5BDB` no claro (o `#8AA4FF` não tem contraste em fundo branco)
+- [x] Animações discretas: cartões e títulos sobem de leve ao entrar na tela, só com CSS (animação ligada à rolagem); desligadas com `prefers-reduced-motion` e em navegadores sem suporte; nunca escondem conteúdo
+- [x] Revisão no celular, foco visível, contraste AA — Lighthouse (celular / desktop): desempenho 95–97 / 100, acessibilidade 100 (temas claro e escuro), boas práticas 100, SEO 100
+- [x] Testes dos componentes novos — 82 testes
 
 ## Entrega 4 — Manutenção, qualidade e testes (Fases 5, 6, 7)
 
@@ -168,4 +168,5 @@ bloco final "Vamos conversar?". Cada fase termina com o site publicável e print
 | 07/11/2026 | V6 — 4 idiomas | `melhorias/visual` | PT-BR, EN, ES e IT, uma rota por idioma; `/curriculum/` segue a escolha guardada ou o navegador. Seletor no cabeçalho. Links de seção apontam para a própria página (o `<base href>` mandaria `#id` para a raiz). Conferido no Edge: redirecionamentos, `lang`, título, seletor no desktop e a 360 px. Bundle inicial 70 → 75 KB. 79 testes. |
 | 07/11/2026 | V2–V6 — Publicadas | `main` (PR #5) | Visual novo e 4 idiomas no ar. |
 | 07/11/2026 | V7 — Pré-render e SEO | `melhorias/v7` | `@angular/ssr` com `outputMode: static`: 4 páginas geradas no build + hidratação. Open Graph com imagem por idioma, canonical, hreflang, sitemap. Conferido com um servidor que imita o GitHub Pages (301 para a barra, 404.html): conteúdo e cabeçalhos certos em cada idioma, sem erros no console. Bundle inicial 75 → 88 KB (código de hidratação), mas o conteúdo aparece antes do JavaScript carregar. 80 testes. |
+| 07/11/2026 | V8 — Acabamento | `melhorias/v8` (sobre a `melhorias/v7`) | Tema claro + botão; animação de entrada só com CSS; `preconnect` para o R2 (foto é o maior elemento da página). Lighthouse medido com servidor local comprimindo como o Pages: celular 95–97 de desempenho, desktop 100; acessibilidade, boas práticas e SEO 100. A 1ª versão da animação (com transparência) derrubava o contraste durante a entrada (96) — trocada por só deslocamento. 82 testes. |
 | 07/11/2026 | 2 — Deploy automático | `melhorias/entrega-2` | Workflow `deploy.yml` (build em PR; build + deploy na `main`), `docs/` e `.nojekyll` removidos, script `deploy:ghdocs` → `build:pages`. Simulado localmente com `npm ci` + build. Depende de a Entrega 1 entrar na `main` antes e da troca da origem do Pages. |

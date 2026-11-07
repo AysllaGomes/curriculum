@@ -13,6 +13,7 @@ Abertura com cargo atual, "Sobre mim" com números (anos de experiência, empres
 - Não há backend: todo o conteúdo do currículo está em **`src/app/data/pt-BR.ts`** e os textos fixos da interface (menus, botões, títulos) em `src/app/data/labels.ts`.
 - O site existe em **português, inglês, espanhol e italiano**: `en.ts`, `es.ts` e `it.ts` trazem só os textos traduzidos; datas, links e empresas vêm do `pt-BR.ts`.
 - Durações ("3 anos e 7 meses") e números da abertura são calculados a partir das datas (`AAAA-MM`).
+- Tema escuro e claro: segue o sistema, com botão no cabeçalho. As cores de cada tema ficam no início de `src/styles.scss`; a escolha é lembrada (`localStorage`, chave `tema`) e aplicada por um script curto no `index.html` antes da página aparecer.
 - As imagens (foto e logos) ficam no Cloudflare R2.
 - Componentes **standalone** com change detection **OnPush** e **sem zone.js** (`provideZonelessChangeDetection`).
 - Uma rota por idioma (`/pt`, `/en`, `/es`, `/it`), todas com o `CurriculumComponent`; cada rota fornece o idioma, o conteúdo e os textos (`src/app/data/locales.ts`). A raiz `/` leva ao idioma escolhido antes no seletor ou ao do navegador.
@@ -27,7 +28,7 @@ src/
 │   ├── shared/
 │   │   ├── components/    # footer
 │   │   ├── models/        # tipos dos dados (interfaces)
-│   │   └── utils/         # datas e durações
+│   │   └── utils/         # datas e durações, tema, armazenamento do navegador
 │   ├── app.component.ts
 │   ├── app.config.ts      # providers do navegador (rotas, sem zone.js, hidratação)
 │   ├── app.config.server.ts / app.routes.server.ts   # pré-render das 4 páginas

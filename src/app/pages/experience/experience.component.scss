@@ -26,6 +26,8 @@
     border-radius: 12px;
     object-fit: contain;
     background: #ffffff;
+    // Logos de fundo branco não somem no tema claro
+    border: 1px solid var(--border);
 }
 
 .logo-placeholder {
