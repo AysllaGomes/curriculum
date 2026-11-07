@@ -11,16 +11,16 @@
               <div class="row">
                 <div class="col-sm-3">
                   @if (experience.logoUrl) {
-                    <img [ngSrc]="experience.logoUrl" [height]="experience.logoHeight" [width]="experience.logoWidth" [alt]="'Logo ' + experience.company" class="logo rounded-circle">
+                    <img [ngSrc]="experience.logoUrl" [height]="100" [width]="100" [alt]="'Logo ' + experience.company" class="logo rounded-circle">
                   } @else {
-                    <div class="logo-placeholder rounded-circle" [style.width.px]="experience.logoWidth" [style.height.px]="experience.logoHeight" aria-hidden="true">{{ experience.company.charAt(0) }}</div>
+                    <div class="logo-placeholder rounded-circle" [style.width.px]="100" [style.height.px]="100" aria-hidden="true">{{ experience.company.charAt(0) }}</div>
                   }
                 </div>
                 <div class="col-sm-9">
                   <h5 class="company">{{ experience.company }}</h5>
-                  <p class="date">{{ experience.date }}</p>
-                  @if (experience.position) {
-                    <strong class="position">{{ experience.position }}</strong>
+                  <p class="date">{{ experience.period }}</p>
+                  @if (experience.client) {
+                    <strong class="position">{{ experience.client }}</strong>
                   }
                 </div>
               </div>

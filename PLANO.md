@@ -64,14 +64,15 @@ abertura com nome e chamada, números (anos, empresas, cursos, certificações),
 bloco final "Vamos conversar?". Cada fase termina com o site publicável e prints antes × depois (desktop e celular).
 
 ### V0: Preparação
-- [ ] `engines` aceitando Node 26 (`^22.22.3 || ^24.15.0 || >=26.0.0`) e `.nvmrc` → 26 (LTS desde out/2026)
-- [ ] Tirar `package-lock.json` do `.gitignore` (o arquivo é versionado; a linha fazia o git propor apagá-lo)
+- [x] `engines` aceitando Node 26 (`^22.22.3 || ^24.15.0 || >=26.0.0`) e `.nvmrc` → 26 (LTS desde out/2026)
+- [x] Tirar `package-lock.json` do `.gitignore` (o arquivo é versionado; a linha fazia o git propor apagá-lo)
 
 ### V1: Dados centralizados e tipados (antecipa a Fase 5)
-- [ ] Todo o conteúdo num arquivo de dados por idioma, com o mesmo tipo (`curriculo.pt-BR.ts` como fonte)
-- [ ] Períodos como datas (`2022-06`), não texto — a duração ("3 anos e 7 meses") e o "8+ anos" passam a ser calculados
-- [ ] Campos novos: cargo atual / chamada da abertura; descrição curta por projeto
-- [ ] Teste: todo idioma tem todos os campos do pt-BR (falta de tradução quebra o build)
+- [x] Todo o conteúdo num arquivo de dados por idioma, com o mesmo tipo (`src/app/data/pt-BR.ts` como fonte); serviços antigos removidos
+- [x] Períodos como datas (`2022-06`), não texto — a duração ("3 anos e 7 meses") e o "8+ anos" passam a ser calculados
+- [x] Campos novos: cargo atual e chamada da abertura (descrição curta dos projetos vem do GitHub na V5)
+- [x] Teste: todo idioma tem todos os campos do pt-BR (falta de tradução quebra o build)
+- [x] Telefone removido do site (decisão da autora)
 
 ### V2: Fundamentos visuais
 - [ ] Variáveis de cor, espaçamento e raio (tema escuro; cor de destaque `#8AA4FF`, a confirmar)
@@ -139,7 +140,7 @@ bloco final "Vamos conversar?". Cada fase termina com o site publicável e print
 ## Decisões em aberto
 1. **Atualizar ou reescrever?** Recomendação: atualizar o Angular (preserva histórico, é a stack do dia a dia).
 2. ~~Versão em inglês?~~ Decidido: o site terá PT-BR, EN, ES e IT (V6).
-3. **Telefone público?** Hoje aparece no site e no código. Alternativa: manter só e-mail e LinkedIn. (O protótipo C foi feito sem telefone.)
+3. ~~Telefone público?~~ Decidido: sai do site; contato por e-mail, LinkedIn e GitHub.
 4. ~~Direção visual?~~ Decidido: C · Portfólio. Cor de destaque a confirmar (protótipo: `#8AA4FF`).
 
 ## Histórico
@@ -154,4 +155,5 @@ bloco final "Vamos conversar?". Cada fase termina com o site publicável e print
 | 07/11/2026 | 3 — Angular 16 → 22 | `melhorias/entrega-3` | 6 saltos de versão, cada um com build e comparação de screenshots (desktop e celular) contra o Angular 16: **0% de diferença em todos**. Standalone, sem zone.js, OnPush, `strict`, Vitest (16 testes), ESLint; lint e testes no workflow. Bundle inicial 97 → 89 KB transferidos. Removidos ~750 pacotes (TSLint, codelyzer, Protractor, Karma, build-angular, zone.js…). Erros antigos revelados e corrigidos: tipo errado em `CertificationComponent` e ano das especializações inacessível por teclado. |
 | 07/11/2026 | 3 — Publicada | `main` (PR #4) | Workflow com lint, testes e build passou no PR e na `main`; site publicado. |
 | 07/11/2026 | V — Planejada | `melhorias/visual` | Três protótipos visuais comparados; escolhida a direção C · Portfólio. Acrescentados projetos dinâmicos do GitHub (tópico `portfolio`) e site em PT-BR, EN, ES e IT. |
+| 07/11/2026 | V0 + V1 | `melhorias/visual` | Node 26; `package-lock.json` fora do `.gitignore`. Conteúdo centralizado em `src/app/data/pt-BR.ts` (períodos `AAAA-MM`, duração e anos de experiência calculados, teste de estrutura entre idiomas). Telefone removido. Visual: só o cabeçalho mudou (sem a linha do telefone). 27 testes. |
 | 07/11/2026 | 2 — Deploy automático | `melhorias/entrega-2` | Workflow `deploy.yml` (build em PR; build + deploy na `main`), `docs/` e `.nojekyll` removidos, script `deploy:ghdocs` → `build:pages`. Simulado localmente com `npm ci` + build. Depende de a Entrega 1 entrar na `main` antes e da troca da origem do Pages. |

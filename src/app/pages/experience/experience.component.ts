@@ -1,9 +1,8 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
-
-import { Company } from "../../shared/models/company.model";
-
-import { CompanyService } from "../../shared/service/company.service";
+import { Component, Input, inject } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
+
+import { LOCALE, RESUME } from '../../data/resume';
+import { formatYearMonth } from '../../shared/utils/dates';
 import { PersonalProjectsComponent } from '../personal-projects/personal-projects.component';
 import { FooterComponent } from '../../shared/components/footer/footer.component';
 
@@ -13,8 +12,8 @@ import { FooterComponent } from '../../shared/components/footer/footer.component
     styleUrls: ['./experience.component.scss'],
     imports: [NgOptimizedImage, PersonalProjectsComponent, FooterComponent]
 })
-export class ExperienceComponent implements OnInit {
-    protected companyService = inject(CompanyService);
+export class ExperienceComponent {
+    private readonly locale = inject(LOCALE);
 
     @Input()
     public canShow = true;
@@ -24,9 +23,8 @@ export class ExperienceComponent implements OnInit {
 
     public experiences = 'Experiências';
 
-    public experiencesList: Company[] = [];
-
-    ngOnInit(): void {
-        this.experiencesList = this.companyService.getCompanies();
-    }
+    public experiencesList = inject(RESUME).experiences.map(e => ({
+        ...e,
+        period: `${formatYearMonth(e.start, this.locale)} - ${e.end ? formatYearMonth(e.end, this.locale) : 'Atualmente'}`,
+    }));
 }

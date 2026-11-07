@@ -1,10 +1,9 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { NgClass } from '@angular/common';
 
 import { YearGroup } from "../../shared/models/year-group.model";
 import { Certification } from "../../shared/models/certification.model";
-
-import { CertificationService } from "../../shared/service/certification.service";
-import { NgClass } from '@angular/common';
+import { RESUME } from '../../data/resume';
 
 @Component({
     selector: 'app-pages-specialization',
@@ -12,19 +11,12 @@ import { NgClass } from '@angular/common';
     styleUrls: ['./specialization.component.scss'],
     imports: [NgClass]
 })
-export class SpecializationComponent implements OnInit {
-    protected certificationService = inject(CertificationService);
-
+export class SpecializationComponent {
     public specialization = 'Especializações';
 
-    public certifications: Certification[] = [];
+    public certifications: Certification[] = inject(RESUME).courses;
 
-    public groupedCertifications: YearGroup[] = [];
-
-    ngOnInit(): void {
-        this.certifications = this.certificationService.getCertifications();
-        this.groupedCertifications = this.groupCertificationsByYear(this.certifications);
-    }
+    public groupedCertifications: YearGroup[] = this.groupCertificationsByYear(this.certifications);
 
     groupCertificationsByYear(certifications: Certification[]): YearGroup[] {
         const groupedCertifications: YearGroup[] = [];

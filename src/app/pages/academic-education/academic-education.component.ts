@@ -1,8 +1,6 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 
-import { AcademicEducationModel } from "../../shared/models/academic-education.model";
-
-import { AcademicEducationService } from "../../shared/service/academic-education.service";
+import { RESUME } from '../../data/resume';
 import { SpecializationComponent } from '../specialization/specialization.component';
 import { FooterComponent } from '../../shared/components/footer/footer.component';
 
@@ -12,17 +10,14 @@ import { FooterComponent } from '../../shared/components/footer/footer.component
     styleUrls: ['./academic-education.component.scss'],
     imports: [SpecializationComponent, FooterComponent]
 })
-export class AcademicEducationComponent implements OnInit {
-    protected academicEducationService = inject(AcademicEducationService);
-
+export class AcademicEducationComponent {
     @Input()
     public canShow = true;
 
-    public academicEducations: AcademicEducationModel[] = [];
+    public academicEducations = inject(RESUME).education.map(e => ({
+        ...e,
+        period: `${e.startYear} - ${e.endYear}`,
+    }));
 
     public academicEducation = 'Formação Acadêmica';
-
-    ngOnInit(): void {
-        this.academicEducations = this.academicEducationService.getAcademicEducations();
-    }
 }

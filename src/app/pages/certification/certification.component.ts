@@ -1,24 +1,17 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 
 import { Certification } from "../../shared/models/certification.model";
 import { YearGroup } from "../../shared/models/year-group.model";
-
-import { CertificationService } from "../../shared/service/certification.service";
+import { RESUME } from '../../data/resume';
 
 @Component({
     selector: 'app-pages-certification',
     templateUrl: './certification.component.html',
     styleUrls: ['./certification.component.scss'] })
-export class CertificationComponent implements OnInit {
-    protected certificationService = inject(CertificationService);
-
+export class CertificationComponent {
     public certification = 'Certificação';
 
-    public certifications: YearGroup[] = [];
-
-    ngOnInit(): void {
-        this.certifications = this.groupCertificationsByYear(this.certificationService.getCertificationsCerts());
-    }
+    public certifications: YearGroup[] = this.groupCertificationsByYear(inject(RESUME).certifications);
 
     groupCertificationsByYear(certifications: Certification[]): YearGroup[] {
         const groupedCertifications: YearGroup[] = [];

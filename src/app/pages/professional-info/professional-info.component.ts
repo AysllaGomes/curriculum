@@ -15,9 +15,6 @@ export class ProfessionalInfoComponent {
     public photoUrl!: string;
 
     @Input({ required: true })
-    public phone!: string;
-
-    @Input({ required: true })
     public email!: string;
 
     @Input({ required: true })

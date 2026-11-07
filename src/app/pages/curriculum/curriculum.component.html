@@ -3,11 +3,10 @@
         <div class="row">
             <div class="header col-md-12">
                 <app-pages-professional-info
-                    [name]="name"
-                    [photoUrl]="photoUrl"
-                    [phone]="phone"
-                    [email]="email"
-                    [address]="address">
+                    [name]="profile.name"
+                    [photoUrl]="profile.photoUrl"
+                    [email]="profile.email"
+                    [address]="profile.city">
                 </app-pages-professional-info>
             </div>
         </div>
@@ -21,7 +20,7 @@
                 <div class="col-sm-12">
                     <h5>{{ resume }}</h5>
                     <hr>
-                    <p class="recuo"> {{ descriptionResume }} </p>
+                    <p class="recuo"> {{ profile.summary }} </p>
                 </div>
 
                 <div class="col-sm-12">
