@@ -36,6 +36,9 @@ export function formatYearMonth(value: YearMonth, locale: Locale, style: 'long' 
 
 const DURATION_WORDS: Record<Locale, { year: [string, string]; month: [string, string]; and: string }> = {
     'pt-BR': { year: ['ano', 'anos'], month: ['mês', 'meses'], and: 'e' },
+    en: { year: ['year', 'years'], month: ['month', 'months'], and: 'and' },
+    es: { year: ['año', 'años'], month: ['mes', 'meses'], and: 'y' },
+    it: { year: ['anno', 'anni'], month: ['mese', 'mesi'], and: 'e' },
 };
 
 /** 43 → "3 anos e 7 meses"; 12 → "1 ano"; 6 → "6 meses". */

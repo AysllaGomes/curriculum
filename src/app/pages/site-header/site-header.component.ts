@@ -1,6 +1,9 @@
 import { Component, inject, signal } from '@angular/core';
 
 import { LABELS } from '../../data/labels';
+import { LOCALE } from '../../data/resume';
+import { LOCALES, LOCALE_STORAGE, PAGE_PATH, rememberLocale } from '../../data/locales';
+import { Locale } from '../../shared/models/resume.model';
 
 @Component({
     selector: 'app-site-header',
@@ -9,6 +12,10 @@ import { LABELS } from '../../data/labels';
 })
 export class SiteHeaderComponent {
     protected readonly labels = inject(LABELS);
+    protected readonly page = inject(PAGE_PATH);
+    protected readonly locales = LOCALES;
+    private readonly storage = inject(LOCALE_STORAGE);
+    protected readonly current = LOCALES.find(o => o.locale === inject(LOCALE)) ?? LOCALES[0];
 
     /** Menu aberto (só faz diferença no celular, onde os links ficam escondidos atrás do botão) */
     protected readonly open = signal(false);
@@ -27,5 +34,10 @@ export class SiteHeaderComponent {
 
     close(): void {
         this.open.set(false);
+    }
+
+    /** O link carrega a página do idioma; aqui só fica guardada a escolha para a próxima visita */
+    choose(locale: Locale): void {
+        rememberLocale(this.storage, locale);
     }
 }

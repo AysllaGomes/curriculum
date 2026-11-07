@@ -7,8 +7,8 @@
         <h1>{{ profile.shortName }}</h1>
         <p class="headline">{{ profile.headline }}</p>
         <div class="actions">
-            <a class="btn btn-primary" href="#contato">{{ labels.hero.contact }}</a>
-            <a class="btn" href="#projetos">{{ labels.hero.projects }}</a>
+            <a class="btn btn-primary" [href]="page + '#contato'">{{ labels.hero.contact }}</a>
+            <a class="btn" [href]="page + '#projetos'">{{ labels.hero.projects }}</a>
         </div>
     </div>
 

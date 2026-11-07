@@ -1,8 +1,8 @@
-<a class="skip-link" href="#conteudo">{{ labels.skipToContent }}</a>
+<a class="skip-link" [href]="page + '#conteudo'">{{ labels.skipToContent }}</a>
 
 <header class="site-header">
     <div class="container bar">
-        <a class="brand" href="#topo">ayslla<span class="dot">.</span></a>
+        <a class="brand" [href]="page + '#topo'">ayslla<span class="dot">.</span></a>
 
         <button type="button" class="menu-toggle" (click)="toggle()"
                 [attr.aria-expanded]="open()" aria-controls="menu-principal">
@@ -18,8 +18,31 @@
 
         <nav id="menu-principal" class="nav" [class.open]="open()" [attr.aria-label]="labels.nav.label">
             @for (link of links; track link.id) {
-                <a [href]="'#' + link.id" (click)="close()">{{ link.text }}</a>
+                <a [href]="page + '#' + link.id" (click)="close()">{{ link.text }}</a>
             }
         </nav>
+
+        <!-- Seletor de idioma: popover nativo (abre/fecha, Esc e clique fora sem JavaScript próprio) -->
+        <div class="lang">
+            <button type="button" class="lang-toggle" popovertarget="menu-idiomas">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"></path>
+                </svg>
+                <span class="visually-hidden">{{ labels.language.label }}: </span>{{ current.code }}
+            </button>
+            <ul id="menu-idiomas" class="lang-menu" popover>
+                @for (option of locales; track option.locale) {
+                    <li>
+                        <a [href]="option.path" [attr.hreflang]="option.locale" [attr.lang]="option.locale"
+                           [attr.aria-current]="option.locale === current.locale ? 'page' : null"
+                           (click)="choose(option.locale)">
+                            <span class="lang-code" aria-hidden="true">{{ option.code }}</span>
+                            {{ option.name }}
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
     </div>
 </header>

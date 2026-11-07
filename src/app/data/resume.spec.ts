@@ -1,5 +1,6 @@
 import { RESUMES } from './resume';
 import { RESUME_PT_BR } from './pt-BR';
+import { ALL_LABELS } from './labels';
 import { Locale, Resume } from '../shared/models/resume.model';
 import { monthsBetween, parseYearMonth } from '../shared/utils/dates';
 
@@ -63,4 +64,28 @@ describe('Traduções × pt-BR', () => {
     it.each(locales)('%s tem os mesmos campos e quantidades do pt-BR', (locale) => {
         expect(shape(RESUMES[locale])).toEqual(shape(RESUME_PT_BR));
     });
+
+    it.each(locales)('%s tem os mesmos fatos do pt-BR (só o texto muda)', (locale) => {
+        expect(facts(RESUMES[locale])).toEqual(facts(RESUME_PT_BR));
+    });
+
+    it.each(locales)('textos da interface em %s têm os mesmos campos do pt-BR, nenhum vazio', (locale) => {
+        expect(shape(ALL_LABELS[locale])).toEqual(shape(ALL_LABELS['pt-BR']));
+        expect(JSON.stringify(ALL_LABELS[locale])).not.toMatch(/""|"\s+"/);
+    });
 });
+
+/** O que não depende de idioma: datas, links, e-mail, empresas, níveis, ferramentas. */
+function facts(r: Resume) {
+    const { email, photoUrl, links, name, shortName } = r.profile;
+    return {
+        profile: { email, photoUrl, links, name, shortName },
+        experiences: r.experiences,
+        projects: r.projects.map(p => p.url),
+        education: r.education.map(e => [e.institution, e.startYear, e.endYear, e.url]),
+        courses: r.courses,
+        certifications: r.certifications,
+        skills: r.skillGroups.map(g => g.skills),
+        languages: r.languages.map(l => l.level),
+    };
+}

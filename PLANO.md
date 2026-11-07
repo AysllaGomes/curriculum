@@ -104,12 +104,13 @@ bloco final "Vamos conversar?". Cada fase termina com o site publicável e print
       (sugestão: figma-context-cache-mcp, pet-health-api, angular-components, MediTrack, squad-amsterdam, interstate-mobility-center)
 
 ### V6: Site em 4 idiomas — PT-BR, EN, ES, IT
-- [ ] Uma URL por idioma: `/curriculum/pt/`, `/en/`, `/es/`, `/it/` (dá para compartilhar o link no idioma certo)
-- [ ] Seletor de idioma no menu; primeira visita segue o idioma do navegador; escolha lembrada
-- [ ] Textos fixos da interface + arquivo de dados por idioma (V1), sem biblioteca externa
-- [ ] Datas e durações formatadas por idioma (`Intl`): "jun 2022 – dez 2025 · 3 anos e 7 meses" / "Jun 2022 – Dec 2025 · 3 years 7 months" / "jun 2022 – dic 2025 · 3 años y 7 meses" / "giu 2022 – dic 2025 · 3 anni e 7 mesi"
-- [ ] `lang`, título da página e descrição por idioma
-- [ ] Traduções EN, ES e IT: rascunho feito por mim; revisão da autora (e, de preferência, de alguém fluente em italiano)
+- [x] Uma URL por idioma: `/curriculum/pt`, `/en`, `/es`, `/it` (dá para compartilhar o link no idioma certo); `/curriculum/` e endereços desconhecidos redirecionam
+- [x] Seletor de idioma no cabeçalho (popover nativo); primeira visita segue o idioma do navegador; escolha lembrada (`localStorage`)
+- [x] Textos fixos da interface + arquivo de dados por idioma (`en.ts`, `es.ts`, `it.ts`), sem biblioteca externa; datas, links, empresas e títulos de certificados vêm do pt-BR
+- [x] Datas e durações formatadas por idioma (`Intl`): "Jun 2022 – Dez 2025 · 3 anos e 7 meses" / "Jun 2022 – Dec 2025 · 3 years and 7 months" / "Jun 2022 – Dic 2025 · 3 años y 7 meses" / "Giu 2022 – Dic 2025 · 3 anni e 7 mesi"
+- [x] `lang`, título da página e descrição por idioma
+- [x] Testes: mesma estrutura e mesmos fatos em todos os idiomas, textos da interface completos, rotas e redirecionamento
+- [~] Traduções EN, ES e IT: rascunho feito por mim; falta a revisão da autora (e, de preferência, de alguém fluente em italiano)
 
 ### V7: Pré-renderização e SEO (antecipa parte da Fase 6)
 - [ ] HTML pronto no build para cada idioma (carrega mais rápido e é lido por buscadores e pelo LinkedIn)
@@ -161,4 +162,5 @@ bloco final "Vamos conversar?". Cada fase termina com o site publicável e print
 | 07/11/2026 | V0 + V1 | `melhorias/visual` | Node 26; `package-lock.json` fora do `.gitignore`. Conteúdo centralizado em `src/app/data/pt-BR.ts` (períodos `AAAA-MM`, duração e anos de experiência calculados, teste de estrutura entre idiomas). Telefone removido. Visual: só o cabeçalho mudou (sem a linha do telefone). 27 testes. |
 | 07/11/2026 | V0 + V1 — Publicadas | `main` | Foram direto para a `main` (a branch tinha sido criada seguindo `origin/main`; corrigido). Workflow passou com Node 26; site no ar sem o telefone. |
 | 07/11/2026 | V2–V4 — Visual novo | `melhorias/visual` | Direção C implementada: tema escuro, Space Grotesk + Inter locais, sem Bootstrap; menu fixo, abertura, "Sobre mim" com números, experiência, projetos, competências, formação/certificações/idiomas, contato. Bundle inicial 89 → 70 KB. Conferido no desktop e a 360 px. 36 testes. |
+| 07/11/2026 | V6 — 4 idiomas | `melhorias/visual` | PT-BR, EN, ES e IT, uma rota por idioma; `/curriculum/` segue a escolha guardada ou o navegador. Seletor no cabeçalho. Links de seção apontam para a própria página (o `<base href>` mandaria `#id` para a raiz). Conferido no Edge: redirecionamentos, `lang`, título, seletor no desktop e a 360 px. Bundle inicial 70 → 75 KB. 79 testes. |
 | 07/11/2026 | 2 — Deploy automático | `melhorias/entrega-2` | Workflow `deploy.yml` (build em PR; build + deploy na `main`), `docs/` e `.nojekyll` removidos, script `deploy:ghdocs` → `build:pages`. Simulado localmente com `npm ci` + build. Depende de a Entrega 1 entrar na `main` antes e da troca da origem do Pages. |
