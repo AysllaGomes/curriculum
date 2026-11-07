@@ -8,11 +8,11 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">{{ project.name }}</h5>
-                    <button *ngIf="project.description" (click)="toggleCollapse(project)" class="btn btn-link">Ver descrição</button>
+                    <button *ngIf="project.description" (click)="toggleCollapse(project)" class="btn btn-link">{{ project.expanded ? 'Ocultar descrição' : 'Ver descrição' }}</button>
                     <div *ngIf="project.expanded && project.description">
                         <p class="card-text">{{ project.description }}</p>
-                        <a href="{{ project.url }}" target="_blank" class="btn btn-primary">Ver projeto</a>
                     </div>
+                    <a [href]="project.url" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver projeto</a>
                 </div>
             </div>
         </div>

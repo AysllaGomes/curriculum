@@ -14,7 +14,7 @@ export class ProfessionalSkillsComponent implements OnInit {
     public skillGroups: Skill[] = [
         {
             title: 'Linguagens',
-            skills: ['PhP', 'Java', 'C#', 'CSS3', 'SASS', 'HTML5', 'JavaScript', 'TypeScript', 'GraphQL', 'Kotlin']
+            skills: ['PHP', 'Java', 'C#', 'CSS3', 'SASS', 'HTML5', 'JavaScript', 'TypeScript', 'GraphQL', 'Kotlin']
         },
         {
             title: 'Frameworks',
@@ -22,11 +22,11 @@ export class ProfessionalSkillsComponent implements OnInit {
         },
         {
             title: 'Tecnologia',
-            skills: ['Docker', 'Maven', 'Jenkins', 'iReport', 'Liquibase', 'Bootsrap', 'MySQL', 'MongoDB', 'PostgreSQL', 'Oracle Database', 'Microsoft SQL Server', 'Android Studio', 'Rancher', 'Node.js', 'Grafeno', 'Kafka', 'RabbitMQ', 'Kubernetes']
+            skills: ['Docker', 'Maven', 'Jenkins', 'iReport', 'Liquibase', 'Bootstrap', 'MySQL', 'MongoDB', 'PostgreSQL', 'Oracle Database', 'Microsoft SQL Server', 'Android Studio', 'Rancher', 'Node.js', 'Grafeno', 'Kafka', 'RabbitMQ', 'Kubernetes']
         },
         {
             title: 'Design',
-            skills: ['Frontend', 'Reponsive', 'CodeDesign', 'UX/UI']
+            skills: ['Frontend', 'Responsive', 'CodeDesign', 'UX/UI']
         },
     ];
 

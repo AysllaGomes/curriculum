@@ -18,7 +18,7 @@ export class CompanyService {
             },
             {
                 company: 'EngeSoftware Tecnologia S/A',
-                date: 'Junho 2022 - Dezembro 2020',
+                date: 'Dezembro 2020 - Junho 2022',
                 position: 'Banco do Brasil',
                 logoUrl: 'https://imagedelivery.net/ecl6S1RtG9d05bcNXhwCCQ/a7a214ed-3c5f-43ab-14c6-b33f121e8a00/public',
                 logoHeight: 100,

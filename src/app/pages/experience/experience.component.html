@@ -9,7 +9,7 @@
                 <div class="experience">
                     <div class="row">
                         <div class="col-sm-3">
-                            <img [ngSrc]="experience.logoUrl" [height]="experience.logoHeight" [width]="experience.logoWidth" alt="Logo Empresa" class="logo rounded-circle">
+                            <img [ngSrc]="experience.logoUrl" [height]="experience.logoHeight" [width]="experience.logoWidth" [alt]="'Logo ' + experience.company" class="logo rounded-circle">
                         </div>
                         <div class="col-sm-9">
                             <h5 class="company">{{ experience.company }}</h5>
