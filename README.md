@@ -40,12 +40,19 @@ Edite os arquivos de `src/app/shared/service/` ou o componente da seção corres
 
 ## Publicando
 
-O site é servido pelo **GitHub Pages** a partir da pasta `docs/` da branch `main`:
+A publicação é automática pelo **GitHub Actions** (`.github/workflows/deploy.yml`):
+
+- **Push na `main`** → build de produção e deploy no GitHub Pages.
+- **Pull request para a `main`** → só o build, para validar antes do merge.
+- **Manual** → aba *Actions* → *Build e deploy no GitHub Pages* → *Run workflow*.
+
+Para testar localmente o mesmo build que vai para o ar:
 
 ```bash
-npm run deploy:ghdocs   # gera o build em docs/ com base-href /curriculum/
-git add docs && git commit -m "Publica nova versão" && git push
+npm run build:pages     # gera dist/curriculum com base-href /curriculum/
 ```
+
+> Configuração necessária (uma vez): *Settings → Pages → Build and deployment → Source: **GitHub Actions***.
 
 ## Próximos passos
 

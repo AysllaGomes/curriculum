@@ -84,3 +84,6 @@ jmeter.log
 dist/
 
 .angular
+
+# Build do GitHub Pages é gerado pelo workflow .github/workflows/deploy.yml
+/docs
