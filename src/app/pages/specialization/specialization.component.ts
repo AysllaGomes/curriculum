@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { YearGroup } from "../../shared/models/year-group.model";
 import { Certification } from "../../shared/models/certification.model";
@@ -9,6 +9,7 @@ import { CertificationService } from "../../shared/service/certification.service
     selector: 'app-pages-specialization',
     templateUrl: './specialization.component.html',
     styleUrls: ['./specialization.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class SpecializationComponent implements OnInit {
@@ -33,7 +34,7 @@ export class SpecializationComponent implements OnInit {
 
         certifications.forEach((certification: Certification): void => {
             const year: number = certification.year;
-            const existingGroup: YearGroup = groupedCertifications.find(group => group.year === year);
+            const existingGroup: YearGroup | undefined = groupedCertifications.find(group => group.year === year);
 
             if (existingGroup) {
                 existingGroup.certifications.push(certification);

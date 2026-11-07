@@ -1,4 +1,4 @@
-export class Company {
+export interface Company {
     company: string;
     date: string;
     position?: string;

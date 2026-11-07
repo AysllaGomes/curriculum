@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { Company } from "../../shared/models/company.model";
 
@@ -8,6 +8,7 @@ import { CompanyService } from "../../shared/service/company.service";
     selector: 'app-pages-experience',
     templateUrl: './experience.component.html',
     styleUrls: ['./experience.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ExperienceComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { AcademicEducationModel } from "../../shared/models/academic-education.model";
 
@@ -8,6 +8,7 @@ import { AcademicEducationService } from "../../shared/service/academic-educatio
     selector: 'app-pages-academic-education',
     templateUrl: './academic-education.component.html',
     styleUrls: ['./academic-education.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class AcademicEducationComponent implements OnInit {

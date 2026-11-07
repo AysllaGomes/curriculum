@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { PersonalProject } from "../../shared/models/personal-project.model";
 
@@ -8,6 +8,7 @@ import { PersonalProjectService } from "../../shared/service/personal-project.se
     selector: 'app-pages-personal-projects',
     templateUrl: './personal-projects.component.html',
     styleUrls: ['./personal-projects.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class PersonalProjectsComponent implements OnInit {

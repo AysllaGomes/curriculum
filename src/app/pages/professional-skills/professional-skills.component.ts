@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { Skill } from "../../shared/models/skill.model";
 
@@ -6,6 +6,7 @@ import { Skill } from "../../shared/models/skill.model";
     selector: 'app-pages-professional-skills',
     templateUrl: './professional-skills.component.html',
     styleUrls: ['./professional-skills.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ProfessionalSkillsComponent implements OnInit {

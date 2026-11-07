@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { Certification } from "../../shared/models/certification.model";
 import { YearGroup } from "../../shared/models/year-group.model";
@@ -9,6 +9,7 @@ import { CertificationService } from "../../shared/service/certification.service
     selector: 'app-pages-certification',
     templateUrl: './certification.component.html',
     styleUrls: ['./certification.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class CertificationComponent implements OnInit {
