@@ -13,6 +13,8 @@ export type YearMonth = `${number}-${Month}`;
 
 export interface Profile {
     name: string;
+    /** Nome curto, usado no título da abertura */
+    shortName: string;
     /** Cargo atual, exibido abaixo do nome */
     role: string;
     /** Frase curta de apresentação (abertura do site) */

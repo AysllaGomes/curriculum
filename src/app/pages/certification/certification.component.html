@@ -1,24 +1,20 @@
-<div class="col-sm-12">
-  <h5 class="section-title">{{ certification }}</h5>
+<div class="card">
+    <h3 class="card-title">{{ labels.certifications.title }}</h3>
 
-  <hr>
-
-    <ul class="certification-list">
-      @for (yearGroup of certifications; track yearGroup) {
-        <li class="timeline-item">
-          <h6>{{ yearGroup.year }}</h6>
-          <ul>
-            @for (certification of yearGroup.certifications; track certification) {
-              <li class="certification-item">
-                <p><strong>{{ certification.provider }}</strong></p>
-                <p>{{ certification.title }}</p>
-                @if (certification.url) {
-                  <a target="_blank" [href]="certification.url">Detalhes</a>
-                }
-              </li>
-            }
-          </ul>
-        </li>
-      }
+    <ul class="list">
+        @for (certification of certifications; track certification.title) {
+            <li class="certification-item">
+                <div class="info">
+                    <strong>{{ certification.title }}</strong>
+                    <span class="muted">{{ certification.provider }}</span>
+                    @if (certification.url) {
+                        <a [href]="certification.url" target="_blank" rel="noopener noreferrer">
+                            {{ labels.certifications.viewCertificate }}<span class="visually-hidden">: {{ certification.title }} {{ labels.newTab }}</span>
+                        </a>
+                    }
+                </div>
+                <span class="year muted">{{ certification.year }}</span>
+            </li>
+        }
     </ul>
-  </div>
+</div>

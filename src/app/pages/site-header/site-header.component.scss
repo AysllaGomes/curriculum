@@ -1,0 +1,99 @@
+.skip-link {
+    position: absolute;
+    left: 16px;
+    top: -100px;
+    z-index: 20;
+    padding: 10px 16px;
+    border-radius: var(--radius-sm);
+    background: var(--accent);
+    color: var(--on-accent);
+    font-weight: 600;
+
+    &:focus {
+        top: 12px;
+    }
+}
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(13, 17, 23, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+}
+
+.bar {
+    min-height: var(--header-height);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 24px;
+}
+
+.brand {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+
+    &:hover {
+        color: var(--text);
+    }
+
+    .dot {
+        color: var(--accent);
+    }
+}
+
+.nav {
+    display: flex;
+    gap: 4px 24px;
+
+    a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        color: var(--muted);
+        font-size: 15px;
+
+        &:hover {
+            color: var(--text);
+        }
+    }
+}
+
+.menu-toggle {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 0 14px;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    background: transparent;
+    cursor: pointer;
+}
+
+/* Celular: links escondidos atrás do botão "Menu" */
+@media (max-width: 760px) {
+    .menu-toggle {
+        display: inline-flex;
+    }
+
+    .nav {
+        display: none;
+        flex-basis: 100%;
+        flex-direction: column;
+        padding-bottom: 12px;
+
+        &.open {
+            display: flex;
+        }
+
+        a {
+            font-size: 17px;
+        }
+    }
+}

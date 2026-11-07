@@ -1,0 +1,25 @@
+<a class="skip-link" href="#conteudo">{{ labels.skipToContent }}</a>
+
+<header class="site-header">
+    <div class="container bar">
+        <a class="brand" href="#topo">ayslla<span class="dot">.</span></a>
+
+        <button type="button" class="menu-toggle" (click)="toggle()"
+                [attr.aria-expanded]="open()" aria-controls="menu-principal">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                @if (open()) {
+                    <path d="M6 6l12 12M18 6 6 18"></path>
+                } @else {
+                    <path d="M4 7h16M4 12h16M4 17h16"></path>
+                }
+            </svg>
+            {{ labels.nav.menu }}
+        </button>
+
+        <nav id="menu-principal" class="nav" [class.open]="open()" [attr.aria-label]="labels.nav.label">
+            @for (link of links; track link.id) {
+                <a [href]="'#' + link.id" (click)="close()">{{ link.text }}</a>
+            }
+        </nav>
+    </div>
+</header>

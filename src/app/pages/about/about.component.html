@@ -1,0 +1,15 @@
+<section class="about container section" aria-labelledby="sobre-titulo">
+    <div class="summary">
+        <h2 id="sobre-titulo" class="section-title">{{ labels.about.title }}</h2>
+        <p>{{ summary }}</p>
+    </div>
+
+    <ul class="stats">
+        @for (stat of stats; track stat.label) {
+            <li class="card stat">
+                <strong class="stat-value">{{ stat.value }}</strong>
+                <span class="muted">{{ stat.label }}</span>
+            </li>
+        }
+    </ul>
+</section>

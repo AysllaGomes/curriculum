@@ -1,0 +1,19 @@
+<section id="topo" class="hero container">
+    <div class="text">
+        <p class="badge">
+            <span class="badge-dot" aria-hidden="true"></span>
+            {{ badge }}
+        </p>
+        <h1>{{ profile.shortName }}</h1>
+        <p class="headline">{{ profile.headline }}</p>
+        <div class="actions">
+            <a class="btn btn-primary" href="#contato">{{ labels.hero.contact }}</a>
+            <a class="btn" href="#projetos">{{ labels.hero.projects }}</a>
+        </div>
+    </div>
+
+    <div class="photo-wrap">
+        <img class="photo" [ngSrc]="profile.photoUrl" width="400" height="400" priority
+             [alt]="labels.hero.photoAlt + ' ' + profile.name">
+    </div>
+</section>

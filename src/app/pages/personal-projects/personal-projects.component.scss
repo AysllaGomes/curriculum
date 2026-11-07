@@ -1,29 +1,52 @@
-.card {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.heading {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0 16px;
+
+    a {
+        font-size: 15px;
+        font-weight: 600;
+    }
 }
 
-.card-body {
-    padding: 20px;
+.grid {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+    gap: 16px;
 }
 
-.card-title {
-    font-size: 1.25rem;
-    margin-bottom: 10px;
+.project {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
 }
 
-.card-text {
-    color: #666;
+.project-name {
+    font-size: 20px;
+    font-weight: 600;
 }
 
-.btn {
-    background-color: #b8b9b9;
-    border-color: #b8b9b9;
-    color: black;
+.description {
+    font-size: 15px;
+    color: var(--text-2);
+
+    /* Recolhida: só as 3 primeiras linhas */
+    &.clamped {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+        overflow: hidden;
+    }
 }
 
-.btn:hover {
-    background-color: #b8b9b9;
-    border-color: #f8f9fa;
+.code-link {
+    margin-top: auto;
+    font-size: 14px;
+    font-weight: 600;
 }
