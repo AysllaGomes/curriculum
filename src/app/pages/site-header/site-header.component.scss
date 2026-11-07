@@ -18,7 +18,7 @@
     position: sticky;
     top: 0;
     z-index: 10;
-    background: rgba(13, 17, 23, 0.85);
+    background: var(--header-bg);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border);
 }
@@ -65,7 +65,8 @@
 }
 
 .menu-toggle,
-.lang-toggle {
+.lang-toggle,
+.theme-toggle {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -93,6 +94,13 @@
     font-weight: 600;
 }
 
+.theme-toggle {
+    justify-content: center;
+    width: 44px;
+    padding: 0;
+    margin-left: -12px; // mais perto do idioma: os dois formam um grupo
+}
+
 /*
  * Lista de idiomas. Fica na camada do topo (popover), então é posicionada em relação à tela:
  * logo abaixo do cabeçalho, alinhada à direita do container.
@@ -110,7 +118,7 @@
     color: var(--text);
     border: 1px solid var(--border-strong);
     border-radius: var(--radius-sm);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+    box-shadow: 0 12px 32px var(--shadow);
 
     a {
         display: flex;
@@ -149,6 +157,10 @@
 
     .menu-toggle {
         display: inline-flex;
+    }
+
+    .theme-toggle {
+        margin-left: 0;
     }
 
     .nav {

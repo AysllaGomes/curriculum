@@ -60,6 +60,26 @@ describe('CurriculumComponent (página completa)', () => {
         expect(foto?.getAttribute('alt')).toBe('Foto de Ayslla Caroline Prates Gomes');
     });
 
+    it('prévia de links (Open Graph) e as 4 versões ligadas por hreflang', async () => {
+        TestBed.configureTestingModule({ providers: provideLocale('es') });
+        const fixture = TestBed.createComponent(CurriculumComponent);
+        await fixture.whenStable();
+        const og = (p: string) => document.querySelector(`meta[property="og:${p}"]`)?.getAttribute('content');
+        const site = 'https://aysllagomes.github.io/curriculum/';
+
+        expect(og('title')).toBe('Ayslla Gomes · Arquitecta de Software');
+        expect(og('url')).toBe(`${site}es/`);
+        expect(og('image')).toBe(`${site}assets/og/es.jpg`);
+        expect(og('locale')).toBe('es_ES');
+        expect(document.querySelector('link[rel="canonical"]')?.getAttribute('href')).toBe(`${site}es/`);
+
+        const alternativas = Array.from(document.querySelectorAll('link[rel="alternate"][hreflang]'))
+            .map(l => `${l.getAttribute('hreflang')} ${l.getAttribute('href')}`);
+        expect(alternativas).toEqual([
+            `pt-BR ${site}pt/`, `en ${site}en/`, `es ${site}es/`, `it ${site}it/`, `x-default ${site}`,
+        ]);
+    });
+
     it('define o idioma do documento, o título da aba e a descrição', async () => {
         await render();
         expect(document.documentElement.lang).toBe('pt-BR');

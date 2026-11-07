@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- As 4 versões do currículo, cada uma apontando para as outras (mesmo conteúdo do hreflang das páginas). -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://aysllagomes.github.io/curriculum/pt/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://aysllagomes.github.io/curriculum/pt/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aysllagomes.github.io/curriculum/en/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aysllagomes.github.io/curriculum/es/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aysllagomes.github.io/curriculum/it/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aysllagomes.github.io/curriculum/"/>
+  </url>
+  <url>
+    <loc>https://aysllagomes.github.io/curriculum/en/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://aysllagomes.github.io/curriculum/pt/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aysllagomes.github.io/curriculum/en/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aysllagomes.github.io/curriculum/es/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aysllagomes.github.io/curriculum/it/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aysllagomes.github.io/curriculum/"/>
+  </url>
+  <url>
+    <loc>https://aysllagomes.github.io/curriculum/es/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://aysllagomes.github.io/curriculum/pt/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aysllagomes.github.io/curriculum/en/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aysllagomes.github.io/curriculum/es/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aysllagomes.github.io/curriculum/it/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aysllagomes.github.io/curriculum/"/>
+  </url>
+  <url>
+    <loc>https://aysllagomes.github.io/curriculum/it/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://aysllagomes.github.io/curriculum/pt/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aysllagomes.github.io/curriculum/en/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aysllagomes.github.io/curriculum/es/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aysllagomes.github.io/curriculum/it/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aysllagomes.github.io/curriculum/"/>
+  </url>
+</urlset>

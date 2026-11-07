@@ -1,0 +1,42 @@
+[
+  {
+    "name": "angular-components",
+    "url": "https://github.com/AysllaGomes/angular-components",
+    "description": "Build reusable UI components",
+    "language": "TypeScript",
+    "topics": [],
+    "homepage": "https://aysllagomes.github.io/angular-components/"
+  },
+  {
+    "name": "figma-context-cache-mcp",
+    "url": "https://github.com/AysllaGomes/figma-context-cache-mcp",
+    "description": null,
+    "language": "TypeScript",
+    "topics": [],
+    "homepage": null
+  },
+  {
+    "name": "interstate-mobility-center",
+    "url": "https://github.com/AysllaGomes/interstate-mobility-center",
+    "description": null,
+    "language": "TypeScript",
+    "topics": [],
+    "homepage": null
+  },
+  {
+    "name": "pet-health-api",
+    "url": "https://github.com/AysllaGomes/pet-health-api",
+    "description": null,
+    "language": "TypeScript",
+    "topics": [],
+    "homepage": null
+  },
+  {
+    "name": "red-switch-realistic",
+    "url": "https://github.com/AysllaGomes/red-switch-realistic",
+    "description": "Apenas uma tentativa para fazer mudanças realistas, utilizando apenas CSS.",
+    "language": "SCSS",
+    "topics": [],
+    "homepage": null
+  }
+]

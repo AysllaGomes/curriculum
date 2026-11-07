@@ -3,13 +3,19 @@
 <head>
   <meta charset="utf-8">
   <title>Ayslla Gomes · Arquiteta de Software</title>
-  <meta name="description" content="Estudiosa incansável, sempre pronta para mergulhar em novas tecnologias e encarar desafios estimulantes.">  <base href="/">
+  <meta name="description" content="Estudiosa incansável, sempre pronta para mergulhar em novas tecnologias e encarar desafios estimulantes.">
+  <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0d1117">
-  <meta name="color-scheme" content="dark">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f7f8fb" media="(prefers-color-scheme: light)">
+  <!-- Tema escolhido no botão do cabeçalho, aplicado antes da primeira pintura (sem piscar o outro tema) -->
+  <script>try{var t=localStorage.getItem('tema');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+  <!-- Foto e logos vêm do Cloudflare R2: abre a conexão antes de o navegador chegar à foto -->
+  <link rel="preconnect" href="https://pub-51456c379d4c4f7ba854a6e3e4b02278.r2.dev">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
-<body style="background:#0d1117">
+<body>
   <app-root></app-root>
 </body>
 </html>

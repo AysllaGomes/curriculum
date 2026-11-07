@@ -13,9 +13,12 @@ Abertura com cargo atual, "Sobre mim" com números (anos de experiência, empres
 - Não há backend: todo o conteúdo do currículo está em **`src/app/data/pt-BR.ts`** e os textos fixos da interface (menus, botões, títulos) em `src/app/data/labels.ts`.
 - O site existe em **português, inglês, espanhol e italiano**: `en.ts`, `es.ts` e `it.ts` trazem só os textos traduzidos; datas, links e empresas vêm do `pt-BR.ts`.
 - Durações ("3 anos e 7 meses") e números da abertura são calculados a partir das datas (`AAAA-MM`).
+- Tema escuro e claro: segue o sistema, com botão no cabeçalho. As cores de cada tema ficam no início de `src/styles.scss`; a escolha é lembrada (`localStorage`, chave `tema`) e aplicada por um script curto no `index.html` antes da página aparecer.
 - As imagens (foto e logos) ficam no Cloudflare R2.
 - Componentes **standalone** com change detection **OnPush** e **sem zone.js** (`provideZonelessChangeDetection`).
 - Uma rota por idioma (`/pt`, `/en`, `/es`, `/it`), todas com o `CurriculumComponent`; cada rota fornece o idioma, o conteúdo e os textos (`src/app/data/locales.ts`). A raiz `/` leva ao idioma escolhido antes no seletor ou ao do navegador.
+- **Páginas geradas no build** (`@angular/ssr`, `outputMode: static`): `pt/index.html`, `en/index.html`… já saem com o conteúdo, título, descrição, Open Graph (imagem em `src/assets/og/`), `canonical` e `hreflang` (`src/app/data/head.ts`). No navegador, o Angular reaproveita esse HTML (hidratação). A raiz e o `404.html` são a versão que roda só no navegador (`scripts/pages-fallback.mjs`).
+- Como o HTML é gerado no build, o workflow também roda toda segunda-feira para manter durações e anos de experiência em dia.
 
 ```
 src/
@@ -25,10 +28,15 @@ src/
 │   ├── shared/
 │   │   ├── components/    # footer
 │   │   ├── models/        # tipos dos dados (interfaces)
-│   │   └── utils/         # datas e durações
+│   │   └── utils/         # datas e durações, tema, armazenamento do navegador
 │   ├── app.component.ts
+│   ├── app.config.ts      # providers do navegador (rotas, sem zone.js, hidratação)
+│   ├── app.config.server.ts / app.routes.server.ts   # pré-render das 4 páginas
 │   └── app.routes.ts
-├── main.ts                # bootstrapApplication
+├── assets/og/             # imagem de prévia (1200×630) de cada idioma
+├── sitemap.xml
+├── main.ts                # entrada no navegador
+├── main.server.ts         # entrada do pré-render (build)
 └── test-providers.ts      # providers usados pelos testes
 ```
 
@@ -50,13 +58,26 @@ Edite `src/app/data/pt-BR.ts`. Experiências usam datas `AAAA-MM` (`end` ausente
 Datas, links, empresas e cursos novos entram só ali; textos novos (resumo, descrição de projeto, nome de idioma) precisam também da tradução em `en.ts`, `es.ts` e `it.ts`.
 Os testes verificam, por exemplo, se as datas são válidas e estão em ordem, se não há texto vazio e se nenhum idioma ficou com algo faltando — rode `npm test` antes de publicar.
 
+### Projetos
+
+Os projetos vêm do GitHub: entram os repositórios **públicos** com o tópico **`portfolio`**
+(no repositório: engrenagem ao lado de *About* → *Topics*). A cada build, `scripts/fetch-projects.mjs`
+atualiza `src/app/data/github-projects.json`; se o GitHub não responder, vale a última lista salva.
+
+- **Ordem e descrição em cada idioma:** `src/app/data/projects.ts`. Sem descrição ali, aparece o *About* do repositório.
+- **Linguagem, tópicos e "Ver demo"** vêm do próprio repositório (linguagem principal, *Topics* e *Website*).
+- `npm run projects` atualiza a lista na hora; `npm run projects -- --repos nome1,nome2` grava exatamente esses repositórios, sem depender do tópico.
+
 ## Publicando
 
 A publicação é automática pelo **GitHub Actions** (`.github/workflows/deploy.yml`):
 
 - **Push na `main`** → lint, testes, build de produção e deploy no GitHub Pages.
 - **Pull request para a `main`** → lint, testes e build, para validar antes do merge (não publica).
+- **Toda segunda-feira, 6h (Brasília)** → build e deploy automáticos, para atualizar as durações calculadas.
 - **Manual** → aba *Actions* → *Build e deploy no GitHub Pages* → *Run workflow*.
+
+Se o cargo ou a chamada da abertura mudarem, as imagens de prévia em `src/assets/og/` precisam ser geradas de novo (elas trazem esses textos).
 
 > Configuração necessária (uma vez): *Settings → Pages → Build and deployment → Source: **GitHub Actions***.
 

@@ -7,22 +7,39 @@
     </div>
 
     <ul class="grid">
-        @for (project of personalProjectsList; track project.url; let i = $index) {
+        @for (project of personalProjectsList; track project.url) {
             <li class="card project">
-                <h3 class="project-name">{{ project.name }}</h3>
+                <div class="top">
+                    <h3 class="project-name">{{ project.name }}</h3>
+                    @if (project.language) {
+                        <span class="language muted"><span class="language-dot" aria-hidden="true"></span>{{ project.language }}</span>
+                    }
+                </div>
 
                 @if (project.description) {
-                    <p class="description" [id]="'projeto-desc-' + i" [class.clamped]="!project.expanded">{{ project.description }}</p>
-                    <button type="button" class="link-button" (click)="toggleCollapse(project)"
-                            [attr.aria-expanded]="!!project.expanded" [attr.aria-controls]="'projeto-desc-' + i">
-                        {{ project.expanded ? labels.projects.readLess : labels.projects.readMore }}
-                    </button>
+                    <p class="description">{{ project.description }}</p>
                 }
 
-                <a class="code-link" [href]="project.url" target="_blank" rel="noopener noreferrer">
-                    {{ labels.projects.viewCode }} <span aria-hidden="true">↗</span>
-                    <span class="visually-hidden">: {{ project.name }} {{ labels.newTab }}</span>
-                </a>
+                @if (project.topics.length) {
+                    <ul class="topics">
+                        @for (topic of project.topics; track topic) {
+                            <li class="chip">{{ topic }}</li>
+                        }
+                    </ul>
+                }
+
+                <div class="links">
+                    <a class="code-link" [href]="project.url" target="_blank" rel="noopener noreferrer">
+                        {{ labels.projects.viewCode }} <span aria-hidden="true">↗</span>
+                        <span class="visually-hidden">: {{ project.name }} {{ labels.newTab }}</span>
+                    </a>
+                    @if (project.homepage) {
+                        <a class="demo-link" [href]="project.homepage" target="_blank" rel="noopener noreferrer">
+                            {{ labels.projects.viewDemo }} <span aria-hidden="true">↗</span>
+                            <span class="visually-hidden">: {{ project.name }} {{ labels.newTab }}</span>
+                        </a>
+                    }
+                </div>
             </li>
         }
     </ul>

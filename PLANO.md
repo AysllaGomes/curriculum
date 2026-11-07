@@ -95,13 +95,15 @@ bloco final "Vamos conversar?". Cada fase termina com o site publicável e print
 - [x] Textos fixos da interface em `src/app/data/labels.ts` (prontos para a V6)
 
 ### V5: Projetos dinâmicos do GitHub
-- [ ] Script no build lê a API do GitHub e gera um JSON com os repositórios **públicos** que têm o tópico `portfolio`
-      (nome, descrição, linguagem, tópicos, estrelas, última atualização, link de demo quando houver)
-- [ ] Arquivo opcional de ajustes: ordem, projeto em destaque, descrição por idioma
-- [ ] Workflow: token do próprio Actions (sem limite de 60/h); build agendado semanal, além do push na `main`
-- [ ] Se a API falhar, o build usa a última lista salva (o site nunca fica sem projetos)
-- [~] A autora: marcar com o tópico `portfolio` e descrever os repositórios escolhidos
-      (sugestão: figma-context-cache-mcp, pet-health-api, angular-components, MediTrack, squad-amsterdam, interstate-mobility-center)
+- [x] Script no build (`scripts/fetch-projects.mjs`) lê a API do GitHub e grava `src/app/data/github-projects.json` com os repositórios **públicos** que têm o tópico `portfolio`
+      (nome, descrição, linguagem, tópicos, link de demo quando houver; estrelas e datas ficaram de fora para o arquivo não mudar à toa)
+- [x] Ajustes em `src/app/data/projects.ts`: ordem e descrição por idioma (sem descrição traduzida, vale o "About" do GitHub)
+- [x] Workflow: token do próprio Actions; build semanal (feito na V7), além do push na `main`
+- [x] Se a API falhar ou nenhum repositório tiver o tópico, o build usa a última lista salva (o site nunca fica sem projetos)
+- [x] Escolhidos pela autora: figma-context-cache-mcp, pet-health-api, angular-components, red-switch-realistic, interstate-mobility-center
+      (lista inicial gravada com `npm run projects -- --repos …`). Saíram os projetos antigos (React Hooks, Ceep, Agenda, Controle Financeiro, PetShop)
+- [x] "Ler mais" removido: as descrições novas são curtas e aparecem inteiras
+- [ ] A autora: marcar os 5 repositórios com o tópico `portfolio` (a partir daí a lista passa a seguir o GitHub) e, se quiser, preencher o "About"
 
 ### V6: Site em 4 idiomas — PT-BR, EN, ES, IT
 - [x] Uma URL por idioma: `/curriculum/pt`, `/en`, `/es`, `/it` (dá para compartilhar o link no idioma certo); `/curriculum/` e endereços desconhecidos redirecionam
@@ -113,14 +115,17 @@ bloco final "Vamos conversar?". Cada fase termina com o site publicável e print
 - [~] Traduções EN, ES e IT: rascunho feito por mim; falta a revisão da autora (e, de preferência, de alguém fluente em italiano)
 
 ### V7: Pré-renderização e SEO (antecipa parte da Fase 6)
-- [ ] HTML pronto no build para cada idioma (carrega mais rápido e é lido por buscadores e pelo LinkedIn)
-- [ ] Meta description + Open Graph por idioma (prévia ao compartilhar) e `hreflang` ligando as 4 versões
+- [x] HTML pronto no build para cada idioma (`pt/index.html`, `en/index.html`…), com hidratação; raiz e 404 continuam rodando no navegador e levam ao idioma de quem visita
+- [x] Meta description + Open Graph por idioma (imagem 1200×630 em cada idioma) e `canonical`/`hreflang` ligando as 4 versões (raiz como `x-default`)
+- [x] `sitemap.xml` com as 4 versões (`robots.txt` não se aplica: só vale na raiz do domínio)
+- [x] Build semanal agendado (segunda-feira), para durações e anos de experiência do HTML não ficarem desatualizados
+- [ ] A autora: enviar o sitemap no Google Search Console (opcional) e testar a prévia no LinkedIn Post Inspector depois do deploy
 
 ### V8: Acabamento
-- [ ] Tema claro opcional (segue o sistema; botão para trocar)
-- [ ] Animações discretas, desligadas com `prefers-reduced-motion`
-- [~] Revisão no celular, foco visível, contraste AA (feitos na V2–V4: link "Pular para o conteúdo", foco visível, contraste ≥ 4.5:1, testado a 360 px); falta Lighthouse ≥ 90
-- [x] Testes dos componentes novos (menu, números, seções, âncoras do menu, sem telefone) — 36 testes
+- [x] Tema claro opcional: segue o sistema; botão no cabeçalho para trocar, escolha lembrada e aplicada antes da primeira pintura (sem piscar). Destaque `#3B5BDB` no claro (o `#8AA4FF` não tem contraste em fundo branco)
+- [x] Animações discretas: cartões e títulos sobem de leve ao entrar na tela, só com CSS (animação ligada à rolagem); desligadas com `prefers-reduced-motion` e em navegadores sem suporte; nunca escondem conteúdo
+- [x] Revisão no celular, foco visível, contraste AA — Lighthouse (celular / desktop): desempenho 95–97 / 100, acessibilidade 100 (temas claro e escuro), boas práticas 100, SEO 100
+- [x] Testes dos componentes novos — 82 testes
 
 ## Entrega 4 — Manutenção, qualidade e testes (Fases 5, 6, 7)
 
@@ -163,4 +168,8 @@ bloco final "Vamos conversar?". Cada fase termina com o site publicável e print
 | 07/11/2026 | V0 + V1 — Publicadas | `main` | Foram direto para a `main` (a branch tinha sido criada seguindo `origin/main`; corrigido). Workflow passou com Node 26; site no ar sem o telefone. |
 | 07/11/2026 | V2–V4 — Visual novo | `melhorias/visual` | Direção C implementada: tema escuro, Space Grotesk + Inter locais, sem Bootstrap; menu fixo, abertura, "Sobre mim" com números, experiência, projetos, competências, formação/certificações/idiomas, contato. Bundle inicial 89 → 70 KB. Conferido no desktop e a 360 px. 36 testes. |
 | 07/11/2026 | V6 — 4 idiomas | `melhorias/visual` | PT-BR, EN, ES e IT, uma rota por idioma; `/curriculum/` segue a escolha guardada ou o navegador. Seletor no cabeçalho. Links de seção apontam para a própria página (o `<base href>` mandaria `#id` para a raiz). Conferido no Edge: redirecionamentos, `lang`, título, seletor no desktop e a 360 px. Bundle inicial 70 → 75 KB. 79 testes. |
+| 07/11/2026 | V2–V6 — Publicadas | `main` (PR #5) | Visual novo e 4 idiomas no ar. |
+| 07/11/2026 | V7 — Pré-render e SEO | `melhorias/v7` | `@angular/ssr` com `outputMode: static`: 4 páginas geradas no build + hidratação. Open Graph com imagem por idioma, canonical, hreflang, sitemap. Conferido com um servidor que imita o GitHub Pages (301 para a barra, 404.html): conteúdo e cabeçalhos certos em cada idioma, sem erros no console. Bundle inicial 75 → 88 KB (código de hidratação), mas o conteúdo aparece antes do JavaScript carregar. 80 testes. |
+| 07/11/2026 | V8 — Acabamento | `melhorias/v8` (sobre a `melhorias/v7`) | Tema claro + botão; animação de entrada só com CSS; `preconnect` para o R2 (foto é o maior elemento da página). Lighthouse medido com servidor local comprimindo como o Pages: celular 95–97 de desempenho, desktop 100; acessibilidade, boas práticas e SEO 100. A 1ª versão da animação (com transparência) derrubava o contraste durante a entrada (96) — trocada por só deslocamento. 82 testes. |
+| 07/11/2026 | V5 — Projetos do GitHub | `melhorias/v5` (sobre a `melhorias/v8`) | Projetos vêm do GitHub no build (tópico `portfolio`), com ordem e descrições nos 4 idiomas (rascunho meu, a partir dos READMEs). Cartão mostra linguagem, tópicos e "Ver demo" quando o repositório tem site. Nenhum dos 5 repositórios tinha o tópico ainda: lista inicial gravada pelo nome. 88 testes. |
 | 07/11/2026 | 2 — Deploy automático | `melhorias/entrega-2` | Workflow `deploy.yml` (build em PR; build + deploy na `main`), `docs/` e `.nojekyll` removidos, script `deploy:ghdocs` → `build:pages`. Simulado localmente com `npm ci` + build. Depende de a Entrega 1 entrar na `main` antes e da troca da origem do Pages. |
