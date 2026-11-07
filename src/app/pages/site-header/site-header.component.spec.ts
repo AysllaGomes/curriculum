@@ -43,7 +43,7 @@ describe('SiteHeaderComponent', () => {
         expect(el.querySelector('#' + botao.getAttribute('popovertarget'))).not.toBeNull();
 
         const opcoes = Array.from(el.querySelectorAll<HTMLAnchorElement>('.lang-menu a'));
-        expect(opcoes.map(a => a.getAttribute('href'))).toEqual(['pt', 'en', 'es', 'it']);
+        expect(opcoes.map(a => a.getAttribute('href'))).toEqual(['pt/', 'en/', 'es/', 'it/']);
         expect(opcoes.map(a => a.getAttribute('lang'))).toEqual(['pt-BR', 'en', 'es', 'it']);
         expect(opcoes.filter(a => a.getAttribute('aria-current') === 'page').map(a => a.getAttribute('lang'))).toEqual(['pt-BR']);
     });

@@ -113,8 +113,11 @@ bloco final "Vamos conversar?". Cada fase termina com o site publicável e print
 - [~] Traduções EN, ES e IT: rascunho feito por mim; falta a revisão da autora (e, de preferência, de alguém fluente em italiano)
 
 ### V7: Pré-renderização e SEO (antecipa parte da Fase 6)
-- [ ] HTML pronto no build para cada idioma (carrega mais rápido e é lido por buscadores e pelo LinkedIn)
-- [ ] Meta description + Open Graph por idioma (prévia ao compartilhar) e `hreflang` ligando as 4 versões
+- [x] HTML pronto no build para cada idioma (`pt/index.html`, `en/index.html`…), com hidratação; raiz e 404 continuam rodando no navegador e levam ao idioma de quem visita
+- [x] Meta description + Open Graph por idioma (imagem 1200×630 em cada idioma) e `canonical`/`hreflang` ligando as 4 versões (raiz como `x-default`)
+- [x] `sitemap.xml` com as 4 versões (`robots.txt` não se aplica: só vale na raiz do domínio)
+- [x] Build semanal agendado (segunda-feira), para durações e anos de experiência do HTML não ficarem desatualizados
+- [ ] A autora: enviar o sitemap no Google Search Console (opcional) e testar a prévia no LinkedIn Post Inspector depois do deploy
 
 ### V8: Acabamento
 - [ ] Tema claro opcional (segue o sistema; botão para trocar)
@@ -163,4 +166,6 @@ bloco final "Vamos conversar?". Cada fase termina com o site publicável e print
 | 07/11/2026 | V0 + V1 — Publicadas | `main` | Foram direto para a `main` (a branch tinha sido criada seguindo `origin/main`; corrigido). Workflow passou com Node 26; site no ar sem o telefone. |
 | 07/11/2026 | V2–V4 — Visual novo | `melhorias/visual` | Direção C implementada: tema escuro, Space Grotesk + Inter locais, sem Bootstrap; menu fixo, abertura, "Sobre mim" com números, experiência, projetos, competências, formação/certificações/idiomas, contato. Bundle inicial 89 → 70 KB. Conferido no desktop e a 360 px. 36 testes. |
 | 07/11/2026 | V6 — 4 idiomas | `melhorias/visual` | PT-BR, EN, ES e IT, uma rota por idioma; `/curriculum/` segue a escolha guardada ou o navegador. Seletor no cabeçalho. Links de seção apontam para a própria página (o `<base href>` mandaria `#id` para a raiz). Conferido no Edge: redirecionamentos, `lang`, título, seletor no desktop e a 360 px. Bundle inicial 70 → 75 KB. 79 testes. |
+| 07/11/2026 | V2–V6 — Publicadas | `main` (PR #5) | Visual novo e 4 idiomas no ar. |
+| 07/11/2026 | V7 — Pré-render e SEO | `melhorias/v7` | `@angular/ssr` com `outputMode: static`: 4 páginas geradas no build + hidratação. Open Graph com imagem por idioma, canonical, hreflang, sitemap. Conferido com um servidor que imita o GitHub Pages (301 para a barra, 404.html): conteúdo e cabeçalhos certos em cada idioma, sem erros no console. Bundle inicial 75 → 88 KB (código de hidratação), mas o conteúdo aparece antes do JavaScript carregar. 80 testes. |
 | 07/11/2026 | 2 — Deploy automático | `melhorias/entrega-2` | Workflow `deploy.yml` (build em PR; build + deploy na `main`), `docs/` e `.nojekyll` removidos, script `deploy:ghdocs` → `build:pages`. Simulado localmente com `npm ci` + build. Depende de a Entrega 1 entrar na `main` antes e da troca da origem do Pages. |

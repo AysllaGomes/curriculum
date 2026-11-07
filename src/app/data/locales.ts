@@ -13,15 +13,31 @@ export interface LocaleOption {
     code: string;
     /** Nome do idioma escrito no próprio idioma */
     name: string;
+    /** Formato do Open Graph (prévia de links no LinkedIn, WhatsApp…) */
+    ogLocale: string;
 }
 
 /** Idiomas do site, na ordem do seletor. O primeiro é o padrão. */
 export const LOCALES: readonly LocaleOption[] = [
-    { locale: 'pt-BR', path: 'pt', code: 'PT', name: 'Português' },
-    { locale: 'en', path: 'en', code: 'EN', name: 'English' },
-    { locale: 'es', path: 'es', code: 'ES', name: 'Español' },
-    { locale: 'it', path: 'it', code: 'IT', name: 'Italiano' },
+    { locale: 'pt-BR', path: 'pt', code: 'PT', name: 'Português', ogLocale: 'pt_BR' },
+    { locale: 'en', path: 'en', code: 'EN', name: 'English', ogLocale: 'en_US' },
+    { locale: 'es', path: 'es', code: 'ES', name: 'Español', ogLocale: 'es_ES' },
+    { locale: 'it', path: 'it', code: 'IT', name: 'Italiano', ogLocale: 'it_IT' },
 ];
+
+/**
+ * Endereço público do site. Buscadores e prévias de links exigem endereços completos.
+ * Ao trocar de domínio, mude aqui e em src/sitemap.xml.
+ */
+export const SITE_URL = 'https://aysllagomes.github.io/curriculum/';
+
+/**
+ * Endereço público da página de um idioma. Com barra no fim: é o endereço que o GitHub Pages
+ * serve (pt/index.html) — sem a barra ele responde com um redirecionamento.
+ */
+export function localeUrl(option: LocaleOption): string {
+    return `${SITE_URL}${option.path}/`;
+}
 
 /** Troca idioma, conteúdo e textos da interface para tudo que estiver dentro da rota. */
 export function provideLocale(locale: Locale): Provider[] {

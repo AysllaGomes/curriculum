@@ -5,6 +5,10 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  # Toda segunda-feira: as páginas são geradas no build, então durações ("11 meses")
+  # e anos de experiência só se atualizam com um build novo
+  schedule:
+    - cron: '0 9 * * 1'
   workflow_dispatch:
 
 # Necessário para publicar no GitHub Pages
@@ -41,11 +45,9 @@ jobs:
       - name: Testes (Vitest)
         run: npm test -- --watch=false
 
+      # Gera as páginas de cada idioma já prontas e, em seguida, index.html e 404.html (scripts/pages-fallback.mjs)
       - name: Build de produção
         run: npm run build:pages
-
-      - name: Fallback de rotas para SPA (404.html)
-        run: cp dist/curriculum/browser/index.html dist/curriculum/browser/404.html
 
       - name: Enviar artefato do Pages
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'

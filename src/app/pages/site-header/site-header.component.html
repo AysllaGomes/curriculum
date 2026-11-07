@@ -34,7 +34,7 @@
             <ul id="menu-idiomas" class="lang-menu" popover>
                 @for (option of locales; track option.locale) {
                     <li>
-                        <a [href]="option.path" [attr.hreflang]="option.locale" [attr.lang]="option.locale"
+                        <a [href]="option.path + '/'"[attr.hreflang]="option.locale" [attr.lang]="option.locale"
                            [attr.aria-current]="option.locale === current.locale ? 'page' : null"
                            (click)="choose(option.locale)">
                             <span class="lang-code" aria-hidden="true">{{ option.code }}</span>

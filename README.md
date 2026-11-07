@@ -16,6 +16,8 @@ Abertura com cargo atual, "Sobre mim" com números (anos de experiência, empres
 - As imagens (foto e logos) ficam no Cloudflare R2.
 - Componentes **standalone** com change detection **OnPush** e **sem zone.js** (`provideZonelessChangeDetection`).
 - Uma rota por idioma (`/pt`, `/en`, `/es`, `/it`), todas com o `CurriculumComponent`; cada rota fornece o idioma, o conteúdo e os textos (`src/app/data/locales.ts`). A raiz `/` leva ao idioma escolhido antes no seletor ou ao do navegador.
+- **Páginas geradas no build** (`@angular/ssr`, `outputMode: static`): `pt/index.html`, `en/index.html`… já saem com o conteúdo, título, descrição, Open Graph (imagem em `src/assets/og/`), `canonical` e `hreflang` (`src/app/data/head.ts`). No navegador, o Angular reaproveita esse HTML (hidratação). A raiz e o `404.html` são a versão que roda só no navegador (`scripts/pages-fallback.mjs`).
+- Como o HTML é gerado no build, o workflow também roda toda segunda-feira para manter durações e anos de experiência em dia.
 
 ```
 src/
@@ -27,8 +29,13 @@ src/
 │   │   ├── models/        # tipos dos dados (interfaces)
 │   │   └── utils/         # datas e durações
 │   ├── app.component.ts
+│   ├── app.config.ts      # providers do navegador (rotas, sem zone.js, hidratação)
+│   ├── app.config.server.ts / app.routes.server.ts   # pré-render das 4 páginas
 │   └── app.routes.ts
-├── main.ts                # bootstrapApplication
+├── assets/og/             # imagem de prévia (1200×630) de cada idioma
+├── sitemap.xml
+├── main.ts                # entrada no navegador
+├── main.server.ts         # entrada do pré-render (build)
 └── test-providers.ts      # providers usados pelos testes
 ```
 
@@ -56,7 +63,10 @@ A publicação é automática pelo **GitHub Actions** (`.github/workflows/deploy
 
 - **Push na `main`** → lint, testes, build de produção e deploy no GitHub Pages.
 - **Pull request para a `main`** → lint, testes e build, para validar antes do merge (não publica).
+- **Toda segunda-feira, 6h (Brasília)** → build e deploy automáticos, para atualizar as durações calculadas.
 - **Manual** → aba *Actions* → *Build e deploy no GitHub Pages* → *Run workflow*.
+
+Se o cargo ou a chamada da abertura mudarem, as imagens de prévia em `src/assets/og/` precisam ser geradas de novo (elas trazem esses textos).
 
 > Configuração necessária (uma vez): *Settings → Pages → Build and deployment → Source: **GitHub Actions***.
 
