@@ -9,8 +9,7 @@ import { CertificationService } from "../../shared/service/certification.service
     selector: 'app-pages-certification',
     templateUrl: './certification.component.html',
     styleUrls: ['./certification.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.Eager
 })
 export class CertificationComponent implements OnInit {
 

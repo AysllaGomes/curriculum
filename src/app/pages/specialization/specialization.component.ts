@@ -4,13 +4,14 @@ import { YearGroup } from "../../shared/models/year-group.model";
 import { Certification } from "../../shared/models/certification.model";
 
 import { CertificationService } from "../../shared/service/certification.service";
+import { NgClass } from '@angular/common';
 
 @Component({
     selector: 'app-pages-specialization',
     templateUrl: './specialization.component.html',
     styleUrls: ['./specialization.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [NgClass]
 })
 export class SpecializationComponent implements OnInit {
 

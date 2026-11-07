@@ -8,8 +8,7 @@ import { PersonalProjectService } from "../../shared/service/personal-project.se
     selector: 'app-pages-personal-projects',
     templateUrl: './personal-projects.component.html',
     styleUrls: ['./personal-projects.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.Eager
 })
 export class PersonalProjectsComponent implements OnInit {
 

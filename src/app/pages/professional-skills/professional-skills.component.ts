@@ -6,8 +6,7 @@ import { Skill } from "../../shared/models/skill.model";
     selector: 'app-pages-professional-skills',
     templateUrl: './professional-skills.component.html',
     styleUrls: ['./professional-skills.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.Eager
 })
 export class ProfessionalSkillsComponent implements OnInit {
 

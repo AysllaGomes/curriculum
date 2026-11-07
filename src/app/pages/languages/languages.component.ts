@@ -6,8 +6,7 @@ import { CefrLevel, Language } from "../../shared/models/language.model";
     selector: 'app-pages-languages',
     templateUrl: './languages.component.html',
     styleUrls: ['./languages.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.Eager
 })
 export class LanguagesComponent implements OnInit {
 

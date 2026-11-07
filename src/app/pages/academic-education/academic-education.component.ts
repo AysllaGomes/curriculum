@@ -3,13 +3,15 @@ import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core
 import { AcademicEducationModel } from "../../shared/models/academic-education.model";
 
 import { AcademicEducationService } from "../../shared/service/academic-education.service";
+import { SpecializationComponent } from '../specialization/specialization.component';
+import { FooterComponent } from '../../shared/components/footer/footer.component';
 
 @Component({
     selector: 'app-pages-academic-education',
     templateUrl: './academic-education.component.html',
     styleUrls: ['./academic-education.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [SpecializationComponent, FooterComponent]
 })
 export class AcademicEducationComponent implements OnInit {
 
