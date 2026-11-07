@@ -1,26 +1,29 @@
-<h4>{{ personalProjects }}</h4>
-
-<hr>
-
-  <div class="container">
-    <div class="row">
-      @for (project of personalProjectsList; track project) {
-        <div class="col-sm-12" style="margin-bottom: 20px;">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">{{ project.name }}</h5>
-              @if (project.description) {
-                <button (click)="toggleCollapse(project)" class="btn btn-link">{{ project.expanded ? 'Ocultar descrição' : 'Ver descrição' }}</button>
-              }
-              @if (project.expanded && project.description) {
-                <div>
-                  <p class="card-text">{{ project.description }}</p>
-                </div>
-              }
-              <a [href]="project.url" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver projeto</a>
-            </div>
-          </div>
-        </div>
-      }
+<section id="projetos" class="container section">
+    <div class="heading">
+        <h2 class="section-title">{{ labels.projects.title }}</h2>
+        <a [href]="githubUrl" target="_blank" rel="noopener noreferrer">
+            {{ labels.projects.allOnGithub }} <span aria-hidden="true">↗</span><span class="visually-hidden">{{ labels.newTab }}</span>
+        </a>
     </div>
-  </div>
+
+    <ul class="grid">
+        @for (project of personalProjectsList; track project.url; let i = $index) {
+            <li class="card project">
+                <h3 class="project-name">{{ project.name }}</h3>
+
+                @if (project.description) {
+                    <p class="description" [id]="'projeto-desc-' + i" [class.clamped]="!project.expanded">{{ project.description }}</p>
+                    <button type="button" class="link-button" (click)="toggleCollapse(project)"
+                            [attr.aria-expanded]="!!project.expanded" [attr.aria-controls]="'projeto-desc-' + i">
+                        {{ project.expanded ? labels.projects.readLess : labels.projects.readMore }}
+                    </button>
+                }
+
+                <a class="code-link" [href]="project.url" target="_blank" rel="noopener noreferrer">
+                    {{ labels.projects.viewCode }} <span aria-hidden="true">↗</span>
+                    <span class="visually-hidden">: {{ project.name }} {{ labels.newTab }}</span>
+                </a>
+            </li>
+        }
+    </ul>
+</section>

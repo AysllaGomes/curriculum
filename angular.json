@@ -23,7 +23,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "@fontsource-variable/inter/wght.css", "@fontsource-variable/space-grotesk/wght.css", "src/styles.scss"
             ],
             "scripts": [],
             "extractLicenses": false,

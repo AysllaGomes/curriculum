@@ -3,31 +3,28 @@ import { TestBed } from '@angular/core/testing';
 import { CertificationComponent } from './certification.component';
 
 describe('CertificationComponent', () => {
-    it('agrupa certificações por ano', () => {
-        const component = TestBed.createComponent(CertificationComponent).componentInstance;
+    it('lista as certificações da mais recente para a mais antiga', async () => {
+        const fixture = TestBed.createComponent(CertificationComponent);
+        await fixture.whenStable();
 
-        const grupos = component.groupCertificationsByYear([
-            { year: 2020, provider: 'A', title: 'Curso 1' },
-            { year: 2021, provider: 'B', title: 'Curso 2' },
-            { year: 2020, provider: 'C', title: 'Curso 3' },
-        ]);
+        const anos = Array.from(fixture.nativeElement.querySelectorAll('.certification-item .year') as NodeListOf<Element>)
+            .map(e => Number(e.textContent));
 
-        expect(grupos.map(g => [g.year, g.certifications.map(c => c.title)])).toEqual([
-            [2020, ['Curso 1', 'Curso 3']],
-            [2021, ['Curso 2']],
-        ]);
+        expect(anos.length).toBe(3);
+        expect(anos).toEqual([...anos].sort((a, b) => b - a));
     });
 
-    it('renderiza os grupos com link "Detalhes" só quando há URL', async () => {
+    it('link "Ver certificado" só quando há URL, abrindo em nova aba com segurança', async () => {
         const fixture = TestBed.createComponent(CertificationComponent);
         await fixture.whenStable();
         const el: HTMLElement = fixture.nativeElement;
 
-        const itens = Array.from(el.querySelectorAll('.certification-item'));
-        expect(itens.length).toBeGreaterThan(0);
-        for (const item of itens) {
-            const link = item.querySelector('a');
-            if (link) expect(link.getAttribute('href')).toMatch(/^https:\/\//);
+        const links = Array.from(el.querySelectorAll<HTMLAnchorElement>('.certification-item a'));
+        expect(links.length).toBe(fixture.componentInstance.certifications.filter(c => c.url).length);
+        for (const link of links) {
+            expect(link.getAttribute('href')).toMatch(/^https:\/\//);
+            expect(link.target).toBe('_blank');
+            expect(link.rel).toContain('noopener');
         }
     });
 });

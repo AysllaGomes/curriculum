@@ -1,47 +1,27 @@
-<br/>
+<section id="experiencia" class="container section">
+    <h2 class="section-title">{{ labels.experience.title }}</h2>
 
-<div class="container">
-  <div class="jumbotron">
-    <div class="row">
-      <h4>{{ experiences }}</h4>
-      <hr>
-        @for (experience of experiencesList; track experience) {
-          <div class="col-sm-12">
-            <div class="experience">
-              <div class="row">
-                <div class="col-sm-3">
-                  @if (experience.logoUrl) {
-                    <img [ngSrc]="experience.logoUrl" [height]="100" [width]="100" [alt]="'Logo ' + experience.company" class="logo rounded-circle">
-                  } @else {
-                    <div class="logo-placeholder rounded-circle" [style.width.px]="100" [style.height.px]="100" aria-hidden="true">{{ experience.company.charAt(0) }}</div>
-                  }
+    <ol class="list">
+        @for (experience of experiencesList; track experience.company) {
+            <li class="card experience" [class.current]="experience.current">
+                @if (experience.logoUrl) {
+                    <img class="logo" [ngSrc]="experience.logoUrl" width="48" height="48" alt="">
+                } @else {
+                    <span class="logo logo-placeholder" aria-hidden="true">{{ experience.company.charAt(0) }}</span>
+                }
+
+                <div class="main">
+                    <h3 class="company">{{ experience.company }}</h3>
+                    @if (experience.client) {
+                        <p class="client muted">{{ labels.experience.client }}: {{ experience.client }}</p>
+                    }
                 </div>
-                <div class="col-sm-9">
-                  <h5 class="company">{{ experience.company }}</h5>
-                  <p class="date">{{ experience.period }}</p>
-                  @if (experience.client) {
-                    <strong class="position">{{ experience.client }}</strong>
-                  }
+
+                <div class="when">
+                    <p class="date">{{ experience.period }}</p>
+                    <p class="duration muted">{{ experience.duration }}</p>
                 </div>
-              </div>
-            </div>
-            <hr>
-            </div>
-          }
-
-          @if (canShowPersonalProjects) {
-            <div class="col-sm-12">
-              <app-pages-personal-projects>
-              </app-pages-personal-projects>
-            </div>
-          }
-
-        </div>
-      </div>
-
-      @if (canShow) {
-        <div>
-          <app-pages-footer></app-pages-footer>
-        </div>
-      }
-    </div>
+            </li>
+        }
+    </ol>
+</section>

@@ -1,0 +1,32 @@
+.contact {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: clamp(28px, 5vw, 48px);
+    border-radius: 20px;
+}
+
+.text {
+    flex: 1 1 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    h2 {
+        font-size: clamp(26px, 4vw, 32px);
+        font-weight: 600;
+    }
+}
+
+.details {
+    color: var(--text-2);
+    overflow-wrap: anywhere;
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}

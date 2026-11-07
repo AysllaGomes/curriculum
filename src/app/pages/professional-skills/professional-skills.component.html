@@ -1,16 +1,16 @@
-<h5 class="section-title">{{ professionalSkills }}</h5>
+<section id="competencias" class="container section">
+    <h2 class="section-title">{{ labels.skills.title }}</h2>
 
-<hr>
-
-  <ul class="skill-groups">
-    @for (skillGroup of skillGroups; track skillGroup) {
-      <li class="skill-group">
-        <p class="group-title">{{ skillGroup.title }}</p>
-        <ul class="skills">
-          @for (skill of skillGroup.skills; track skill) {
-            <li class="skill">{{ skill }}</li>
-          }
-        </ul>
-      </li>
-    }
-  </ul>
+    <div class="groups">
+        @for (group of skillGroups; track group.title) {
+            <div class="group">
+                <h3 class="group-title">{{ group.title }}</h3>
+                <ul class="skills">
+                    @for (skill of group.skills; track skill) {
+                        <li class="chip">{{ skill }}</li>
+                    }
+                </ul>
+            </div>
+        }
+    </div>
+</section>

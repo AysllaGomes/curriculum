@@ -1,32 +1,32 @@
-<h5>{{ specialization }}</h5>
+<h4 class="title">
+    {{ labels.education.courses }} <span class="muted">· {{ countLabel(certifications.length) }}</span>
+</h4>
 
-<hr>
-
-  @if (certifications.length > 0) {
-    <div>
-      <ul class="timeline">
-        @for (yearGroup of groupedCertifications; track yearGroup) {
-          <li class="timeline-item">
-            <h6>
-              <button type="button" class="year-toggle" (click)="toggleCollapse(yearGroup.year)" [attr.aria-expanded]="!!yearGroup.expanded">{{ yearGroup.year }}</button>
-            </h6>
-            <ul [ngClass]="{ 'd-none': !yearGroup.expanded }">
-              @for (certification of yearGroup.certifications; track certification) {
-                <li>
-                  <p><strong>{{ certification.provider }}</strong></p>
-                  <p>{{ certification.title }}</p>
-                  <a target="_blank" [href]="certification.url">Detalhes</a>
-                </li>
-              }
+<ul class="years">
+    @for (yearGroup of groupedCertifications; track yearGroup.year) {
+        <li class="year">
+            <h5>
+                <button type="button" class="year-toggle" (click)="toggleCollapse(yearGroup.year)"
+                        [attr.aria-expanded]="!!yearGroup.expanded" [attr.aria-controls]="'cursos-' + yearGroup.year">
+                    <span><strong class="year-number">{{ yearGroup.year }}</strong>
+                        <span class="muted"> · {{ countLabel(yearGroup.certifications.length) }}</span></span>
+                    <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+                </button>
+            </h5>
+            <ul class="courses" [id]="'cursos-' + yearGroup.year" [hidden]="!yearGroup.expanded">
+                @for (course of yearGroup.certifications; track course.title) {
+                    <li>
+                        @if (course.url) {
+                            <a [href]="course.url" target="_blank" rel="noopener noreferrer">
+                                {{ course.title }}<span class="visually-hidden"> {{ labels.newTab }}</span>
+                            </a>
+                        } @else {
+                            {{ course.title }}
+                        }
+                        <span class="muted"> — {{ course.provider }}</span>
+                    </li>
+                }
             </ul>
-          </li>
-        }
-      </ul>
-    </div>
-  }
-
-  @if (certifications.length === 0) {
-    <div>
-      <p>Nenhuma especialização encontrada.</p>
-    </div>
-  }
+        </li>
+    }
+</ul>

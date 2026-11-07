@@ -1,0 +1,169 @@
+.skip-link {
+    position: absolute;
+    left: 16px;
+    top: -100px;
+    z-index: 20;
+    padding: 10px 16px;
+    border-radius: var(--radius-sm);
+    background: var(--accent);
+    color: var(--on-accent);
+    font-weight: 600;
+
+    &:focus {
+        top: 12px;
+    }
+}
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(13, 17, 23, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+}
+
+.bar {
+    min-height: var(--header-height);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 24px;
+}
+
+.brand {
+    margin-right: auto;
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+
+    &:hover {
+        color: var(--text);
+    }
+
+    .dot {
+        color: var(--accent);
+    }
+}
+
+.nav {
+    display: flex;
+    gap: 4px 24px;
+
+    a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        color: var(--muted);
+        font-size: 15px;
+
+        &:hover {
+            color: var(--text);
+        }
+    }
+}
+
+.menu-toggle,
+.lang-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 0 14px;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--text);
+    font: inherit;
+    font-size: 15px;
+    cursor: pointer;
+
+    &:hover {
+        border-color: var(--muted);
+    }
+}
+
+.menu-toggle {
+    display: none;
+}
+
+.lang-toggle {
+    padding: 0 12px;
+    font-weight: 600;
+}
+
+/*
+ * Lista de idiomas. Fica na camada do topo (popover), então é posicionada em relação à tela:
+ * logo abaixo do cabeçalho, alinhada à direita do container.
+ */
+.lang-menu {
+    position: fixed;
+    inset: auto;
+    top: calc(var(--header-height) - 4px);
+    right: max(var(--gutter), calc((100vw - var(--container)) / 2 + var(--gutter)));
+    min-width: 200px;
+    margin: 0;
+    padding: 6px;
+    list-style: none;
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+
+    a {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-height: 44px;
+        padding: 0 12px;
+        border-radius: 8px;
+        color: var(--text-2);
+
+        &:hover {
+            background: var(--surface-2);
+            color: var(--text);
+        }
+
+        &[aria-current='page'] {
+            color: var(--accent);
+            font-weight: 600;
+        }
+    }
+}
+
+.lang-code {
+    width: 24px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+}
+
+/* Telas menores: links das seções escondidos atrás do botão "Menu", que fica ao lado do idioma */
+@media (max-width: 900px) {
+    .bar {
+        column-gap: 8px;
+    }
+
+    .menu-toggle {
+        display: inline-flex;
+    }
+
+    .nav {
+        display: none;
+        order: 1;
+        flex-basis: 100%;
+        flex-direction: column;
+        padding-bottom: 12px;
+
+        &.open {
+            display: flex;
+        }
+
+        a {
+            font-size: 17px;
+        }
+    }
+}

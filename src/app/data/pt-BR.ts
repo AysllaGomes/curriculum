@@ -9,6 +9,7 @@ const R2 = 'https://pub-51456c379d4c4f7ba854a6e3e4b02278.r2.dev';
 export const RESUME_PT_BR: Resume = {
     profile: {
         name: 'Ayslla Caroline Prates Gomes',
+        shortName: 'Ayslla Gomes',
         role: 'Arquiteta de Software',
         headline: 'Estudiosa incansável, sempre pronta para mergulhar em novas tecnologias e encarar desafios estimulantes.',
         summary: 'Como Arquiteta de Software, estou em constante busca pelo sucesso profissional, alimentada pela minha dedicação, '

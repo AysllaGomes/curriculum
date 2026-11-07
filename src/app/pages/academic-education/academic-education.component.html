@@ -1,30 +1,20 @@
-<div class="container academic-education-container">
-  <div class="jumbotron">
-    <div class="row">
-      <h5 class="academic-education-header">{{ academicEducation }}</h5>
-      <hr>
-        <ul class="education-list">
-          @for (education of academicEducations; track education) {
+<div class="card">
+    <h3 class="card-title">{{ labels.education.degree }}</h3>
+
+    <ul class="education-list">
+        @for (education of academicEducations; track education.course) {
             <li class="education-item">
-              <div class="education-period">{{ education.period }}</div>
-              <div class="education-institution">{{ education.institution }}</div>
-              <div class="education-course">{{ education.course }}</div>
-              @if (education.url) {
-                <a [href]="education.url" target="_blank" rel="noopener noreferrer" class="education-link">Detalhes</a>
-              }
+                <strong class="education-course">{{ education.course }}</strong>
+                <span class="education-institution muted">{{ education.institution }}</span>
+                <span class="education-institution muted">{{ education.period }}</span>
+                @if (education.url) {
+                    <a [href]="education.url" target="_blank" rel="noopener noreferrer">
+                        {{ education.course }} <span class="visually-hidden">{{ labels.newTab }}</span>
+                    </a>
+                }
             </li>
-          }
-        </ul>
-
-        <app-pages-specialization>
-        </app-pages-specialization>
-
-        @if (canShow) {
-          <div>
-            <app-pages-footer></app-pages-footer>
-          </div>
         }
-      </div>
+    </ul>
 
-    </div>
-  </div>
+    <app-pages-specialization></app-pages-specialization>
+</div>

@@ -1,0 +1,17 @@
+<section id="contato" class="container section">
+    <div class="card contact">
+        <div class="text">
+            <h2>{{ labels.contact.title }}</h2>
+            <p class="details">{{ profile.email }} · {{ profile.city }}</p>
+        </div>
+        <div class="actions">
+            <a class="btn btn-primary" [href]="'mailto:' + profile.email">{{ labels.contact.email }}</a>
+            <a class="btn" [href]="profile.links.linkedin" target="_blank" rel="noopener noreferrer">
+                LinkedIn<span class="visually-hidden"> {{ labels.newTab }}</span>
+            </a>
+            <a class="btn" [href]="profile.links.github" target="_blank" rel="noopener noreferrer">
+                GitHub<span class="visually-hidden"> {{ labels.newTab }}</span>
+            </a>
+        </div>
+    </div>
+</section>

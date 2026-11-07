@@ -1,22 +1,28 @@
 import { Component, inject } from '@angular/core';
-import { NgClass } from '@angular/common';
 
 import { YearGroup } from "../../shared/models/year-group.model";
 import { Certification } from "../../shared/models/certification.model";
-import { RESUME } from '../../data/resume';
+import { LABELS } from '../../data/labels';
+import { LOCALE, RESUME } from '../../data/resume';
 
 @Component({
     selector: 'app-pages-specialization',
     templateUrl: './specialization.component.html',
     styleUrls: ['./specialization.component.scss'],
-    imports: [NgClass]
 })
 export class SpecializationComponent {
-    public specialization = 'Especializações';
+    protected readonly labels = inject(LABELS);
+    private readonly plural = new Intl.PluralRules(inject(LOCALE));
 
     public certifications: Certification[] = inject(RESUME).courses;
 
     public groupedCertifications: YearGroup[] = this.groupCertificationsByYear(this.certifications);
+
+    /** "1 curso", "13 cursos" */
+    countLabel(count: number): string {
+        const { one, other } = this.labels.education.course;
+        return `${count} ${this.plural.select(count) === 'one' ? one : other}`;
+    }
 
     groupCertificationsByYear(certifications: Certification[]): YearGroup[] {
         const groupedCertifications: YearGroup[] = [];

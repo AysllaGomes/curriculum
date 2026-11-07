@@ -33,6 +33,18 @@ describe('datas do currículo', () => {
         expect(formatDuration(6, 'pt-BR')).toBe('6 meses');
     });
 
+    it('formata datas e durações em inglês, espanhol e italiano', () => {
+        expect(formatYearMonth('2022-06', 'en', 'short')).toBe('Jun 2022');
+        expect(formatYearMonth('2025-12', 'es', 'short')).toBe('Dic 2025');
+        expect(formatYearMonth('2022-06', 'it', 'short')).toBe('Giu 2022');
+        expect(formatDuration(43, 'en')).toBe('3 years and 7 months');
+        expect(formatDuration(13, 'en')).toBe('1 year and 1 month');
+        expect(formatDuration(43, 'es')).toBe('3 años y 7 meses');
+        expect(formatDuration(1, 'es')).toBe('1 mes');
+        expect(formatDuration(43, 'it')).toBe('3 anni e 7 mesi');
+        expect(formatDuration(12, 'it')).toBe('1 anno');
+    });
+
     it('emprego atual conta até hoje', () => {
         expect(experienceMonths({ company: 'X', start: '2026-01' }, '2026-11')).toBe(11);
         expect(experienceMonths({ company: 'X', start: '2026-01', end: '2026-03' }, '2026-11')).toBe(3);

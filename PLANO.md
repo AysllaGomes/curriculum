@@ -75,21 +75,24 @@ bloco final "Vamos conversar?". Cada fase termina com o site publicável e print
 - [x] Telefone removido do site (decisão da autora)
 
 ### V2: Fundamentos visuais
-- [ ] Variáveis de cor, espaçamento e raio (tema escuro; cor de destaque `#8AA4FF`, a confirmar)
-- [ ] Fontes Space Grotesk (títulos) + Inter (texto) servidas pelo próprio site, sem Google Fonts
-- [ ] Remover o Bootstrap (o layout novo usa flex/grid próprios) e as nuvens do rodapé
-- [ ] Escala única de títulos; ícones SVG próprios no lugar dos PNG/SVG pretos
+- [x] Variáveis de cor, espaçamento e raio (tema escuro; cor de destaque `#8AA4FF`)
+- [x] Fontes Space Grotesk (títulos) + Inter (texto) servidas pelo próprio site, sem Google Fonts (`@fontsource-variable`)
+- [x] Remover o Bootstrap (o layout novo usa flex/grid próprios) e as nuvens do rodapé — bundle inicial 89 → 70 KB
+- [x] Escala única de títulos; ícones SVG próprios no lugar dos PNG/SVG pretos
 
 ### V3: Estrutura e abertura
-- [ ] Menu fixo com âncoras (Experiência, Projetos, Competências, Formação, Contato) e versão celular
-- [ ] Abertura: nome, cargo atual, chamada, foto, botões "Entrar em contato" e "Currículo em PDF"
-- [ ] Faixa de números (anos de experiência, empresas, cursos, certificações) calculados a partir dos dados
-- [ ] Bloco "Vamos conversar?" e rodapé novo
+- [x] Menu fixo com âncoras (Experiência, Projetos, Competências, Formação, Contato) e botão "Menu" no celular
+- [x] Abertura: nome, cargo atual, chamada, foto, botões "Entrar em contato" e "Ver projetos"
+- [→] Botão "Currículo em PDF" — entra com o PDF na Entrega 4
+- [x] Faixa de números (anos de experiência, empresas, cursos, certificações) calculados a partir dos dados, junto do "Sobre mim"
+- [x] Bloco "Vamos conversar?" e rodapé novo
 
 ### V4: Seções de conteúdo
-- [ ] Experiência em cartões: logo, empresa, cliente, período e duração; emprego atual em destaque
-- [ ] Competências em colunas por grupo; idiomas com barra de nível (A1–C2); certificações
-- [ ] Formação + especializações (lista completa ao abrir, por ano)
+- [x] Experiência em cartões: logo, empresa, cliente, período e duração; emprego atual em destaque
+- [x] Competências em colunas por grupo; idiomas com barra de nível (A1–C2); certificações
+- [x] Formação + especializações (lista completa ao abrir, por ano)
+- [x] Projetos em grade de cartões, descrição com "Ler mais" (a lista vira dinâmica na V5)
+- [x] Textos fixos da interface em `src/app/data/labels.ts` (prontos para a V6)
 
 ### V5: Projetos dinâmicos do GitHub
 - [ ] Script no build lê a API do GitHub e gera um JSON com os repositórios **públicos** que têm o tópico `portfolio`
@@ -101,12 +104,13 @@ bloco final "Vamos conversar?". Cada fase termina com o site publicável e print
       (sugestão: figma-context-cache-mcp, pet-health-api, angular-components, MediTrack, squad-amsterdam, interstate-mobility-center)
 
 ### V6: Site em 4 idiomas — PT-BR, EN, ES, IT
-- [ ] Uma URL por idioma: `/curriculum/pt/`, `/en/`, `/es/`, `/it/` (dá para compartilhar o link no idioma certo)
-- [ ] Seletor de idioma no menu; primeira visita segue o idioma do navegador; escolha lembrada
-- [ ] Textos fixos da interface + arquivo de dados por idioma (V1), sem biblioteca externa
-- [ ] Datas e durações formatadas por idioma (`Intl`): "jun 2022 – dez 2025 · 3 anos e 7 meses" / "Jun 2022 – Dec 2025 · 3 years 7 months" / "jun 2022 – dic 2025 · 3 años y 7 meses" / "giu 2022 – dic 2025 · 3 anni e 7 mesi"
-- [ ] `lang`, título da página e descrição por idioma
-- [ ] Traduções EN, ES e IT: rascunho feito por mim; revisão da autora (e, de preferência, de alguém fluente em italiano)
+- [x] Uma URL por idioma: `/curriculum/pt`, `/en`, `/es`, `/it` (dá para compartilhar o link no idioma certo); `/curriculum/` e endereços desconhecidos redirecionam
+- [x] Seletor de idioma no cabeçalho (popover nativo); primeira visita segue o idioma do navegador; escolha lembrada (`localStorage`)
+- [x] Textos fixos da interface + arquivo de dados por idioma (`en.ts`, `es.ts`, `it.ts`), sem biblioteca externa; datas, links, empresas e títulos de certificados vêm do pt-BR
+- [x] Datas e durações formatadas por idioma (`Intl`): "Jun 2022 – Dez 2025 · 3 anos e 7 meses" / "Jun 2022 – Dec 2025 · 3 years and 7 months" / "Jun 2022 – Dic 2025 · 3 años y 7 meses" / "Giu 2022 – Dic 2025 · 3 anni e 7 mesi"
+- [x] `lang`, título da página e descrição por idioma
+- [x] Testes: mesma estrutura e mesmos fatos em todos os idiomas, textos da interface completos, rotas e redirecionamento
+- [~] Traduções EN, ES e IT: rascunho feito por mim; falta a revisão da autora (e, de preferência, de alguém fluente em italiano)
 
 ### V7: Pré-renderização e SEO (antecipa parte da Fase 6)
 - [ ] HTML pronto no build para cada idioma (carrega mais rápido e é lido por buscadores e pelo LinkedIn)
@@ -115,8 +119,8 @@ bloco final "Vamos conversar?". Cada fase termina com o site publicável e print
 ### V8: Acabamento
 - [ ] Tema claro opcional (segue o sistema; botão para trocar)
 - [ ] Animações discretas, desligadas com `prefers-reduced-motion`
-- [ ] Revisão no celular, foco visível, contraste AA; Lighthouse ≥ 90
-- [ ] Testes dos componentes novos
+- [~] Revisão no celular, foco visível, contraste AA (feitos na V2–V4: link "Pular para o conteúdo", foco visível, contraste ≥ 4.5:1, testado a 360 px); falta Lighthouse ≥ 90
+- [x] Testes dos componentes novos (menu, números, seções, âncoras do menu, sem telefone) — 36 testes
 
 ## Entrega 4 — Manutenção, qualidade e testes (Fases 5, 6, 7)
 
@@ -156,4 +160,7 @@ bloco final "Vamos conversar?". Cada fase termina com o site publicável e print
 | 07/11/2026 | 3 — Publicada | `main` (PR #4) | Workflow com lint, testes e build passou no PR e na `main`; site publicado. |
 | 07/11/2026 | V — Planejada | `melhorias/visual` | Três protótipos visuais comparados; escolhida a direção C · Portfólio. Acrescentados projetos dinâmicos do GitHub (tópico `portfolio`) e site em PT-BR, EN, ES e IT. |
 | 07/11/2026 | V0 + V1 | `melhorias/visual` | Node 26; `package-lock.json` fora do `.gitignore`. Conteúdo centralizado em `src/app/data/pt-BR.ts` (períodos `AAAA-MM`, duração e anos de experiência calculados, teste de estrutura entre idiomas). Telefone removido. Visual: só o cabeçalho mudou (sem a linha do telefone). 27 testes. |
+| 07/11/2026 | V0 + V1 — Publicadas | `main` | Foram direto para a `main` (a branch tinha sido criada seguindo `origin/main`; corrigido). Workflow passou com Node 26; site no ar sem o telefone. |
+| 07/11/2026 | V2–V4 — Visual novo | `melhorias/visual` | Direção C implementada: tema escuro, Space Grotesk + Inter locais, sem Bootstrap; menu fixo, abertura, "Sobre mim" com números, experiência, projetos, competências, formação/certificações/idiomas, contato. Bundle inicial 89 → 70 KB. Conferido no desktop e a 360 px. 36 testes. |
+| 07/11/2026 | V6 — 4 idiomas | `melhorias/visual` | PT-BR, EN, ES e IT, uma rota por idioma; `/curriculum/` segue a escolha guardada ou o navegador. Seletor no cabeçalho. Links de seção apontam para a própria página (o `<base href>` mandaria `#id` para a raiz). Conferido no Edge: redirecionamentos, `lang`, título, seletor no desktop e a 360 px. Bundle inicial 70 → 75 KB. 79 testes. |
 | 07/11/2026 | 2 — Deploy automático | `melhorias/entrega-2` | Workflow `deploy.yml` (build em PR; build + deploy na `main`), `docs/` e `.nojekyll` removidos, script `deploy:ghdocs` → `build:pages`. Simulado localmente com `npm ci` + build. Depende de a Entrega 1 entrar na `main` antes e da troca da origem do Pages. |
