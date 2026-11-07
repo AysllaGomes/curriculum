@@ -33,9 +33,11 @@ Diagnóstico de origem: análise com o `repo-inspector` (MCP) + leitura do códi
 - [~] Preencher Website e tópicos no "About" do repositório no GitHub (a autora faz pela interface do GitHub)
 
 ## Entrega 2 — Deploy automático (Fase 3)
-- [ ] Workflow do GitHub Actions: build + publicação no Pages a cada push na `main`
-- [ ] Parar de versionar `docs/` (build passa a ser gerado na pipeline)
-- [ ] Build também em pull requests
+- [x] Workflow do GitHub Actions: build + publicação no Pages a cada push na `main`
+- [x] Parar de versionar `docs/` (build passa a ser gerado na pipeline)
+- [x] Build também em pull requests
+- [~] Trocar a origem do Pages para "GitHub Actions" (Settings → Pages) — a autora faz na interface
+- [~] Apagar a branch `gh-pages` abandonada (último commit em 22/04/2024; o site não usa)
 
 ## Entrega 3 — Atualização do Angular (Fase 4)
 - [ ] Node 22 LTS
@@ -79,3 +81,5 @@ Diagnóstico de origem: análise com o `repo-inspector` (MCP) + leitura do códi
 | 07/11/2026 | 1 — Correções e limpeza | `melhorias/entrega-1` | Build validado e comparado visualmente (antes × depois, desktop e celular). `docs/` regenerado. Node fixado em 18 por compatibilidade com o Angular 16 (Node 18 está fora de suporte; sobe para 22 na Entrega 3). Pendente com a autora: revisão de conteúdo 2026 e “About” do GitHub. |
 | 07/11/2026 | 1 — Experiências 2026 | `melhorias/entrega-1` | IBM encerrada em 12/2025; Mirante Tecnologia desde 01/2026 (atual). Logo e cliente passaram a ser opcionais no modelo, com marcador de inicial quando não há logo. Push fica a cargo da autora. |
 | 07/11/2026 | 1 — Imagens no R2 | `melhorias/entrega-1` | A autora adicionou logo e cliente da Mirante (Sicoob) e migrou as 8 imagens para o Cloudflare R2 (todas validadas com HTTP 200). `docs/` regenerado. |
+| 07/11/2026 | 1 — Foto de perfil | `melhorias/entrega-1` | `object-fit: cover` na foto (a imagem 477×597 era esticada para 200×200). WebP 400×400 gerado (371 KB → 15 KB), aguardando upload no R2. |
+| 07/11/2026 | 2 — Deploy automático | `melhorias/entrega-2` | Workflow `deploy.yml` (build em PR; build + deploy na `main`), `docs/` e `.nojekyll` removidos, script `deploy:ghdocs` → `build:pages`. Simulado localmente com `npm ci` + build. Depende de a Entrega 1 entrar na `main` antes e da troca da origem do Pages. |
