@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Certification } from "../../shared/models/certification.model";
+import { YearGroup } from "../../shared/models/year-group.model";
 
 import { CertificationService } from "../../shared/service/certification.service";
 
@@ -14,7 +15,7 @@ export class CertificationComponent implements OnInit {
 
     public certification: string = 'Certificação';
 
-    public certifications: Certification[] = [];
+    public certifications: YearGroup[] = [];
 
     constructor(
         protected certificationService: CertificationService,
@@ -24,8 +25,8 @@ export class CertificationComponent implements OnInit {
         this.certifications = this.groupCertificationsByYear(this.certificationService.getCertificationsCerts());
     }
 
-    groupCertificationsByYear(certifications: Certification[]): any[] {
-        const groupedCertifications = [];
+    groupCertificationsByYear(certifications: Certification[]): YearGroup[] {
+        const groupedCertifications: YearGroup[] = [];
 
         certifications.forEach(certification => {
             const existingGroup = groupedCertifications.find(group => group.year === certification.year);

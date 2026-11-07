@@ -1,38 +1,47 @@
 <br/>
 
 <div class="container">
-    <div class="jumbotron">
-        <div class="row">
-            <h4>{{ experiences }}</h4>
-            <hr>
-            <div class="col-sm-12" *ngFor="let experience of experiencesList">
-                <div class="experience">
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <img *ngIf="experience.logoUrl; else semLogo" [ngSrc]="experience.logoUrl" [height]="experience.logoHeight" [width]="experience.logoWidth" [alt]="'Logo ' + experience.company" class="logo rounded-circle">
-                            <ng-template #semLogo>
-                                <div class="logo-placeholder rounded-circle" [style.width.px]="experience.logoWidth" [style.height.px]="experience.logoHeight" aria-hidden="true">{{ experience.company.charAt(0) }}</div>
-                            </ng-template>
-                        </div>
-                        <div class="col-sm-9">
-                            <h5 class="company">{{ experience.company }}</h5>
-                            <p class="date">{{ experience.date }}</p>
-                            <strong *ngIf="experience.position" class="position">{{ experience.position }}</strong>
-                        </div>
-                    </div>
+  <div class="jumbotron">
+    <div class="row">
+      <h4>{{ experiences }}</h4>
+      <hr>
+        @for (experience of experiencesList; track experience) {
+          <div class="col-sm-12">
+            <div class="experience">
+              <div class="row">
+                <div class="col-sm-3">
+                  @if (experience.logoUrl) {
+                    <img [ngSrc]="experience.logoUrl" [height]="experience.logoHeight" [width]="experience.logoWidth" [alt]="'Logo ' + experience.company" class="logo rounded-circle">
+                  } @else {
+                    <div class="logo-placeholder rounded-circle" [style.width.px]="experience.logoWidth" [style.height.px]="experience.logoHeight" aria-hidden="true">{{ experience.company.charAt(0) }}</div>
+                  }
                 </div>
-                <hr>
+                <div class="col-sm-9">
+                  <h5 class="company">{{ experience.company }}</h5>
+                  <p class="date">{{ experience.date }}</p>
+                  @if (experience.position) {
+                    <strong class="position">{{ experience.position }}</strong>
+                  }
+                </div>
+              </div>
             </div>
+            <hr>
+            </div>
+          }
 
-            <div class="col-sm-12" *ngIf="canShowPersonalProjects">
-                <app-pages-personal-projects>
-                </app-pages-personal-projects>
+          @if (canShowPersonalProjects) {
+            <div class="col-sm-12">
+              <app-pages-personal-projects>
+              </app-pages-personal-projects>
             </div>
+          }
 
         </div>
-    </div>
+      </div>
 
-    <div *ngIf="canShow">
-        <app-pages-footer></app-pages-footer>
+      @if (canShow) {
+        <div>
+          <app-pages-footer></app-pages-footer>
+        </div>
+      }
     </div>
-</div>
