@@ -35,6 +35,9 @@ jobs:
       - name: Instalar dependências
         run: npm ci
 
+      - name: Testes (Vitest)
+        run: npm test -- --watch=false
+
       - name: Build de produção
         run: npm run build:pages
 
