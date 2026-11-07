@@ -1,9 +1,10 @@
 import { Component, inject } from '@angular/core';
 
-import { PersonalProject } from "../../shared/models/personal-project.model";
+import { PersonalProject } from '../../shared/models/personal-project.model';
 import { LABELS } from '../../data/labels';
 import { RESUME } from '../../data/resume';
 
+/** Projetos do GitHub (tópico "portfolio"); a lista é montada no build, ver src/app/data/projects.ts. */
 @Component({
     selector: 'app-pages-personal-projects',
     templateUrl: './personal-projects.component.html',
@@ -13,10 +14,5 @@ export class PersonalProjectsComponent {
     protected readonly labels = inject(LABELS);
     protected readonly githubUrl = this.resume.profile.links.github;
 
-    /** Cópias: o estado "expandido" é da tela, não dos dados */
-    public personalProjectsList: PersonalProject[] = this.resume.projects.map(p => ({ ...p, expanded: false }));
-
-    toggleCollapse(project: PersonalProject): void {
-        project.expanded = !project.expanded;
-    }
+    public personalProjectsList: PersonalProject[] = this.resume.projects;
 }

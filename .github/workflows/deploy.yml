@@ -45,9 +45,13 @@ jobs:
       - name: Testes (Vitest)
         run: npm test -- --watch=false
 
-      # Gera as páginas de cada idioma já prontas e, em seguida, index.html e 404.html (scripts/pages-fallback.mjs)
+      # Busca no GitHub os projetos com o tópico "portfolio" (scripts/fetch-projects.mjs), gera as páginas
+      # de cada idioma já prontas e, em seguida, index.html e 404.html (scripts/pages-fallback.mjs)
       - name: Build de produção
         run: npm run build:pages
+        env:
+          # Token do próprio workflow: limite maior da API do GitHub (sem ele são 60 consultas por hora)
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Enviar artefato do Pages
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'

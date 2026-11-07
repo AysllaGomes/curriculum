@@ -58,6 +58,16 @@ Edite `src/app/data/pt-BR.ts`. Experiências usam datas `AAAA-MM` (`end` ausente
 Datas, links, empresas e cursos novos entram só ali; textos novos (resumo, descrição de projeto, nome de idioma) precisam também da tradução em `en.ts`, `es.ts` e `it.ts`.
 Os testes verificam, por exemplo, se as datas são válidas e estão em ordem, se não há texto vazio e se nenhum idioma ficou com algo faltando — rode `npm test` antes de publicar.
 
+### Projetos
+
+Os projetos vêm do GitHub: entram os repositórios **públicos** com o tópico **`portfolio`**
+(no repositório: engrenagem ao lado de *About* → *Topics*). A cada build, `scripts/fetch-projects.mjs`
+atualiza `src/app/data/github-projects.json`; se o GitHub não responder, vale a última lista salva.
+
+- **Ordem e descrição em cada idioma:** `src/app/data/projects.ts`. Sem descrição ali, aparece o *About* do repositório.
+- **Linguagem, tópicos e "Ver demo"** vêm do próprio repositório (linguagem principal, *Topics* e *Website*).
+- `npm run projects` atualiza a lista na hora; `npm run projects -- --repos nome1,nome2` grava exatamente esses repositórios, sem depender do tópico.
+
 ## Publicando
 
 A publicação é automática pelo **GitHub Actions** (`.github/workflows/deploy.yml`):

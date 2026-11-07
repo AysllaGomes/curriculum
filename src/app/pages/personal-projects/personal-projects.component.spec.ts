@@ -1,15 +1,31 @@
 import { TestBed } from '@angular/core/testing';
 
 import { PersonalProjectsComponent } from './personal-projects.component';
+import { RESUME } from '../../data/resume';
+import { RESUME_PT_BR } from '../../data/pt-BR';
+import { provideLocale } from '../../data/locales';
 
 describe('PersonalProjectsComponent', () => {
-    it('todo projeto tem o link "Ver código" para o GitHub, em nova aba', async () => {
+    async function render(): Promise<HTMLElement> {
         const fixture = TestBed.createComponent(PersonalProjectsComponent);
         await fixture.whenStable();
-        const el: HTMLElement = fixture.nativeElement;
+        return fixture.nativeElement;
+    }
 
+    it('mostra os projetos do GitHub na ordem definida, com nome legível e descrição', async () => {
+        const el = await render();
+        const nomes = Array.from(el.querySelectorAll('.project-name')).map(e => e.textContent?.trim());
+
+        expect(nomes.slice(0, 2)).toEqual(['Figma Context Cache MCP', 'Pet Health API']);
+        expect(el.querySelector('.project .description')?.textContent).toContain('Servidor MCP');
+        expect(el.querySelector('.project .language')?.textContent?.trim()).toBe('TypeScript');
+    });
+
+    it('todo projeto tem o link "Ver código" para o GitHub, em nova aba', async () => {
+        const el = await render();
         const cards = Array.from(el.querySelectorAll('.project'));
-        expect(cards.length).toBe(fixture.componentInstance.personalProjectsList.length);
+
+        expect(cards.length).toBeGreaterThan(0);
         for (const card of cards) {
             const link = card.querySelector<HTMLAnchorElement>('a.code-link');
             const nome = card.querySelector('.project-name')?.textContent ?? '';
@@ -19,37 +35,30 @@ describe('PersonalProjectsComponent', () => {
         }
     });
 
-    it('"Ler mais" expande e recolhe a descrição (interação sem zone.js)', async () => {
-        const fixture = TestBed.createComponent(PersonalProjectsComponent);
-        await fixture.whenStable();
-        const el: HTMLElement = fixture.nativeElement;
+    it('"Ver demo" e tópicos só aparecem quando o repositório tem', async () => {
+        TestBed.overrideProvider(RESUME, {
+            useValue: {
+                ...RESUME_PT_BR,
+                projects: [
+                    { name: 'Com Demo', url: 'https://github.com/x/a', homepage: 'https://x.github.io/a/', topics: ['angular', 'a11y'] },
+                    { name: 'Sem Demo', url: 'https://github.com/x/b', topics: [] },
+                ],
+            },
+        });
+        const cards = Array.from((await render()).querySelectorAll('.project'));
 
-        const botao = el.querySelector<HTMLButtonElement>('.project button')!;
-        const descricao = el.querySelector('#' + botao.getAttribute('aria-controls'))!;
-        expect(botao.textContent?.trim()).toBe('Ler mais');
-        expect(botao.getAttribute('aria-expanded')).toBe('false');
-        expect(descricao.classList).toContain('clamped');
-
-        botao.click();
-        await fixture.whenStable();
-        expect(botao.textContent?.trim()).toBe('Mostrar menos');
-        expect(botao.getAttribute('aria-expanded')).toBe('true');
-        expect(descricao.classList).not.toContain('clamped');
-
-        botao.click();
-        await fixture.whenStable();
-        expect(botao.textContent?.trim()).toBe('Ler mais');
-        expect(descricao.classList).toContain('clamped');
+        expect(cards[0].querySelector('a.demo-link')?.getAttribute('href')).toBe('https://x.github.io/a/');
+        expect(Array.from(cards[0].querySelectorAll('.topics .chip')).map(c => c.textContent?.trim())).toEqual(['angular', 'a11y']);
+        expect(cards[1].querySelector('a.demo-link')).toBeNull();
+        expect(cards[1].querySelector('.topics')).toBeNull();
+        expect(cards[1].querySelector('.description')).toBeNull();
     });
 
-    it('projeto sem descrição não mostra o botão "Ler mais"', async () => {
-        const fixture = TestBed.createComponent(PersonalProjectsComponent);
-        await fixture.whenStable();
-        const el: HTMLElement = fixture.nativeElement;
+    it('descrição e links no idioma da página', async () => {
+        TestBed.configureTestingModule({ providers: provideLocale('it') });
+        const el = await render();
 
-        const semDescricao = fixture.componentInstance.personalProjectsList.filter(p => !p.description).length;
-        expect(semDescricao).toBeGreaterThan(0);
-        expect(el.querySelectorAll('.project button').length)
-            .toBe(fixture.componentInstance.personalProjectsList.length - semDescricao);
+        expect(el.querySelector('.project .description')?.textContent).toContain('Server MCP');
+        expect(el.querySelector('a.code-link')?.textContent).toContain('Vedi codice');
     });
 });

@@ -26,27 +26,53 @@
     gap: 12px;
 }
 
+.top {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
 .project-name {
     font-size: 20px;
     font-weight: 600;
 }
 
+.language {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+}
+
+.language-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+}
+
 .description {
     font-size: 15px;
     color: var(--text-2);
-
-    /* Recolhida: só as 3 primeiras linhas */
-    &.clamped {
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 3;
-        line-clamp: 3;
-        overflow: hidden;
-    }
 }
 
-.code-link {
+.topics {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+/* Links sempre no pé do cartão, alinhados entre cartões da mesma linha */
+.links {
     margin-top: auto;
-    font-size: 14px;
-    font-weight: 600;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 20px;
+
+    a {
+        font-size: 14px;
+        font-weight: 600;
+    }
 }
