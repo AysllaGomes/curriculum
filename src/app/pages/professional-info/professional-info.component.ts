@@ -1,29 +1,25 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
-  selector: 'app-pages-professional-info',
-  templateUrl: './professional-info.component.html',
-  styleUrls: ['./professional-info.component.scss']
+    selector: 'app-pages-professional-info',
+    templateUrl: './professional-info.component.html',
+    styleUrls: ['./professional-info.component.scss'],
+    imports: [NgOptimizedImage]
 })
-export class ProfessionalInfoComponent implements OnInit {
+export class ProfessionalInfoComponent {
+    @Input({ required: true })
+    public name!: string;
 
-    @Input()
-    public name: string;
+    @Input({ required: true })
+    public photoUrl!: string;
 
-    @Input()
-    public photoUrl: string;
+    @Input({ required: true })
+    public phone!: string;
 
-    @Input()
-    public phone: string;
+    @Input({ required: true })
+    public email!: string;
 
-    @Input()
-    public email: string;
-
-    @Input()
-    public address: string;
-
-    constructor() {}
-
-    ngOnInit(): void {}
-
+    @Input({ required: true })
+    public address!: string;
 }

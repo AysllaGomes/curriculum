@@ -1,24 +1,30 @@
 <div class="container academic-education-container">
-    <div class="jumbotron">
-        <div class="row">
-            <h5 class="academic-education-header">{{ academicEducation }}</h5>
-            <hr>
-            <ul class="education-list">
-                <li *ngFor="let education of academicEducations" class="education-item">
-                    <div class="education-period">{{ education.period }}</div>
-                    <div class="education-institution">{{ education.institution }}</div>
-                    <div class="education-course">{{ education.course }}</div>
-<a *ngIf="education.url" [href]="education.url" target="_blank" rel="noopener noreferrer" class="education-link">Detalhes</a>
-                </li>
-            </ul>
+  <div class="jumbotron">
+    <div class="row">
+      <h5 class="academic-education-header">{{ academicEducation }}</h5>
+      <hr>
+        <ul class="education-list">
+          @for (education of academicEducations; track education) {
+            <li class="education-item">
+              <div class="education-period">{{ education.period }}</div>
+              <div class="education-institution">{{ education.institution }}</div>
+              <div class="education-course">{{ education.course }}</div>
+              @if (education.url) {
+                <a [href]="education.url" target="_blank" rel="noopener noreferrer" class="education-link">Detalhes</a>
+              }
+            </li>
+          }
+        </ul>
 
-            <app-pages-specialization>
-            </app-pages-specialization>
+        <app-pages-specialization>
+        </app-pages-specialization>
 
-            <div *ngIf="canShow">
-                <app-pages-footer></app-pages-footer>
-            </div>
-        </div>
+        @if (canShow) {
+          <div>
+            <app-pages-footer></app-pages-footer>
+          </div>
+        }
+      </div>
 
     </div>
-</div>
+  </div>

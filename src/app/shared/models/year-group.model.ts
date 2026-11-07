@@ -1,6 +1,6 @@
 import { Certification } from "./certification.model";
 
-export class YearGroup {
+export interface YearGroup {
     year: number;
     certifications: Certification[];
     expanded?: boolean;

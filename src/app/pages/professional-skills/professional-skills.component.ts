@@ -1,14 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { Skill } from "../../shared/models/skill.model";
 
 @Component({
     selector: 'app-pages-professional-skills',
     templateUrl: './professional-skills.component.html',
-    styleUrls: ['./professional-skills.component.scss']
-})
-export class ProfessionalSkillsComponent implements OnInit {
-
+    styleUrls: ['./professional-skills.component.scss'] })
+export class ProfessionalSkillsComponent {
     public professionalSkills = 'Competências Profissionais';
 
     public skillGroups: Skill[] = [
@@ -29,9 +27,4 @@ export class ProfessionalSkillsComponent implements OnInit {
             skills: ['Frontend', 'Responsive', 'CodeDesign', 'UX/UI']
         },
     ];
-
-    constructor() {}
-
-    ngOnInit(): void {}
-
 }

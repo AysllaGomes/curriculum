@@ -1,26 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 
 import { YearGroup } from "../../shared/models/year-group.model";
 import { Certification } from "../../shared/models/certification.model";
 
 import { CertificationService } from "../../shared/service/certification.service";
+import { NgClass } from '@angular/common';
 
 @Component({
-  selector: 'app-pages-specialization',
-  templateUrl: './specialization.component.html',
-  styleUrls: ['./specialization.component.scss']
+    selector: 'app-pages-specialization',
+    templateUrl: './specialization.component.html',
+    styleUrls: ['./specialization.component.scss'],
+    imports: [NgClass]
 })
 export class SpecializationComponent implements OnInit {
+    protected certificationService = inject(CertificationService);
 
     public specialization = 'Especializações';
 
     public certifications: Certification[] = [];
 
     public groupedCertifications: YearGroup[] = [];
-
-    constructor(
-        protected certificationService: CertificationService,
-    ) {}
 
     ngOnInit(): void {
         this.certifications = this.certificationService.getCertifications();
@@ -32,7 +31,7 @@ export class SpecializationComponent implements OnInit {
 
         certifications.forEach((certification: Certification): void => {
             const year: number = certification.year;
-            const existingGroup: YearGroup = groupedCertifications.find(group => group.year === year);
+            const existingGroup: YearGroup | undefined = groupedCertifications.find(group => group.year === year);
 
             if (existingGroup) {
                 existingGroup.certifications.push(certification);
@@ -55,5 +54,4 @@ export class SpecializationComponent implements OnInit {
             }
         });
     }
-
 }

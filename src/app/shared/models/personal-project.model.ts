@@ -1,4 +1,4 @@
-export class PersonalProject {
+export interface PersonalProject {
     name: string;
     description?: string;
     url: string;

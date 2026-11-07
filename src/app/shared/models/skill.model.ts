@@ -1,4 +1,4 @@
-export class Skill {
+export interface Skill {
     title: string;
     skills: string[];
 }

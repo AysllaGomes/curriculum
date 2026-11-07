@@ -35,17 +35,24 @@ jobs:
       - name: Instalar dependências
         run: npm ci
 
+      - name: Lint (ESLint)
+        run: npm run lint
+
+      - name: Testes (Vitest)
+        run: npm test -- --watch=false
+
       - name: Build de produção
         run: npm run build:pages
 
       - name: Fallback de rotas para SPA (404.html)
-        run: cp dist/curriculum/index.html dist/curriculum/404.html
+        run: cp dist/curriculum/browser/index.html dist/curriculum/browser/404.html
 
       - name: Enviar artefato do Pages
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v4
         with:
-          path: dist/curriculum
+          # builder "application" (Angular 17+) gera os arquivos do navegador em browser/
+          path: dist/curriculum/browser
 
   deploy:
     name: Deploy

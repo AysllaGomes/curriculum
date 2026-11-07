@@ -1,18 +1,24 @@
 <div class="col-sm-12">
-    <h5 class="section-title">{{ certification }}</h5>
+  <h5 class="section-title">{{ certification }}</h5>
 
-    <hr>
+  <hr>
 
     <ul class="certification-list">
-        <li *ngFor="let yearGroup of certifications" class="timeline-item">
-            <h6>{{ yearGroup.year }}</h6>
-            <ul>
-                <li *ngFor="let certification of yearGroup.certifications" class="certification-item">
-                    <p><strong>{{ certification.provider }}</strong></p>
-                    <p>{{ certification.title }}</p>
-                    <a *ngIf="certification.url" target="_blank" [href]="certification.url">Detalhes</a>
-                </li>
-            </ul>
+      @for (yearGroup of certifications; track yearGroup) {
+        <li class="timeline-item">
+          <h6>{{ yearGroup.year }}</h6>
+          <ul>
+            @for (certification of yearGroup.certifications; track certification) {
+              <li class="certification-item">
+                <p><strong>{{ certification.provider }}</strong></p>
+                <p>{{ certification.title }}</p>
+                @if (certification.url) {
+                  <a target="_blank" [href]="certification.url">Detalhes</a>
+                }
+              </li>
+            }
+          </ul>
         </li>
+      }
     </ul>
-</div>
+  </div>

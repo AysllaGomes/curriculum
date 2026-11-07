@@ -2,19 +2,25 @@
 
 <hr>
 
-<div class="container">
+  <div class="container">
     <div class="row">
-        <div class="col-sm-12" *ngFor="let project of personalProjectsList" style="margin-bottom: 20px;">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">{{ project.name }}</h5>
-                    <button *ngIf="project.description" (click)="toggleCollapse(project)" class="btn btn-link">{{ project.expanded ? 'Ocultar descrição' : 'Ver descrição' }}</button>
-                    <div *ngIf="project.expanded && project.description">
-                        <p class="card-text">{{ project.description }}</p>
-                    </div>
-                    <a [href]="project.url" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver projeto</a>
+      @for (project of personalProjectsList; track project) {
+        <div class="col-sm-12" style="margin-bottom: 20px;">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{ project.name }}</h5>
+              @if (project.description) {
+                <button (click)="toggleCollapse(project)" class="btn btn-link">{{ project.expanded ? 'Ocultar descrição' : 'Ver descrição' }}</button>
+              }
+              @if (project.expanded && project.description) {
+                <div>
+                  <p class="card-text">{{ project.description }}</p>
                 </div>
+              }
+              <a [href]="project.url" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ver projeto</a>
             </div>
+          </div>
         </div>
+      }
     </div>
-</div>
+  </div>

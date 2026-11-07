@@ -1,4 +1,4 @@
-export class Certification {
+export interface Certification {
     year: number;
     provider: string;
     title: string;

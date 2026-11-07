@@ -1,14 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
     selector: 'app-pages-footer',
     templateUrl: './footer.component.html',
-    styleUrls: ['./footer.component.scss']
+    styleUrls: ['./footer.component.scss'],
+    imports: [NgOptimizedImage]
 })
-export class FooterComponent implements OnInit {
-
-    constructor() {}
-
-    ngOnInit(): void {}
-
-}
+export class FooterComponent {}

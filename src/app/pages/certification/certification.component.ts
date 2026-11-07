@@ -1,30 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 
 import { Certification } from "../../shared/models/certification.model";
+import { YearGroup } from "../../shared/models/year-group.model";
 
 import { CertificationService } from "../../shared/service/certification.service";
 
 @Component({
     selector: 'app-pages-certification',
     templateUrl: './certification.component.html',
-    styleUrls: ['./certification.component.scss']
-})
+    styleUrls: ['./certification.component.scss'] })
 export class CertificationComponent implements OnInit {
+    protected certificationService = inject(CertificationService);
 
-    public certification: string = 'Certificação';
+    public certification = 'Certificação';
 
-    public certifications: Certification[] = [];
-
-    constructor(
-        protected certificationService: CertificationService,
-    ) { }
+    public certifications: YearGroup[] = [];
 
     ngOnInit(): void {
         this.certifications = this.groupCertificationsByYear(this.certificationService.getCertificationsCerts());
     }
 
-    groupCertificationsByYear(certifications: Certification[]): any[] {
-        const groupedCertifications = [];
+    groupCertificationsByYear(certifications: Certification[]): YearGroup[] {
+        const groupedCertifications: YearGroup[] = [];
 
         certifications.forEach(certification => {
             const existingGroup = groupedCertifications.find(group => group.year === certification.year);
@@ -37,5 +34,4 @@ export class CertificationComponent implements OnInit {
 
         return groupedCertifications;
     }
-
 }
