@@ -3,7 +3,7 @@
 Modernizar o currículo online em etapas, mantendo o site publicável ao fim de cada entrega.
 Diagnóstico de origem: análise com o `repo-inspector` (MCP) + leitura do código em 07/11/2026.
 
-**Legenda:** `[x]` feito · `[ ]` pendente · `[~]` depende de decisão/informação
+**Legenda:** `[x]` feito · `[ ]` pendente · `[~]` depende de decisão/informação · `[→]` movido para outra entrega
 
 ---
 
@@ -56,21 +56,78 @@ Diagnóstico de origem: análise com o `repo-inspector` (MCP) + leitura do códi
 - [x] `strict` no TypeScript + `strictTemplates`
 - [x] Extra: change detection sem zone.js + OnPush; `@angular/build` no lugar de `@angular-devkit/build-angular`
 - [x] Extra: ano das especializações acessível por teclado (`<button>` + `aria-expanded`)
-- [~] A autora: atualizar o Node local para 24.15+ (hoje 24.14.0) para rodar o projeto
+- [x] A autora: Node local atualizado (Node 26)
+
+## Entrega V — Evolução visual: direção "Portfólio" + 4 idiomas
+Escolhida entre três protótipos (A · Clássico refinado, B · Coluna colorida, **C · Portfólio**): tema escuro, menu no topo,
+abertura com nome e chamada, números (anos, empresas, cursos, certificações), cartões de experiência e de projetos,
+bloco final "Vamos conversar?". Cada fase termina com o site publicável e prints antes × depois (desktop e celular).
+
+### V0: Preparação
+- [ ] `engines` aceitando Node 26 (`^22.22.3 || ^24.15.0 || >=26.0.0`) e `.nvmrc` → 26 (LTS desde out/2026)
+- [ ] Tirar `package-lock.json` do `.gitignore` (o arquivo é versionado; a linha fazia o git propor apagá-lo)
+
+### V1: Dados centralizados e tipados (antecipa a Fase 5)
+- [ ] Todo o conteúdo num arquivo de dados por idioma, com o mesmo tipo (`curriculo.pt-BR.ts` como fonte)
+- [ ] Períodos como datas (`2022-06`), não texto — a duração ("3 anos e 7 meses") e o "8+ anos" passam a ser calculados
+- [ ] Campos novos: cargo atual / chamada da abertura; descrição curta por projeto
+- [ ] Teste: todo idioma tem todos os campos do pt-BR (falta de tradução quebra o build)
+
+### V2: Fundamentos visuais
+- [ ] Variáveis de cor, espaçamento e raio (tema escuro; cor de destaque `#8AA4FF`, a confirmar)
+- [ ] Fontes Space Grotesk (títulos) + Inter (texto) servidas pelo próprio site, sem Google Fonts
+- [ ] Remover o Bootstrap (o layout novo usa flex/grid próprios) e as nuvens do rodapé
+- [ ] Escala única de títulos; ícones SVG próprios no lugar dos PNG/SVG pretos
+
+### V3: Estrutura e abertura
+- [ ] Menu fixo com âncoras (Experiência, Projetos, Competências, Formação, Contato) e versão celular
+- [ ] Abertura: nome, cargo atual, chamada, foto, botões "Entrar em contato" e "Currículo em PDF"
+- [ ] Faixa de números (anos de experiência, empresas, cursos, certificações) calculados a partir dos dados
+- [ ] Bloco "Vamos conversar?" e rodapé novo
+
+### V4: Seções de conteúdo
+- [ ] Experiência em cartões: logo, empresa, cliente, período e duração; emprego atual em destaque
+- [ ] Competências em colunas por grupo; idiomas com barra de nível (A1–C2); certificações
+- [ ] Formação + especializações (lista completa ao abrir, por ano)
+
+### V5: Projetos dinâmicos do GitHub
+- [ ] Script no build lê a API do GitHub e gera um JSON com os repositórios **públicos** que têm o tópico `portfolio`
+      (nome, descrição, linguagem, tópicos, estrelas, última atualização, link de demo quando houver)
+- [ ] Arquivo opcional de ajustes: ordem, projeto em destaque, descrição por idioma
+- [ ] Workflow: token do próprio Actions (sem limite de 60/h); build agendado semanal, além do push na `main`
+- [ ] Se a API falhar, o build usa a última lista salva (o site nunca fica sem projetos)
+- [~] A autora: marcar com o tópico `portfolio` e descrever os repositórios escolhidos
+      (sugestão: figma-context-cache-mcp, pet-health-api, angular-components, MediTrack, squad-amsterdam, interstate-mobility-center)
+
+### V6: Site em 4 idiomas — PT-BR, EN, ES, IT
+- [ ] Uma URL por idioma: `/curriculum/pt/`, `/en/`, `/es/`, `/it/` (dá para compartilhar o link no idioma certo)
+- [ ] Seletor de idioma no menu; primeira visita segue o idioma do navegador; escolha lembrada
+- [ ] Textos fixos da interface + arquivo de dados por idioma (V1), sem biblioteca externa
+- [ ] Datas e durações formatadas por idioma (`Intl`): "jun 2022 – dez 2025 · 3 anos e 7 meses" / "Jun 2022 – Dec 2025 · 3 years 7 months" / "jun 2022 – dic 2025 · 3 años y 7 meses" / "giu 2022 – dic 2025 · 3 anni e 7 mesi"
+- [ ] `lang`, título da página e descrição por idioma
+- [ ] Traduções EN, ES e IT: rascunho feito por mim; revisão da autora (e, de preferência, de alguém fluente em italiano)
+
+### V7: Pré-renderização e SEO (antecipa parte da Fase 6)
+- [ ] HTML pronto no build para cada idioma (carrega mais rápido e é lido por buscadores e pelo LinkedIn)
+- [ ] Meta description + Open Graph por idioma (prévia ao compartilhar) e `hreflang` ligando as 4 versões
+
+### V8: Acabamento
+- [ ] Tema claro opcional (segue o sistema; botão para trocar)
+- [ ] Animações discretas, desligadas com `prefers-reduced-motion`
+- [ ] Revisão no celular, foco visível, contraste AA; Lighthouse ≥ 90
+- [ ] Testes dos componentes novos
 
 ## Entrega 4 — Manutenção, qualidade e testes (Fases 5, 6, 7)
 
 ### Fase 5: Dados separados do código
-- [ ] Um único arquivo de dados tipado com todo o conteúdo do currículo
+- [→] Arquivo único de dados tipado — passou para a V1
 - [x] `models` de classes → interfaces (feito na Entrega 3, exigido pelo `strict`)
-- [~] Versão em inglês (`curriculo.pt.ts` / `curriculo.en.ts`)?
+- [→] Versões em outros idiomas — passou para a V6 (PT-BR, EN, ES, IT)
 
 ### Fase 6: Qualidade do site
-- [ ] Meta description + Open Graph (prévia ao compartilhar no LinkedIn/WhatsApp)
-- [ ] Pré-renderização (HTML pronto no build)
-- [ ] CSS de impressão ("Salvar como PDF" gera um currículo limpo)
-- [ ] Acessibilidade e responsividade
-- [ ] Lighthouse ≥ 90 nas quatro categorias
+- [→] Meta description, Open Graph e pré-renderização — passaram para a V7
+- [ ] CSS de impressão / "Currículo em PDF" (um PDF por idioma)
+- [→] Acessibilidade, responsividade e Lighthouse — passaram para a V8
 
 ### Fase 7: Testes
 - [~] Teste por componente — 16 testes em 7 arquivos (Entrega 3); faltam footer, professional-skills, academic-education
@@ -81,8 +138,9 @@ Diagnóstico de origem: análise com o `repo-inspector` (MCP) + leitura do códi
 
 ## Decisões em aberto
 1. **Atualizar ou reescrever?** Recomendação: atualizar o Angular (preserva histórico, é a stack do dia a dia).
-2. **Versão em inglês?** Se sim, a Fase 5 já nasce preparada para dois idiomas.
-3. **Telefone público?** Hoje aparece no site e no código. Alternativa: manter só e-mail e LinkedIn.
+2. ~~Versão em inglês?~~ Decidido: o site terá PT-BR, EN, ES e IT (V6).
+3. **Telefone público?** Hoje aparece no site e no código. Alternativa: manter só e-mail e LinkedIn. (O protótipo C foi feito sem telefone.)
+4. ~~Direção visual?~~ Decidido: C · Portfólio. Cor de destaque a confirmar (protótipo: `#8AA4FF`).
 
 ## Histórico
 | Data | Entrega | Branch | Observações |
@@ -94,4 +152,6 @@ Diagnóstico de origem: análise com o `repo-inspector` (MCP) + leitura do códi
 | 07/11/2026 | 1 — Foto publicada | `melhorias/entrega-2` | Foto WebP 400×400 (14,7 KB) no R2 em `professional/Ayslla_Caroline.webp`. |
 | 07/11/2026 | 2 — Publicada | `main` (PR #3) | Origem do Pages trocada para GitHub Actions; deploy pelo workflow confirmado (404.html do build do Actions no ar). Uma execução do deploy clássico falhou no mesmo merge, sem impacto. |
 | 07/11/2026 | 3 — Angular 16 → 22 | `melhorias/entrega-3` | 6 saltos de versão, cada um com build e comparação de screenshots (desktop e celular) contra o Angular 16: **0% de diferença em todos**. Standalone, sem zone.js, OnPush, `strict`, Vitest (16 testes), ESLint; lint e testes no workflow. Bundle inicial 97 → 89 KB transferidos. Removidos ~750 pacotes (TSLint, codelyzer, Protractor, Karma, build-angular, zone.js…). Erros antigos revelados e corrigidos: tipo errado em `CertificationComponent` e ano das especializações inacessível por teclado. |
+| 07/11/2026 | 3 — Publicada | `main` (PR #4) | Workflow com lint, testes e build passou no PR e na `main`; site publicado. |
+| 07/11/2026 | V — Planejada | `melhorias/visual` | Três protótipos visuais comparados; escolhida a direção C · Portfólio. Acrescentados projetos dinâmicos do GitHub (tópico `portfolio`) e site em PT-BR, EN, ES e IT. |
 | 07/11/2026 | 2 — Deploy automático | `melhorias/entrega-2` | Workflow `deploy.yml` (build em PR; build + deploy na `main`), `docs/` e `.nojekyll` removidos, script `deploy:ghdocs` → `build:pages`. Simulado localmente com `npm ci` + build. Depende de a Entrega 1 entrar na `main` antes e da troca da origem do Pages. |
