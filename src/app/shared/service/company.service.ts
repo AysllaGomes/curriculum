@@ -9,8 +9,15 @@ export class CompanyService {
     getCompanies(): Company[] {
         return [
             {
+                company: 'Mirante Tecnologia',
+                date: 'Janeiro 2026 - Atualmente',
+                // TODO: preencher cliente/projeto (position) e logoUrl (Cloudflare Images)
+                logoHeight: 100,
+                logoWidth: 100,
+            },
+            {
                 company: 'IBM',
-                date: 'Junho 2022 - Atualmente',
+                date: 'Junho 2022 - Dezembro 2025',
                 position: 'Banco do Brasil',
                 logoUrl: 'https://imagedelivery.net/ecl6S1RtG9d05bcNXhwCCQ/355296e8-0222-4340-78b0-5828b84ca100/public',
                 logoHeight: 100,

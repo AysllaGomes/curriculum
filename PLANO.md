@@ -17,7 +17,9 @@ Diagnóstico de origem: análise com o `repo-inspector` (MCP) + leitura do códi
 - [x] `lang="pt-BR"` e textos `alt` descritivos nas imagens
 - [x] `styleUrls` do `app.component.ts` apontando para `.html`
 - [x] Projetos sem descrição não mostravam o link "Ver projeto"
-- [~] Revisar conteúdo para 2026: IBM ainda é "Atualmente"? Skills, certificações e projetos novos?
+- [x] Experiências atualizadas: IBM até Dezembro 2025; Mirante Tecnologia desde Janeiro 2026
+- [~] Mirante: cliente/projeto e logo (Cloudflare Images) — por ora aparece um marcador com a inicial
+- [~] Revisar skills, certificações e projetos novos para 2026
 
 ### Fase 2: Limpeza e decisão de deploy
 - [x] Manter só GitHub Pages: remover `Procfile`, `server.js` e a dependência `express`
@@ -25,7 +27,7 @@ Diagnóstico de origem: análise com o `repo-inspector` (MCP) + leitura do códi
 - [x] Remover componentes declarados e nunca usados (`NavbarComponent`, `AboutComponent`)
 - [x] `README.md`
 - [x] `engines` + `.nvmrc` com a versão do Node
-- [~] Preencher Website e tópicos no "About" do repositório no GitHub (manual, na interface do GitHub)
+- [~] Preencher Website e tópicos no "About" do repositório no GitHub (a autora faz pela interface do GitHub)
 
 ## Entrega 2 — Deploy automático (Fase 3)
 - [ ] Workflow do GitHub Actions: build + publicação no Pages a cada push na `main`
@@ -72,3 +74,4 @@ Diagnóstico de origem: análise com o `repo-inspector` (MCP) + leitura do códi
 | Data | Entrega | Branch | Observações |
 |---|---|---|---|
 | 07/11/2026 | 1 — Correções e limpeza | `melhorias/entrega-1` | Build validado e comparado visualmente (antes × depois, desktop e celular). `docs/` regenerado. Node fixado em 18 por compatibilidade com o Angular 16 (Node 18 está fora de suporte; sobe para 22 na Entrega 3). Pendente com a autora: revisão de conteúdo 2026 e “About” do GitHub. |
+| 07/11/2026 | 1 — Experiências 2026 | `melhorias/entrega-1` | IBM encerrada em 12/2025; Mirante Tecnologia desde 01/2026 (atual). Logo e cliente passaram a ser opcionais no modelo, com marcador de inicial quando não há logo. Push fica a cargo da autora. |
