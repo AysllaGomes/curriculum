@@ -23,7 +23,7 @@ export class CertificationService {
             {
                 year: 2018,
                 provider: 'Udemy',
-                title: 'HTML5, CCS3 e Javascript',
+                title: 'HTML5, CSS3 e JavaScript',
                 url: 'https://www.udemy.com/certificate/UC-A25SJJPO/'
             },
             {

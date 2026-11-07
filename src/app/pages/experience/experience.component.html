@@ -9,12 +9,15 @@
                 <div class="experience">
                     <div class="row">
                         <div class="col-sm-3">
-                            <img [ngSrc]="experience.logoUrl" [height]="experience.logoHeight" [width]="experience.logoWidth" alt="Logo Empresa" class="logo rounded-circle">
+                            <img *ngIf="experience.logoUrl; else semLogo" [ngSrc]="experience.logoUrl" [height]="experience.logoHeight" [width]="experience.logoWidth" [alt]="'Logo ' + experience.company" class="logo rounded-circle">
+                            <ng-template #semLogo>
+                                <div class="logo-placeholder rounded-circle" [style.width.px]="experience.logoWidth" [style.height.px]="experience.logoHeight" aria-hidden="true">{{ experience.company.charAt(0) }}</div>
+                            </ng-template>
                         </div>
                         <div class="col-sm-9">
                             <h5 class="company">{{ experience.company }}</h5>
                             <p class="date">{{ experience.date }}</p>
-                            <strong class="position">{{ experience.position }}</strong>
+                            <strong *ngIf="experience.position" class="position">{{ experience.position }}</strong>
                         </div>
                     </div>
                 </div>
