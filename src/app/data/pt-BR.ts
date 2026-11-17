@@ -84,6 +84,7 @@ export const RESUME_PT_BR: Resume = {
 
     languages: [
         { name: 'Português', nameLevel: 'Nativo', level: 'C2' },
+        { name: 'Italiano', nameLevel: 'Fluente', level: 'C1' },
         { name: 'Inglês', nameLevel: 'Intermediário', level: 'B1' },
         { name: 'Espanhol', nameLevel: 'Intermediário', level: 'B1' },
         { name: 'Francês', nameLevel: 'Básico', level: 'A1' },

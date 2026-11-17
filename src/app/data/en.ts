@@ -33,6 +33,7 @@ export const RESUME_EN: Resume = {
 
     languages: [
         { name: 'Portuguese', nameLevel: 'Native', level: 'C2' },
+        { name: 'Italian', nameLevel: 'Fluent', level: 'C1' },
         { name: 'English', nameLevel: 'Intermediate', level: 'B1' },
         { name: 'Spanish', nameLevel: 'Intermediate', level: 'B1' },
         { name: 'French', nameLevel: 'Basic', level: 'A1' },
