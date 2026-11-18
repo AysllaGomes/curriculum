@@ -1,14 +1,16 @@
 <section id="projetos" class="container section">
     <div class="heading">
         <h2 class="section-title">{{ labels.projects.title }}</h2>
-        <a [href]="githubUrl" target="_blank" rel="noopener noreferrer">
+        <a class="no-print" [href]="githubUrl" target="_blank" rel="noopener noreferrer">
             {{ labels.projects.allOnGithub }} <span aria-hidden="true">↗</span><span class="visually-hidden">{{ labels.newTab }}</span>
         </a>
+        <a class="print-only" [href]="githubUrl">{{ labels.projects.allOnGithub }}: {{ github }}</a>
     </div>
 
     <ul class="grid">
         @for (project of personalProjectsList; track project.url) {
-            <li class="card project">
+            <!-- No papel, só os primeiros (os mais fortes, na ordem de projects.ts) -->
+            <li class="card project" [class.no-print]="$index >= printLimit">
                 <div class="top">
                     <h3 class="project-name">{{ project.name }}</h3>
                     @if (project.language) {
@@ -21,14 +23,16 @@
                 }
 
                 @if (project.topics.length) {
-                    <ul class="topics">
+                    <ul class="topics no-print">
                         @for (topic of project.topics; track topic) {
                             <li class="chip">{{ topic }}</li>
                         }
                     </ul>
                 }
 
-                <div class="links">
+                <a class="print-only print-url" [href]="project.url">{{ urlOf(project.url) }}</a>
+
+                <div class="links no-print">
                     <a class="code-link" [href]="project.url" target="_blank" rel="noopener noreferrer">
                         {{ labels.projects.viewCode }} <span aria-hidden="true">↗</span>
                         <span class="visually-hidden">: {{ project.name }} {{ labels.newTab }}</span>

@@ -2,7 +2,10 @@
     {{ labels.education.courses }} <span class="muted">· {{ countLabel(certifications.length) }}</span>
 </h4>
 
-<ul class="years">
+<!-- No papel, só o número e onde ver a lista -->
+<p class="print-only full-list muted">{{ labels.education.fullList }}: <a [href]="site">{{ siteText }}</a></p>
+
+<ul class="years no-print">
     @for (yearGroup of groupedCertifications; track yearGroup.year) {
         <li class="year">
             <h5>

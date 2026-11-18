@@ -76,3 +76,46 @@
         font-weight: 600;
     }
 }
+
+/* Papel: os projetos principais lado a lado, com o endereço escrito */
+@media print {
+    .heading {
+        margin-bottom: 7pt;
+        padding-bottom: 3pt;
+        border-bottom: 1px solid var(--border);
+
+        .section-title {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+        a {
+            font-size: 8.5pt;
+            color: var(--muted);
+        }
+    }
+
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12pt;
+    }
+
+    .project {
+        gap: 2pt;
+        break-inside: avoid;
+    }
+
+    .project-name {
+        font-size: 10.5pt;
+    }
+
+    .description {
+        font-size: 9pt;
+    }
+
+    .print-url {
+        font-size: 8.5pt;
+        color: var(--muted);
+    }
+}

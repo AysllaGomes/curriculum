@@ -83,7 +83,7 @@ bloco final "Vamos conversar?". Cada fase termina com o site publicável e print
 ### V3: Estrutura e abertura
 - [x] Menu fixo com âncoras (Experiência, Projetos, Competências, Formação, Contato) e botão "Menu" no celular
 - [x] Abertura: nome, cargo atual, chamada, foto, botões "Entrar em contato" e "Ver projetos"
-- [→] Botão "Currículo em PDF" — entra com o PDF na Entrega 4
+- [x] Botão "Currículo em PDF" — feito na Entrega P
 - [x] Faixa de números (anos de experiência, empresas, cursos, certificações) calculados a partir dos dados, junto do "Sobre mim"
 - [x] Bloco "Vamos conversar?" e rodapé novo
 
@@ -137,6 +137,14 @@ Revisão do texto feita em conjunto (doc "Análise do currículo online" no Clau
 - [x] Idiomas no mesmo nível seguem a ordem dos dados
 - [x] `npm run og`: imagens de prévia geradas por script a partir das páginas do build
 
+## Entrega P — Currículo impresso e PDF
+- [x] CSS de impressão (`@media print`): A4, fundo branco, uma coluna de leitura, sem menu/botões/animações; contato escrito no topo; texto selecionável (ATS)
+- [x] Conteúdo do papel: 2 projetos (MCP e Pet Health API), cursos só pelo número + endereço da lista completa, certificações e idiomas
+- [x] Foto por idioma: PT, ES e IT com foto; EN sem (`printPhoto` em `locales.ts`)
+- [x] `scripts/pdf.mjs`: 4 PDFs gerados no `build:pages` a partir das páginas do build (2 páginas A4 cada), atualizados a cada deploy e no build semanal
+- [x] Botão "Baixar currículo (PDF)" na abertura, no idioma da página
+- [x] `scripts/lib/browser.mjs`: navegador sem janela compartilhado pelos scripts de PDF e de imagens de prévia
+
 ## Entrega 4 — Manutenção, qualidade e testes (Fases 5, 6, 7)
 
 ### Fase 5: Dados separados do código
@@ -146,7 +154,7 @@ Revisão do texto feita em conjunto (doc "Análise do currículo online" no Clau
 
 ### Fase 6: Qualidade do site
 - [→] Meta description, Open Graph e pré-renderização — passaram para a V7
-- [ ] CSS de impressão / "Currículo em PDF" (um PDF por idioma)
+- [x] CSS de impressão / "Currículo em PDF" (um PDF por idioma) — ver Entrega P
 - [→] Acessibilidade, responsividade e Lighthouse — passaram para a V8
 
 ### Fase 7: Testes

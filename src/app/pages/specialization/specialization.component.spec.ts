@@ -20,6 +20,15 @@ describe('SpecializationComponent', () => {
         expect(el.querySelector('.year-toggle')?.textContent).toMatch(/2024\s*·\s*1 curso\b/);
     });
 
+    it('no papel, a lista de cursos dá lugar ao endereço do site no mesmo idioma', async () => {
+        const el: HTMLElement = (await render()).nativeElement;
+        const link = el.querySelector<HTMLAnchorElement>('.full-list.print-only a')!;
+
+        expect(link.getAttribute('href')).toBe('https://aysllagomes.github.io/curriculum/pt/');
+        expect(link.textContent?.trim()).toBe('aysllagomes.github.io/curriculum/pt');
+        expect(el.querySelector('.years')?.classList).toContain('no-print');
+    });
+
     it('expande um ano ao clicar e recolhe o anterior (interação sem zone.js)', async () => {
         const fixture = await render();
         const el: HTMLElement = fixture.nativeElement;

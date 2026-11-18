@@ -21,6 +21,16 @@ describe('PersonalProjectsComponent', () => {
         expect(el.querySelector('.project .language')?.textContent?.trim()).toBe('TypeScript');
     });
 
+    it('no papel, só os 2 primeiros projetos, com o endereço escrito', async () => {
+        const el = await render();
+        const cards = Array.from(el.querySelectorAll('.project'));
+        const noPapel = cards.filter(c => !c.classList.contains('no-print'));
+
+        expect(cards.length).toBeGreaterThan(2);
+        expect(noPapel.map(c => c.querySelector('.project-name')?.textContent?.trim())).toEqual(['Figma Context Cache MCP', 'Pet Health API']);
+        expect(noPapel[0].querySelector('.print-url')?.textContent?.trim()).toBe('github.com/AysllaGomes/figma-context-cache-mcp');
+    });
+
     it('todo projeto tem o link "Ver código" para o GitHub, em nova aba', async () => {
         const el = await render();
         const cards = Array.from(el.querySelectorAll('.project'));

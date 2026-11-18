@@ -13,13 +13,15 @@ export interface Labels {
     language: { label: string };
     /** Botão de tema claro/escuro (só ícone; o texto é para leitores de tela) */
     theme: { toLight: string; toDark: string };
-    hero: { at: string; contact: string; projects: string; photoAlt: string };
+    /** `cv`: botão do PDF; `cvFile`: nome do arquivo baixado */
+    hero: { at: string; contact: string; projects: string; photoAlt: string; cv: string; cvFile: string };
     about: { title: string; years: string; companies: string; courses: string; certifications: string };
     /** `earlier`: empresa que fez o mesmo trabalho antes ("Antes, pela EngeSoftware…"); `stack`: só para leitores de tela */
     experience: { title: string; current: string; client: string; earlier: string; stack: string };
     projects: { title: string; allOnGithub: string; viewCode: string; viewDemo: string };
     skills: { title: string };
-    education: { title: string; degree: string; courses: string; course: { one: string; other: string } };
+    /** `fullList`: no papel, a lista de cursos dá lugar ao endereço do site */
+    education: { title: string; degree: string; courses: string; course: { one: string; other: string }; fullList: string };
     certifications: { title: string; viewCertificate: string };
     languages: { title: string };
     contact: { title: string; email: string };
@@ -35,7 +37,7 @@ const PT_BR: Labels = {
     },
     language: { label: 'Idioma' },
     theme: { toLight: 'Mudar para o tema claro', toDark: 'Mudar para o tema escuro' },
-    hero: { at: 'na', contact: 'Entrar em contato', projects: 'Ver projetos', photoAlt: 'Foto de' },
+    hero: { at: 'na', contact: 'Entrar em contato', projects: 'Ver projetos', photoAlt: 'Foto de', cv: 'Baixar currículo (PDF)', cvFile: 'Ayslla Gomes - Currículo.pdf' },
     about: {
         title: 'Sobre mim',
         years: 'anos de experiência', companies: 'empresas', courses: 'cursos de especialização', certifications: 'certificações',
@@ -43,7 +45,7 @@ const PT_BR: Labels = {
     experience: { title: 'Experiência', current: 'Atual', client: 'Cliente', earlier: 'Antes, pela', stack: 'Tecnologias' },
     projects: { title: 'Projetos', allOnGithub: 'Todos no GitHub', viewCode: 'Ver código', viewDemo: 'Ver demo' },
     skills: { title: 'Competências' },
-    education: { title: 'Formação', degree: 'Graduação', courses: 'Especializações', course: { one: 'curso', other: 'cursos' } },
+    education: { title: 'Formação', degree: 'Graduação', courses: 'Especializações', course: { one: 'curso', other: 'cursos' }, fullList: 'lista completa em' },
     certifications: { title: 'Certificações', viewCertificate: 'Ver certificado' },
     languages: { title: 'Idiomas' },
     contact: { title: 'Vamos conversar?', email: 'Enviar e-mail' },
@@ -59,7 +61,7 @@ const EN: Labels = {
     },
     language: { label: 'Language' },
     theme: { toLight: 'Switch to light theme', toDark: 'Switch to dark theme' },
-    hero: { at: 'at', contact: 'Get in touch', projects: 'View projects', photoAlt: 'Photo of' },
+    hero: { at: 'at', contact: 'Get in touch', projects: 'View projects', photoAlt: 'Photo of', cv: 'Download résumé (PDF)', cvFile: 'Ayslla Gomes - Resume.pdf' },
     about: {
         title: 'About me',
         years: 'years of experience', companies: 'companies', courses: 'specialization courses', certifications: 'certifications',
@@ -67,7 +69,7 @@ const EN: Labels = {
     experience: { title: 'Experience', current: 'Present', client: 'Client', earlier: 'Previously through', stack: 'Technologies' },
     projects: { title: 'Projects', allOnGithub: 'All on GitHub', viewCode: 'View code', viewDemo: 'Live demo' },
     skills: { title: 'Skills' },
-    education: { title: 'Education', degree: 'Degree', courses: 'Specializations', course: { one: 'course', other: 'courses' } },
+    education: { title: 'Education', degree: 'Degree', courses: 'Specializations', course: { one: 'course', other: 'courses' }, fullList: 'full list at' },
     certifications: { title: 'Certifications', viewCertificate: 'View certificate' },
     languages: { title: 'Languages' },
     contact: { title: 'Let\'s talk', email: 'Send email' },
@@ -83,7 +85,7 @@ const ES: Labels = {
     },
     language: { label: 'Idioma' },
     theme: { toLight: 'Cambiar al tema claro', toDark: 'Cambiar al tema oscuro' },
-    hero: { at: 'en', contact: 'Contactar', projects: 'Ver proyectos', photoAlt: 'Foto de' },
+    hero: { at: 'en', contact: 'Contactar', projects: 'Ver proyectos', photoAlt: 'Foto de', cv: 'Descargar CV (PDF)', cvFile: 'Ayslla Gomes - CV.pdf' },
     about: {
         title: 'Sobre mí',
         years: 'años de experiencia', companies: 'empresas', courses: 'cursos de especialización', certifications: 'certificaciones',
@@ -91,7 +93,7 @@ const ES: Labels = {
     experience: { title: 'Experiencia', current: 'Actual', client: 'Cliente', earlier: 'Antes, a través de', stack: 'Tecnologías' },
     projects: { title: 'Proyectos', allOnGithub: 'Todos en GitHub', viewCode: 'Ver código', viewDemo: 'Ver demo' },
     skills: { title: 'Competencias' },
-    education: { title: 'Formación', degree: 'Grado', courses: 'Especializaciones', course: { one: 'curso', other: 'cursos' } },
+    education: { title: 'Formación', degree: 'Grado', courses: 'Especializaciones', course: { one: 'curso', other: 'cursos' }, fullList: 'lista completa en' },
     certifications: { title: 'Certificaciones', viewCertificate: 'Ver certificado' },
     languages: { title: 'Idiomas' },
     contact: { title: '¿Hablamos?', email: 'Enviar correo' },
@@ -107,7 +109,7 @@ const IT: Labels = {
     },
     language: { label: 'Lingua' },
     theme: { toLight: 'Passa al tema chiaro', toDark: 'Passa al tema scuro' },
-    hero: { at: 'presso', contact: 'Contattami', projects: 'Vedi progetti', photoAlt: 'Foto di' },
+    hero: { at: 'presso', contact: 'Contattami', projects: 'Vedi progetti', photoAlt: 'Foto di', cv: 'Scarica il CV (PDF)', cvFile: 'Ayslla Gomes - CV.pdf' },
     about: {
         title: 'Chi sono',
         years: 'anni di esperienza', companies: 'aziende', courses: 'corsi di specializzazione', certifications: 'certificazioni',
@@ -115,7 +117,7 @@ const IT: Labels = {
     experience: { title: 'Esperienza', current: 'Attuale', client: 'Cliente', earlier: 'In precedenza tramite', stack: 'Tecnologie' },
     projects: { title: 'Progetti', allOnGithub: 'Tutti su GitHub', viewCode: 'Vedi codice', viewDemo: 'Vedi demo' },
     skills: { title: 'Competenze' },
-    education: { title: 'Formazione', degree: 'Laurea', courses: 'Specializzazioni', course: { one: 'corso', other: 'corsi' } },
+    education: { title: 'Formazione', degree: 'Laurea', courses: 'Specializzazioni', course: { one: 'corso', other: 'corsi' }, fullList: 'elenco completo su' },
     certifications: { title: 'Certificazioni', viewCertificate: 'Vedi certificato' },
     languages: { title: 'Lingue' },
     contact: { title: 'Parliamo?', email: 'Invia e-mail' },

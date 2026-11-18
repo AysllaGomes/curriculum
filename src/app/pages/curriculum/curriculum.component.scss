@@ -8,3 +8,12 @@ main:focus {
     align-items: start;
     gap: 16px;
 }
+
+/* Papel: graduação, certificações e idiomas em três colunas */
+@media print {
+    .education-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14pt;
+        break-inside: avoid;
+    }
+}

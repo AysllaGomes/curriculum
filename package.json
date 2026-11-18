@@ -5,10 +5,11 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --configuration production",
-    "build:pages": "node scripts/fetch-projects.mjs && ng build --configuration production --base-href /curriculum/ && node scripts/pages-fallback.mjs",
+    "build:pages": "node scripts/fetch-projects.mjs && ng build --configuration production --base-href /curriculum/ && node scripts/pages-fallback.mjs && node scripts/pdf.mjs",
     "test": "ng test",
     "projects": "node scripts/fetch-projects.mjs",
     "og": "ng build --configuration production && node scripts/og-images.mjs",
+    "pdf": "ng build --configuration production && node scripts/pdf.mjs",
     "lint": "ng lint"
   },
   "engines": {

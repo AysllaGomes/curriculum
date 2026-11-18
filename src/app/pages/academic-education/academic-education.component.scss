@@ -26,3 +26,18 @@
 .education-institution {
     font-size: 14px;
 }
+
+@media print {
+    .card,
+    .education-list {
+        gap: 4pt;
+    }
+
+    .education-item {
+        font-size: 9.5pt;
+    }
+
+    .education-institution {
+        font-size: 8.5pt;
+    }
+}

@@ -8,7 +8,7 @@
                     <strong>{{ certification.title }}</strong>
                     <span class="muted">{{ certification.provider }}</span>
                     @if (certification.url) {
-                        <a [href]="certification.url" target="_blank" rel="noopener noreferrer">
+                        <a class="no-print" [href]="certification.url" target="_blank" rel="noopener noreferrer">
                             {{ labels.certifications.viewCertificate }}<span class="visually-hidden">: {{ certification.title }} {{ labels.newTab }}</span>
                         </a>
                     }
