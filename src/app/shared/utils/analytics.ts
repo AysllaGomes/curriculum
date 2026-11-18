@@ -9,7 +9,7 @@ import { DOCUMENT, isPlatformBrowser } from '@angular/common';
  * e coloque-o em GOATCOUNTER_CODE. Vazio = desligado: o site não carrega nada de terceiros.
  * Visitas a partir de localhost não são contadas (padrão do GoatCounter).
  */
-export const GOATCOUNTER_CODE = '';
+export const GOATCOUNTER_CODE = 'ayslla-gomes';
 
 export const ANALYTICS_CODE = new InjectionToken<string>('ANALYTICS_CODE', {
     providedIn: 'root',

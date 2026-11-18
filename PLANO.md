@@ -148,8 +148,8 @@ Revisão do texto feita em conjunto (doc "Análise do currículo online" no Clau
 ## Entrega S — Busca, estatísticas e testes que faltavam
 - [x] Descrição da página com 100+ caracteres (aviso do LinkedIn Post Inspector): abertura + `focus`
 - [x] Dados estruturados (JSON-LD `ProfilePage`/`Person`) em cada idioma
-- [x] Estatísticas com GoatCounter (visitas + downloads do PDF), prontas e desligadas até haver o código da conta
-- [ ] A autora: criar a conta no GoatCounter e passar o código; testar a página no teste de pesquisa aprimorada do Google
+- [x] Estatísticas com GoatCounter (visitas + downloads do PDF): https://ayslla-gomes.goatcounter.com
+- [ ] A autora: testar a página no teste de pesquisa aprimorada do Google depois do deploy
 - [x] Testes de footer, professional-skills e academic-education (todos os componentes têm teste agora)
 
 ## Entrega 4 — Manutenção, qualidade e testes (Fases 5, 6, 7)

@@ -15,8 +15,11 @@ describe('Estatísticas de visita (GoatCounter)', () => {
 
     afterEach(() => contador()?.remove());
 
-    it('desligadas por padrão: nada de terceiros é carregado', async () => {
-        expect(GOATCOUNTER_CODE).toBe('');
+    it('ligadas na conta do site', () => {
+        expect(GOATCOUNTER_CODE).toBe('ayslla-gomes');
+    });
+
+    it('sem código, desligadas: nada de terceiros é carregado', async () => {
         await iniciar('');
         expect(contador()).toBeNull();
     });
