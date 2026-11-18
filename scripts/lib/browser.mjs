@@ -113,9 +113,9 @@ const TYPES = {
 };
 
 /**
- * Serve uma pasta como o GitHub Pages: `/curriculum/pt/` → `<pasta>/pt/index.html`; `/curriculum/pt` (pasta sem a
- * barra) → redireciona para `/curriculum/pt/`; endereço que não existe → status 404 com o `404.html` da pasta.
- * Necessário porque o build usa `<base href="/curriculum/">` e as páginas não abrem direto do disco.
+ * Serve uma pasta como o GitHub Pages: `/pt/` → `<pasta>/pt/index.html`; `/pt` (pasta sem a
+ * barra) → redireciona para `/pt/`; endereço que não existe → status 404 com o `404.html` da pasta.
+ * Necessário porque as páginas usam endereços a partir da raiz (`<base href="/">`) e não abrem direto do disco.
  */
 export async function serve(dir, base = '/', port = 0) {
     const read = (path) => readFile(join(dir, path));
@@ -129,8 +129,10 @@ export async function serve(dir, base = '/', port = 0) {
             res.writeHead(302, { location: base });
             return res.end();
         }
-        let path = normalize(pathname.slice(base.length)).replace(/^([/\\])+/, '');
-        if (path === '' || path.endsWith('/') || path.endsWith('\\')) path += 'index.html';
+        // Endereço de pasta (vazio ou com barra no fim) → o index.html dela; normalize() impede sair da pasta com "../"
+        let relative = pathname.slice(base.length);
+        if (relative === '' || relative.endsWith('/')) relative += 'index.html';
+        const path = normalize(relative).replace(/^([/\\])+/, '');
         try {
             return send(res, 200, path, await read(path));
         } catch {

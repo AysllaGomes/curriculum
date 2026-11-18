@@ -10,12 +10,12 @@ type Person = Record<string, unknown> & { worksFor?: { name: string }; sameAs: s
 
 describe('Dados estruturados (JSON-LD)', () => {
     it('página de perfil com a pessoa: nome, cargo, empresa atual, perfis e competências', () => {
-        const data = structuredData(RESUME_PT_BR, 'https://aysllagomes.github.io/curriculum/pt/', 'pt-BR') as Record<string, unknown>;
+        const data = structuredData(RESUME_PT_BR, 'https://aysllagomes.dev/pt/', 'pt-BR') as Record<string, unknown>;
         const person = data['mainEntity'] as Person;
 
         expect(data['@context']).toBe('https://schema.org');
         expect(data['@type']).toBe('ProfilePage');
-        expect(data['url']).toBe('https://aysllagomes.github.io/curriculum/pt/');
+        expect(data['url']).toBe('https://aysllagomes.dev/pt/');
         expect(data['description']).not.toContain('{anos}');
         expect(person['@type']).toBe('Person');
         expect(person['name']).toBe('Ayslla Caroline Prates Gomes');
@@ -26,7 +26,7 @@ describe('Dados estruturados (JSON-LD)', () => {
     });
 
     it('no idioma da página', () => {
-        const person = (structuredData(RESUME_EN, 'https://aysllagomes.github.io/curriculum/en/', 'en') as { mainEntity: Person }).mainEntity;
+        const person = (structuredData(RESUME_EN, 'https://aysllagomes.dev/en/', 'en') as { mainEntity: Person }).mainEntity;
         expect(person['jobTitle']).toBe('Front-end Architect');
     });
 

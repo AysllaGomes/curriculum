@@ -24,8 +24,8 @@ describe('SpecializationComponent', () => {
         const el: HTMLElement = (await render()).nativeElement;
         const link = el.querySelector<HTMLAnchorElement>('.full-list.print-only a')!;
 
-        expect(link.getAttribute('href')).toBe('https://aysllagomes.github.io/curriculum/pt/');
-        expect(link.textContent?.trim()).toBe('aysllagomes.github.io/curriculum/pt');
+        expect(link.getAttribute('href')).toBe('https://aysllagomes.dev/pt/');
+        expect(link.textContent?.trim()).toBe('aysllagomes.dev/pt');
         expect(el.querySelector('.years')?.classList).toContain('no-print');
     });
 

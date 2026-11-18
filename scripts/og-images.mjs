@@ -18,8 +18,8 @@ import { openBrowser } from './lib/browser.mjs';
 const DIST = 'dist/curriculum/browser';
 const OUT = 'src/assets/og';
 const LOCALES = ['pt', 'en', 'es', 'it'];
-const PHOTO = 'https://pub-51456c379d4c4f7ba854a6e3e4b02278.r2.dev/professional/Ayslla_Caroline.webp';
-const SITE = 'aysllagomes.github.io/curriculum';
+const PHOTO = 'https://img.aysllagomes.dev/professional/Ayslla_Caroline.webp';
+const SITE = 'aysllagomes.dev';
 const WIDTH = 1200;
 const HEIGHT = 630;
 

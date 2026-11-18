@@ -8,7 +8,7 @@ import { BROWSER_STORAGE, SimpleStorage, safely } from '../shared/utils/storage'
 
 export interface LocaleOption {
     locale: Locale;
-    /** Caminho da página: /curriculum/pt, /curriculum/en… */
+    /** Caminho da página: /pt, /en… */
     path: string;
     /** Sigla mostrada no botão do seletor */
     code: string;
@@ -32,7 +32,7 @@ export const LOCALES: readonly LocaleOption[] = [
  * Endereço público do site. Buscadores e prévias de links exigem endereços completos.
  * Ao trocar de domínio, mude aqui e em src/sitemap.xml.
  */
-export const SITE_URL = 'https://aysllagomes.github.io/curriculum/';
+export const SITE_URL = 'https://aysllagomes.dev/';
 
 /**
  * Endereço público da página de um idioma. Com barra no fim: é o endereço que o GitHub Pages
@@ -63,7 +63,7 @@ export function provideLocale(locale: Locale): Provider[] {
 const STORAGE_KEY = 'idioma';
 
 /**
- * Idioma de quem chega pelo endereço sem idioma (/curriculum/):
+ * Idioma de quem chega pelo endereço sem idioma (/):
  * o escolhido antes no seletor; senão o primeiro idioma do navegador que o site tem; senão português.
  */
 export function preferredLocale(saved: string | null, browserLanguages: readonly string[]): LocaleOption {
@@ -87,8 +87,8 @@ export function rememberLocale(storage: SimpleStorage | null, locale: Locale): v
 }
 
 /**
- * Caminho da página atual (ex.: /curriculum/en). Links para seções usam `${PAGE_PATH}#id`:
- * um `#id` sozinho seria resolvido a partir do <base href> e levaria para /curriculum/#id, outra página.
+ * Caminho da página atual (ex.: /en). Links para seções usam `${PAGE_PATH}#id`:
+ * um `#id` sozinho seria resolvido a partir do <base href> e levaria para /#id, outra página.
  */
 export const PAGE_PATH = new InjectionToken<string>('PAGE_PATH', {
     providedIn: 'root',

@@ -1,7 +1,7 @@
-// Serve o build (dist/curriculum/browser) como o GitHub Pages, em http://127.0.0.1:<porta>/curriculum/
+// Serve o build (dist/curriculum/browser) como o GitHub Pages, em http://127.0.0.1:<porta>/
 // Usado pelos testes de ponta a ponta (playwright.config.ts) e para conferir o site antes de publicar:
 //
-//   npm run build:pages && node scripts/serve.mjs        → http://127.0.0.1:4300/curriculum/
+//   npm run build:pages && node scripts/serve.mjs        → http://127.0.0.1:4300/
 import { readFile } from 'node:fs/promises';
 
 import { serve } from './lib/browser.mjs';
