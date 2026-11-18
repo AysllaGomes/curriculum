@@ -1,0 +1,49 @@
+# Atualizações automáticas: toda segunda-feira o GitHub abre PRs com as versões novas das dependências
+# e das actions do workflow. Cada PR passa por lint, testes, build e testes de ponta a ponta (deploy.yml):
+# verde = pode fazer o merge; vermelho = a atualização quebra algo e precisa de ajuste.
+version: 2
+
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "07:00"
+      timezone: America/Sao_Paulo
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "Dependências"
+    groups:
+      # O Angular sobe junto (core, CLI, build, SSR, ESLint): versões diferentes entre eles não funcionam
+      angular:
+        patterns:
+          - "@angular/*"
+          - "@angular-devkit/*"
+          - "angular-eslint"
+      # O resto, em versões compatíveis (sem mudança grande), num PR só por semana
+      demais-compativeis:
+        update-types:
+          - minor
+          - patch
+    ignore:
+      # A versão do TypeScript é a que o Angular aceita: sobe junto com o Angular, não sozinha
+      - dependency-name: typescript
+        update-types: ["version-update:semver-major", "version-update:semver-minor"]
+      # Os tipos do Node acompanham a versão do Node do projeto (.nvmrc), não a última que existir
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "07:00"
+      timezone: America/Sao_Paulo
+    commit-message:
+      prefix: "Actions"
+    groups:
+      actions:
+        patterns:
+          - "*"

@@ -77,6 +77,10 @@ atualiza `src/app/data/github-projects.json`; se o GitHub não responder, vale a
 
 ## Publicando
 
+O e-mail do site (`ayslla@aysllagomes.dev`) é encaminhado para a caixa pessoal pelo **Cloudflare Email Routing**; ele só recebe (as respostas saem da caixa pessoal).
+
+As dependências e as actions do workflow são atualizadas pelo **Dependabot** (`.github/dependabot.yml`): toda segunda-feira ele abre PRs com as versões novas, e o workflow valida cada um. PR verde pode entrar; vermelho quer dizer que a atualização quebra algo.
+
 O site fica em **https://aysllagomes.dev** (domínio registrado na Cloudflare, com DNS apontando para o GitHub Pages; configurado em *Settings → Pages → Custom domain*). As imagens (foto e logos) vêm de **img.aysllagomes.dev**, o bucket R2 da Cloudflare com domínio próprio. O endereço antigo `aysllagomes.github.io/curriculum/` redireciona para o novo.
 
 A publicação é automática pelo **GitHub Actions** (`.github/workflows/deploy.yml`):

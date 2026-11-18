@@ -35,7 +35,7 @@ describe('HeroComponent', () => {
         const el = await render();
         const contato = el.querySelector('.contact-line.print-only')?.textContent?.replace(/\s+/g, ' ').trim();
 
-        expect(contato).toBe('ayslla.gomes@outlook.com · linkedin.com/in/ayslla-gomes · github.com/AysllaGomes · Planaltina/GO');
+        expect(contato).toBe('ayslla@aysllagomes.dev · linkedin.com/in/ayslla-gomes · github.com/AysllaGomes · Planaltina/GO');
         expect(el.querySelector('.actions')?.classList).toContain('no-print');
     });
 
