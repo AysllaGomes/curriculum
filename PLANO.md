@@ -43,9 +43,12 @@ Diagnóstico de origem: análise com o `repo-inspector` (MCP) + leitura do códi
 - [x] Cloudflare Images: plano gratuito, sem imagens armazenadas e sem assinatura (conferido pela autora em 18/11/2026)
 - [x] Domínio próprio `aysllagomes.dev` registrado na Cloudflare (18/11/2026; US$ 8,20 no 1º ano, US$ 12,20 nas renovações). `.dev` e não `.com.br`: terminação de país faria o Google tratar o site como brasileiro, e ele tem 4 idiomas
 - [x] Imagens em `img.aysllagomes.dev` (domínio próprio no bucket R2); prefixo trocado no código
-- [ ] A autora: depois do deploy, desativar o acesso público `r2.dev` do bucket
+- [x] Acesso público `r2.dev` do bucket desativado (responde 401; conferido em 18/11/2026)
 - [x] Site no domínio próprio pelo GitHub Pages: o build sai na raiz (`<base href="/">`), endereços de SEO, sitemap, PDF e testes atualizados. DNS na Cloudflare: 4 registros A para o GitHub Pages + `www` (sem proxy), domínio verificado no GitHub
-- [ ] A autora, depois do deploy: Search Console com o domínio novo, endereço do site no GoatCounter, links no LinkedIn e Post Inspector
+- [x] Depois do deploy: Enforce HTTPS, Search Console (propriedade de domínio + sitemap), endereço do site no GoatCounter
+- [x] E-mail no domínio: `ayslla@aysllagomes.dev`, encaminhado para a caixa pessoal pelo Cloudflare Email Routing (MX, SPF e DKIM criados pela Cloudflare; só recebe)
+- [x] Dependabot (`.github/dependabot.yml`): PRs semanais com as versões novas das dependências e das actions, validados pelo workflow
+- [ ] A autora: LinkedIn com os textos e links novos (aba LinkedIn da doc) e Post Inspector em `https://aysllagomes.dev/pt/`
 
 ## Entrega 3 — Atualização do Angular (Fase 4)
 - [x] Node 24 LTS (Angular 22 exige Node `^22.22.3 || ^24.15.0`)

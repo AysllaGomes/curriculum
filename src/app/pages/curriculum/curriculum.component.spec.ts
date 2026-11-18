@@ -17,7 +17,7 @@ describe('CurriculumComponent (página completa)', () => {
         expect(texto).toContain('Ayslla Gomes');
         expect(texto).toContain('Ayslla Caroline Prates Gomes');
         expect(texto).toContain('Arquiteta Front-end na Mirante Tecnologia');
-        expect(texto).toContain('ayslla.gomes@outlook.com');
+        expect(texto).toContain('ayslla@aysllagomes.dev');
         for (const secao of ['Sobre mim', 'Experiência', 'Projetos', 'Competências', 'Formação', 'Graduação',
                              'Especializações', 'Certificações', 'Idiomas', 'Vamos conversar?']) {
             expect(texto, secao).toContain(secao);

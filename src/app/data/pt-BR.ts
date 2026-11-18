@@ -21,7 +21,8 @@ export const RESUME_PT_BR: Resume = {
             + 'fui responsável técnica de um contrato com 74 pessoas no Ministério da Economia. Minha base é full stack, com Java, '
             + 'Node.js e PHP, e trabalho com OpenShift e esteiras de CI/CD. Fora do trabalho, exploro ferramentas de IA para '
             + 'desenvolvimento, como o servidor MCP que está nos meus projetos.',
-        email: 'ayslla.gomes@outlook.com',
+        // Endereço do domínio; a Cloudflare (Email Routing) encaminha para a caixa pessoal
+        email: 'ayslla@aysllagomes.dev',
         city: 'Planaltina/GO',
         photoUrl: `${R2}/professional/Ayslla_Caroline.webp`,
         links: {
