@@ -68,7 +68,7 @@ describe('CurriculumComponent (página completa)', () => {
         const site = 'https://aysllagomes.github.io/curriculum/';
 
         expect(og('title')).toBe('Ayslla Gomes · Arquitecta Front-end');
-        expect(og('description')).toMatch(/^Arquitecta Front-end con \d+ años .+ Angular, microfrontends, Java y Node\.js\.$/);
+        expect(og('description')).toMatch(/^\d+ años construyendo sistemas .+ Angular, microfrontends, Java y Node\.js\.$/);
         expect(og('url')).toBe(`${site}es/`);
         expect(og('image')).toBe(`${site}assets/og/es.jpg`);
         expect(og('locale')).toBe('es_ES');
@@ -85,7 +85,7 @@ describe('CurriculumComponent (página completa)', () => {
         await render();
         expect(document.documentElement.lang).toBe('pt-BR');
         expect(document.title).toBe('Ayslla Gomes · Arquiteta Front-end');
-        expect(document.querySelector('meta[name="description"]')?.getAttribute('content')).toMatch(/^Arquiteta Front-end com \d+ anos construindo sistemas/);
+        expect(document.querySelector('meta[name="description"]')?.getAttribute('content')).toMatch(/^\d+ anos construindo sistemas/);
     });
 
     it.each(['pt-BR', 'en', 'es', 'it'] as const)('descrição da página em %s com 100 a 160 caracteres (LinkedIn e Google)', async (locale) => {

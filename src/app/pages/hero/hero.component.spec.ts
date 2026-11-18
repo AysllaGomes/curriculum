@@ -16,7 +16,9 @@ describe('HeroComponent', () => {
     it('a abertura traz os anos de experiência calculados, nunca o marcador {anos}', async () => {
         const headline = (await render()).querySelector('.headline')?.textContent ?? '';
 
-        expect(headline).toMatch(/^Arquiteta Front-end com \d+ anos /);
+        expect(headline).toMatch(/^\d+ anos construindo sistemas /);
+        // O cargo já está no selo logo acima: a frase não o repete
+        expect(headline).not.toContain('Arquiteta');
         expect(headline).not.toContain('{anos}');
     });
 

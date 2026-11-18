@@ -37,10 +37,10 @@ Diagnóstico de origem: análise com o `repo-inspector` (MCP) + leitura do códi
 - [x] Build também em pull requests
 - [x] Trocar a origem do Pages para "GitHub Actions" (Settings → Pages)
 - [x] Primeiro deploy pelo workflow (PR #3): build 61 s + deploy 10 s; site servido pelo artefato do Actions
-- [~] Apagar a branch `gh-pages` abandonada e as branches `melhorias/entrega-1`/`-2` já mergeadas
+- [x] Branches antigas apagadas; no GitHub só a `main` (18/11/2026)
 
 ## Infraestrutura (para depois — a autora faz)
-- [ ] Apagar as 7 imagens antigas do Cloudflare Images (painel → Images/Media → Hosted images) e, se houver, cancelar a assinatura do Images em Billing → Subscriptions
+- [x] Cloudflare Images: plano gratuito, sem imagens armazenadas e sem assinatura (conferido pela autora em 18/11/2026)
 - [ ] Registrar/usar um domínio próprio com DNS na Cloudflare (único custo: o registro, ~R$ 40/ano `.com.br`)
 - [ ] Conectar o bucket R2 ao domínio (ex.: `img.dominio`) e desativar o acesso `r2.dev`; trocar o prefixo das URLs no código
 - [ ] Opcional: domínio próprio também para o site no GitHub Pages (`base-href` passa de `/curriculum/` para `/`)

@@ -12,7 +12,7 @@ export const RESUME_PT_BR: Resume = {
         name: 'Ayslla Caroline Prates Gomes',
         shortName: 'Ayslla Gomes',
         role: 'Arquiteta Front-end',
-        headline: 'Arquiteta Front-end com {anos} anos construindo sistemas para o setor financeiro e público.',
+        headline: '{anos} anos construindo sistemas para o setor financeiro e público.',
         focus: 'Angular, microfrontends, Java e Node.js.',
         summary: 'Na Mirante Tecnologia, atendendo o Sicoob, conduzi a saída de um front monolítico para microfrontends e defino '
             + 'a arquitetura de front da jornada de cartões, orientando as squads que a usam. Antes, passei cinco anos no Spid, '
