@@ -50,10 +50,12 @@ Requisito: **Node 26** (ou 24.15+ / 22.22.3+). Veja `.nvmrc`; com nvm: `nvm use`
 ```bash
 npm install
 npm start               # http://localhost:4200
-npm test                # testes (Vitest)
+npm test                # testes de unidade (Vitest)
 npm run lint            # ESLint (angular-eslint)
 npm run build:pages     # mesmo build que vai para o ar (dist/curriculum/browser), com os PDFs
 npm run pdf             # só os PDFs (dist/curriculum/browser/cv), para conferir o layout de impressão
+npm run e2e             # testes de ponta a ponta (Playwright) no site gerado pelo build:pages
+node scripts/serve.mjs  # o site gerado pelo build:pages em http://127.0.0.1:4300/curriculum/, como no GitHub Pages
 ```
 
 ## Atualizando o conteúdo
@@ -77,8 +79,8 @@ atualiza `src/app/data/github-projects.json`; se o GitHub não responder, vale a
 
 A publicação é automática pelo **GitHub Actions** (`.github/workflows/deploy.yml`):
 
-- **Push na `main`** → lint, testes, build de produção e deploy no GitHub Pages.
-- **Pull request para a `main`** → lint, testes e build, para validar antes do merge (não publica).
+- **Push na `main`** → lint, testes, build de produção, testes de ponta a ponta e deploy no GitHub Pages.
+- **Pull request para a `main`** → lint, testes, build e testes de ponta a ponta, para validar antes do merge (não publica).
 - **Toda segunda-feira, 6h (Brasília)** → build e deploy automáticos, para atualizar as durações calculadas.
 - **Manual** → aba *Actions* → *Build e deploy no GitHub Pages* → *Run workflow*.
 

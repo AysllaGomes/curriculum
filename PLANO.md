@@ -21,7 +21,7 @@ Diagnóstico de origem: análise com o `repo-inspector` (MCP) + leitura do códi
 - [x] Mirante: cliente (Sicoob) e logo
 - [x] Imagens migradas do Cloudflare Images para o Cloudflare R2
 - [x] Otimizar a foto de perfil (PNG 477×597 de 371 KB → WebP 400×400 de 15 KB)
-- [~] Revisar skills, certificações e projetos novos para 2026
+- [x] Revisar skills, certificações e projetos novos para 2026 — feito na Entrega C e na V5
 
 ### Fase 2: Limpeza e decisão de deploy
 - [x] Manter só GitHub Pages: remover `Procfile`, `server.js` e a dependência `express`
@@ -29,7 +29,7 @@ Diagnóstico de origem: análise com o `repo-inspector` (MCP) + leitura do códi
 - [x] Remover componentes declarados e nunca usados (`NavbarComponent`, `AboutComponent`)
 - [x] `README.md`
 - [x] `engines` + `.nvmrc` com a versão do Node
-- [~] Preencher Website e tópicos no "About" do repositório no GitHub (a autora faz pela interface do GitHub)
+- [x] Preencher Website e tópicos no "About" dos repositórios no GitHub (a autora, 18/11/2026)
 
 ## Entrega 2 — Deploy automático (Fase 3)
 - [x] Workflow do GitHub Actions: build + publicação no Pages a cada push na `main`
@@ -37,10 +37,10 @@ Diagnóstico de origem: análise com o `repo-inspector` (MCP) + leitura do códi
 - [x] Build também em pull requests
 - [x] Trocar a origem do Pages para "GitHub Actions" (Settings → Pages)
 - [x] Primeiro deploy pelo workflow (PR #3): build 61 s + deploy 10 s; site servido pelo artefato do Actions
-- [~] Apagar a branch `gh-pages` abandonada e as branches `melhorias/entrega-1`/`-2` já mergeadas
+- [x] Branches antigas apagadas; no GitHub só a `main` (18/11/2026)
 
 ## Infraestrutura (para depois — a autora faz)
-- [ ] Apagar as 7 imagens antigas do Cloudflare Images (painel → Images/Media → Hosted images) e, se houver, cancelar a assinatura do Images em Billing → Subscriptions
+- [x] Cloudflare Images: plano gratuito, sem imagens armazenadas e sem assinatura (conferido pela autora em 18/11/2026)
 - [ ] Registrar/usar um domínio próprio com DNS na Cloudflare (único custo: o registro, ~R$ 40/ano `.com.br`)
 - [ ] Conectar o bucket R2 ao domínio (ex.: `img.dominio`) e desativar o acesso `r2.dev`; trocar o prefixo das URLs no código
 - [ ] Opcional: domínio próprio também para o site no GitHub Pages (`base-href` passa de `/curriculum/` para `/`)
@@ -103,7 +103,7 @@ bloco final "Vamos conversar?". Cada fase termina com o site publicável e print
 - [x] Escolhidos pela autora: figma-context-cache-mcp, pet-health-api, angular-components, red-switch-realistic, interstate-mobility-center
       (lista inicial gravada com `npm run projects -- --repos …`). Saíram os projetos antigos (React Hooks, Ceep, Agenda, Controle Financeiro, PetShop)
 - [x] "Ler mais" removido: as descrições novas são curtas e aparecem inteiras
-- [ ] A autora: marcar os 5 repositórios com o tópico `portfolio` (a partir daí a lista passa a seguir o GitHub) e, se quiser, preencher o "About"
+- [x] A autora: os 5 repositórios marcados com o tópico `portfolio` e com "About" em inglês (18/11/2026); a lista do site segue o GitHub
 
 ### V6: Site em 4 idiomas — PT-BR, EN, ES, IT
 - [x] Uma URL por idioma: `/curriculum/pt`, `/en`, `/es`, `/it` (dá para compartilhar o link no idioma certo); `/curriculum/` e endereços desconhecidos redirecionam
@@ -112,14 +112,14 @@ bloco final "Vamos conversar?". Cada fase termina com o site publicável e print
 - [x] Datas e durações formatadas por idioma (`Intl`): "Jun 2022 – Dez 2025 · 3 anos e 7 meses" / "Jun 2022 – Dec 2025 · 3 years and 7 months" / "Jun 2022 – Dic 2025 · 3 años y 7 meses" / "Giu 2022 – Dic 2025 · 3 anni e 7 mesi"
 - [x] `lang`, título da página e descrição por idioma
 - [x] Testes: mesma estrutura e mesmos fatos em todos os idiomas, textos da interface completos, rotas e redirecionamento
-- [~] Traduções EN, ES e IT: rascunho feito por mim; falta a revisão da autora (e, de preferência, de alguém fluente em italiano)
+- [x] Traduções EN, ES e IT revisadas pela autora (18/11/2026)
 
 ### V7: Pré-renderização e SEO (antecipa parte da Fase 6)
 - [x] HTML pronto no build para cada idioma (`pt/index.html`, `en/index.html`…), com hidratação; raiz e 404 continuam rodando no navegador e levam ao idioma de quem visita
 - [x] Meta description + Open Graph por idioma (imagem 1200×630 em cada idioma) e `canonical`/`hreflang` ligando as 4 versões (raiz como `x-default`)
 - [x] `sitemap.xml` com as 4 versões (`robots.txt` não se aplica: só vale na raiz do domínio)
 - [x] Build semanal agendado (segunda-feira), para durações e anos de experiência do HTML não ficarem desatualizados
-- [ ] A autora: enviar o sitemap no Google Search Console (opcional) e testar a prévia no LinkedIn Post Inspector depois do deploy
+- [x] A autora: sitemap enviado no Google Search Console e prévia conferida no LinkedIn Post Inspector (18/11/2026)
 
 ### V8: Acabamento
 - [x] Tema claro opcional: segue o sistema; botão no cabeçalho para trocar, escolha lembrada e aplicada antes da primeira pintura (sem piscar). Destaque `#3B5BDB` no claro (o `#8AA4FF` não tem contraste em fundo branco)
@@ -167,7 +167,7 @@ Revisão do texto feita em conjunto (doc "Análise do currículo online" no Clau
 
 ### Fase 7: Testes
 - [x] Teste por componente — todos os componentes têm teste (125 testes em 18 arquivos, Entrega S)
-- [ ] Teste ponta a ponta com Playwright
+- [x] Teste ponta a ponta com Playwright: 54 testes (27 no computador e 27 no celular) no site gerado pelo build, servido como no GitHub Pages; no workflow, antes de publicar
 - [x] Testes rodando no workflow (Entrega 3)
 
 ---

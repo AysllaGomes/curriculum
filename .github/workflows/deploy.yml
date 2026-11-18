@@ -54,6 +54,22 @@ jobs:
           # Token do próprio workflow: limite maior da API do GitHub (sem ele são 60 consultas por hora)
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      # O site gerado acima, servido como no GitHub Pages, num Chrome de verdade (computador e celular):
+      # idiomas, tema, menu, PDF, impressão, 404, dados para o Google (playwright.config.ts, pasta e2e/).
+      # Se falhar, nada é publicado
+      - name: Testes de ponta a ponta (Playwright)
+        run: npm run e2e
+        env:
+          CI: true
+
+      - name: Relatório dos testes de ponta a ponta
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: playwright-report
+          path: playwright-report
+          retention-days: 14
+
       - name: Enviar artefato do Pages
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v5
