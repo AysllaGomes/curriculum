@@ -3,6 +3,7 @@ import { provideClientHydration, withEventReplay } from '@angular/platform-brows
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
+import { provideAnalytics } from './shared/utils/analytics';
 
 /** Configuração comum ao navegador e ao pré-render do build. */
 export const appConfig: ApplicationConfig = {
@@ -11,5 +12,7 @@ export const appConfig: ApplicationConfig = {
         provideRouter(routes),
         // Reaproveita o HTML gerado no build em vez de desenhar a página de novo
         provideClientHydration(withEventReplay()),
+        // Estatísticas de visita (GoatCounter); desligadas enquanto não houver código, ver analytics.ts
+        provideAnalytics(),
     ],
 };

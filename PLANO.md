@@ -145,6 +145,13 @@ Revisão do texto feita em conjunto (doc "Análise do currículo online" no Clau
 - [x] Botão "Baixar currículo (PDF)" na abertura, no idioma da página
 - [x] `scripts/lib/browser.mjs`: navegador sem janela compartilhado pelos scripts de PDF e de imagens de prévia
 
+## Entrega S — Busca, estatísticas e testes que faltavam
+- [x] Descrição da página com 100+ caracteres (aviso do LinkedIn Post Inspector): abertura + `focus`
+- [x] Dados estruturados (JSON-LD `ProfilePage`/`Person`) em cada idioma
+- [x] Estatísticas com GoatCounter (visitas + downloads do PDF), prontas e desligadas até haver o código da conta
+- [ ] A autora: criar a conta no GoatCounter e passar o código; testar a página no teste de pesquisa aprimorada do Google
+- [x] Testes de footer, professional-skills e academic-education (todos os componentes têm teste agora)
+
 ## Entrega 4 — Manutenção, qualidade e testes (Fases 5, 6, 7)
 
 ### Fase 5: Dados separados do código
@@ -158,7 +165,7 @@ Revisão do texto feita em conjunto (doc "Análise do currículo online" no Clau
 - [→] Acessibilidade, responsividade e Lighthouse — passaram para a V8
 
 ### Fase 7: Testes
-- [~] Teste por componente — 16 testes em 7 arquivos (Entrega 3); faltam footer, professional-skills, academic-education
+- [x] Teste por componente — todos os componentes têm teste (125 testes em 18 arquivos, Entrega S)
 - [ ] Teste ponta a ponta com Playwright
 - [x] Testes rodando no workflow (Entrega 3)
 

@@ -16,7 +16,8 @@
         <div class="actions no-print">
             <a class="btn btn-primary" [href]="page + '#contato'">{{ labels.hero.contact }}</a>
             <a class="btn" [href]="page + '#projetos'">{{ labels.hero.projects }}</a>
-            <a class="btn btn-cv" [href]="cv" [attr.download]="labels.hero.cvFile" type="application/pdf">
+            <a class="btn btn-cv" [href]="cv" [attr.download]="labels.hero.cvFile" type="application/pdf"
+               (click)="trackCv()">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"></path></svg>
                 {{ labels.hero.cv }}
             </a>

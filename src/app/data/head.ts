@@ -5,13 +5,15 @@ import { Meta, Title } from '@angular/platform-browser';
 import { LOCALE, RESUME } from './resume';
 import { LOCALES, SITE_URL, localeUrl } from './locales';
 import { fillYears } from '../shared/utils/dates';
+import { structuredData } from './structured-data';
 
 /**
  * Preenche o <head> da página do idioma atual. Roda no build (pré-render), então tudo isso
  * já chega pronto no HTML para buscadores e para a prévia de links (LinkedIn, WhatsApp, Slack…):
  * - `lang`, título da aba e descrição;
  * - Open Graph / Twitter: título, descrição, imagem 1200×630 do idioma;
- * - `canonical` e `hreflang` ligando as 4 versões (e a raiz como `x-default`).
+ * - `canonical` e `hreflang` ligando as 4 versões (e a raiz como `x-default`);
+ * - dados estruturados para o Google (JSON-LD, ver structured-data.ts).
  * Precisa ser chamada dentro de um construtor (usa `inject`).
  */
 export function updateHead(): void {
@@ -51,4 +53,11 @@ export function updateHead(): void {
     link({ rel: 'canonical', href: url });
     for (const option of LOCALES) link({ rel: 'alternate', hreflang: option.locale, href: localeUrl(option) });
     link({ rel: 'alternate', hreflang: 'x-default', href: SITE_URL });
+
+    doc.head.querySelectorAll('script[type="application/ld+json"]').forEach(s => s.remove());
+    const jsonLd = doc.createElement('script');
+    jsonLd.setAttribute('type', 'application/ld+json');
+    // `<` escapado: o texto nunca fecha a tag <script> antes da hora
+    jsonLd.textContent = JSON.stringify(structuredData(resume, url, locale)).replace(/</g, '\\u003c');
+    doc.head.appendChild(jsonLd);
 }

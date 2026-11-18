@@ -1,9 +1,10 @@
 import { Component, inject } from '@angular/core';
-import { NgOptimizedImage } from '@angular/common';
+import { DOCUMENT, NgOptimizedImage } from '@angular/common';
 
 import { LABELS } from '../../data/labels';
 import { LOCALE, RESUME } from '../../data/resume';
 import { displayUrl } from '../../shared/utils/url';
+import { trackEvent } from '../../shared/utils/analytics';
 import { fillYears } from '../../shared/utils/dates';
 import { LOCALES, PAGE_PATH, cvPath } from '../../data/locales';
 
@@ -31,6 +32,13 @@ export class HeroComponent {
 
     /** "Arquiteta Front-end na Mirante Tecnologia" — a empresa é a da experiência sem data de fim */
     protected readonly badge = [this.profile.role, ...this.currentCompany()].join(' ');
+
+    private readonly doc = inject(DOCUMENT);
+
+    /** Conta o download do PDF nas estatísticas (pdf-pt, pdf-en…), quando ligadas */
+    protected trackCv(): void {
+        trackEvent(this.doc, `pdf-${this.option.path}`, this.labels.hero.cv);
+    }
 
     private currentCompany(): string[] {
         const company = this.resume.experiences.find(e => !e.end)?.company;
