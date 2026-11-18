@@ -14,6 +14,7 @@ export const RESUME_IT: Resume = {
         ...PT.profile,
         role: 'Architetta Front-end',
         headline: 'Architetta Front-end con {anos} anni di esperienza nella costruzione di sistemi per il settore finanziario e pubblico.',
+        focus: 'Angular, microfrontend, Java e Node.js.',
         summary: 'In Mirante Tecnologia, per Sicoob, ho guidato il passaggio da un front-end monolitico ai microfrontend e definisco '
             + 'l\'architettura front-end del percorso carte, supportando i team che lo utilizzano. In precedenza ho lavorato cinque anni '
             + 'su Spid, la soluzione di mobilità urbana del Banco do Brasil, tramite EngeSoftware e IBM: ho seguito il prodotto fin '

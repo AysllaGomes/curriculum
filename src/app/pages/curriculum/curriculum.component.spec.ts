@@ -68,7 +68,7 @@ describe('CurriculumComponent (página completa)', () => {
         const site = 'https://aysllagomes.github.io/curriculum/';
 
         expect(og('title')).toBe('Ayslla Gomes · Arquitecta Front-end');
-        expect(og('description')).toMatch(/^Arquitecta Front-end con \d+ años /);
+        expect(og('description')).toMatch(/^Arquitecta Front-end con \d+ años .+ Angular, microfrontends, Java y Node\.js\.$/);
         expect(og('url')).toBe(`${site}es/`);
         expect(og('image')).toBe(`${site}assets/og/es.jpg`);
         expect(og('locale')).toBe('es_ES');
@@ -86,6 +86,16 @@ describe('CurriculumComponent (página completa)', () => {
         expect(document.documentElement.lang).toBe('pt-BR');
         expect(document.title).toBe('Ayslla Gomes · Arquiteta Front-end');
         expect(document.querySelector('meta[name="description"]')?.getAttribute('content')).toMatch(/^Arquiteta Front-end com \d+ anos construindo sistemas/);
+    });
+
+    it.each(['pt-BR', 'en', 'es', 'it'] as const)('descrição da página em %s com 100 a 160 caracteres (LinkedIn e Google)', async (locale) => {
+        TestBed.configureTestingModule({ providers: provideLocale(locale) });
+        const fixture = TestBed.createComponent(CurriculumComponent);
+        await fixture.whenStable();
+        const description = document.querySelector('meta[name="description"]')?.getAttribute('content') ?? '';
+
+        expect(description.length).toBeGreaterThanOrEqual(100);
+        expect(description.length).toBeLessThanOrEqual(160);
     });
 });
 

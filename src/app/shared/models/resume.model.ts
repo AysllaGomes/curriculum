@@ -22,6 +22,11 @@ export interface Profile {
      * `{anos}` vira os anos de experiência calculados a partir das datas (ver `fillYears`).
      */
     headline: string;
+    /**
+     * Tecnologias principais, numa frase curta. Completam a descrição da página (Google e prévia de links):
+     * só a abertura teria menos de 100 caracteres, o mínimo que o LinkedIn recomenda.
+     */
+    focus: string;
     summary: string;
     email: string;
     city: string;
