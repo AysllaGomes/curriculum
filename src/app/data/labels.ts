@@ -15,7 +15,8 @@ export interface Labels {
     theme: { toLight: string; toDark: string };
     hero: { at: string; contact: string; projects: string; photoAlt: string };
     about: { title: string; years: string; companies: string; courses: string; certifications: string };
-    experience: { title: string; current: string; client: string };
+    /** `earlier`: empresa que fez o mesmo trabalho antes ("Antes, pela EngeSoftware…"); `stack`: só para leitores de tela */
+    experience: { title: string; current: string; client: string; earlier: string; stack: string };
     projects: { title: string; allOnGithub: string; viewCode: string; viewDemo: string };
     skills: { title: string };
     education: { title: string; degree: string; courses: string; course: { one: string; other: string } };
@@ -39,7 +40,7 @@ const PT_BR: Labels = {
         title: 'Sobre mim',
         years: 'anos de experiência', companies: 'empresas', courses: 'cursos de especialização', certifications: 'certificações',
     },
-    experience: { title: 'Experiência', current: 'Atual', client: 'Cliente' },
+    experience: { title: 'Experiência', current: 'Atual', client: 'Cliente', earlier: 'Antes, pela', stack: 'Tecnologias' },
     projects: { title: 'Projetos', allOnGithub: 'Todos no GitHub', viewCode: 'Ver código', viewDemo: 'Ver demo' },
     skills: { title: 'Competências' },
     education: { title: 'Formação', degree: 'Graduação', courses: 'Especializações', course: { one: 'curso', other: 'cursos' } },
@@ -63,7 +64,7 @@ const EN: Labels = {
         title: 'About me',
         years: 'years of experience', companies: 'companies', courses: 'specialization courses', certifications: 'certifications',
     },
-    experience: { title: 'Experience', current: 'Present', client: 'Client' },
+    experience: { title: 'Experience', current: 'Present', client: 'Client', earlier: 'Previously through', stack: 'Technologies' },
     projects: { title: 'Projects', allOnGithub: 'All on GitHub', viewCode: 'View code', viewDemo: 'Live demo' },
     skills: { title: 'Skills' },
     education: { title: 'Education', degree: 'Degree', courses: 'Specializations', course: { one: 'course', other: 'courses' } },
@@ -87,7 +88,7 @@ const ES: Labels = {
         title: 'Sobre mí',
         years: 'años de experiencia', companies: 'empresas', courses: 'cursos de especialización', certifications: 'certificaciones',
     },
-    experience: { title: 'Experiencia', current: 'Actual', client: 'Cliente' },
+    experience: { title: 'Experiencia', current: 'Actual', client: 'Cliente', earlier: 'Antes, a través de', stack: 'Tecnologías' },
     projects: { title: 'Proyectos', allOnGithub: 'Todos en GitHub', viewCode: 'Ver código', viewDemo: 'Ver demo' },
     skills: { title: 'Competencias' },
     education: { title: 'Formación', degree: 'Grado', courses: 'Especializaciones', course: { one: 'curso', other: 'cursos' } },
@@ -111,7 +112,7 @@ const IT: Labels = {
         title: 'Chi sono',
         years: 'anni di esperienza', companies: 'aziende', courses: 'corsi di specializzazione', certifications: 'certificazioni',
     },
-    experience: { title: 'Esperienza', current: 'Attuale', client: 'Cliente' },
+    experience: { title: 'Esperienza', current: 'Attuale', client: 'Cliente', earlier: 'In precedenza tramite', stack: 'Tecnologie' },
     projects: { title: 'Progetti', allOnGithub: 'Tutti su GitHub', viewCode: 'Vedi codice', viewDemo: 'Vedi demo' },
     skills: { title: 'Competenze' },
     education: { title: 'Formazione', degree: 'Laurea', courses: 'Specializzazioni', course: { one: 'corso', other: 'corsi' } },

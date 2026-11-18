@@ -16,7 +16,7 @@ describe('SpecializationComponent', () => {
         expect(anos.length).toBeGreaterThan(1);
         expect(anos).toEqual([...anos].sort((a, b) => b - a));
 
-        expect(el.querySelector('.title')?.textContent).toContain('22 cursos');
+        expect(el.querySelector('.title')?.textContent).toContain('20 cursos');
         expect(el.querySelector('.year-toggle')?.textContent).toMatch(/2024\s*·\s*1 curso\b/);
     });
 

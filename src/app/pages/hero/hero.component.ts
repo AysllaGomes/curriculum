@@ -4,6 +4,7 @@ import { NgOptimizedImage } from '@angular/common';
 import { LABELS } from '../../data/labels';
 import { RESUME } from '../../data/resume';
 import { PAGE_PATH } from '../../data/locales';
+import { fillYears } from '../../shared/utils/dates';
 
 @Component({
     selector: 'app-hero',
@@ -16,8 +17,10 @@ export class HeroComponent {
     protected readonly labels = inject(LABELS);
     protected readonly profile = this.resume.profile;
     protected readonly page = inject(PAGE_PATH);
+    /** Frase de abertura com os anos de experiência calculados */
+    protected readonly headline = fillYears(this.profile.headline, this.resume.experiences);
 
-    /** "Arquiteta de Software na Mirante Tecnologia" — a empresa é a da experiência sem data de fim */
+    /** "Arquiteta Front-end na Mirante Tecnologia" — a empresa é a da experiência sem data de fim */
     protected readonly badge = [this.profile.role, ...this.currentCompany()].join(' ');
 
     private currentCompany(): string[] {

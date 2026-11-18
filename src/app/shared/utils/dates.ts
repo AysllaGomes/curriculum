@@ -1,4 +1,4 @@
-import { Experience, Locale, YearMonth } from '../models/resume.model';
+import { Employment, Experience, Locale, YearMonth } from '../models/resume.model';
 
 interface Parsed { year: number; month: number }
 
@@ -54,13 +54,23 @@ export function formatDuration(months: number, locale: Locale): string {
 }
 
 /** Duração de uma experiência (até `today` quando ainda é o emprego atual). */
-export function experienceMonths(experience: Experience, today: YearMonth = currentYearMonth()): number {
+export function experienceMonths(experience: Employment, today: YearMonth = currentYearMonth()): number {
     return monthsBetween(experience.start, experience.end ?? today);
 }
 
-/** Anos completos desde o início da primeira experiência. */
+/** Todos os vínculos: cada experiência e as empresas que fizeram o mesmo trabalho antes dela. */
+export function employments(experiences: Experience[]): Employment[] {
+    return experiences.flatMap(e => [e, ...(e.earlier ?? [])]);
+}
+
+/** Anos completos desde o início do primeiro vínculo. */
 export function yearsOfExperience(experiences: Experience[], today: YearMonth = currentYearMonth()): number {
-    if (!experiences.length) return 0;
-    const first = experiences.map(e => e.start).sort()[0];
-    return Math.floor((monthsBetween(first, today) - 1) / 12);
+    const starts = employments(experiences).map(e => e.start);
+    if (!starts.length) return 0;
+    return Math.floor((monthsBetween(starts.sort()[0], today) - 1) / 12);
+}
+
+/** Troca `{anos}` pelos anos de experiência: "com {anos} anos" → "com 8 anos". O texto nunca fica desatualizado. */
+export function fillYears(text: string, experiences: Experience[], today: YearMonth = currentYearMonth()): string {
+    return text.replaceAll('{anos}', String(yearsOfExperience(experiences, today)));
 }
