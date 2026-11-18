@@ -149,7 +149,8 @@ Revisão do texto feita em conjunto (doc "Análise do currículo online" no Clau
 - [x] Descrição da página com 100+ caracteres (aviso do LinkedIn Post Inspector): abertura + `focus`
 - [x] Dados estruturados (JSON-LD `ProfilePage`/`Person`) em cada idioma
 - [x] Estatísticas com GoatCounter (visitas + downloads do PDF): https://ayslla-gomes.goatcounter.com
-- [ ] A autora: testar a página no teste de pesquisa aprimorada do Google depois do deploy
+- [x] Teste de pesquisa aprimorada do Google: "Página de perfil", 1 item válido (18/11/2026)
+- [x] Search Console: arquivo de verificação `src/googleb48ec4ebe4c46aad.html` publicado na raiz do site
 - [x] Testes de footer, professional-skills e academic-education (todos os componentes têm teste agora)
 
 ## Entrega 4 — Manutenção, qualidade e testes (Fases 5, 6, 7)
