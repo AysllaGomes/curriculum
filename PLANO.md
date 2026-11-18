@@ -41,9 +41,11 @@ Diagnóstico de origem: análise com o `repo-inspector` (MCP) + leitura do códi
 
 ## Infraestrutura (para depois — a autora faz)
 - [x] Cloudflare Images: plano gratuito, sem imagens armazenadas e sem assinatura (conferido pela autora em 18/11/2026)
-- [ ] Registrar/usar um domínio próprio com DNS na Cloudflare (único custo: o registro, ~R$ 40/ano `.com.br`)
-- [ ] Conectar o bucket R2 ao domínio (ex.: `img.dominio`) e desativar o acesso `r2.dev`; trocar o prefixo das URLs no código
-- [ ] Opcional: domínio próprio também para o site no GitHub Pages (`base-href` passa de `/curriculum/` para `/`)
+- [x] Domínio próprio `aysllagomes.dev` registrado na Cloudflare (18/11/2026; US$ 8,20 no 1º ano, US$ 12,20 nas renovações). `.dev` e não `.com.br`: terminação de país faria o Google tratar o site como brasileiro, e ele tem 4 idiomas
+- [x] Imagens em `img.aysllagomes.dev` (domínio próprio no bucket R2); prefixo trocado no código
+- [ ] A autora: depois do deploy, desativar o acesso público `r2.dev` do bucket
+- [x] Site no domínio próprio pelo GitHub Pages: o build sai na raiz (`<base href="/">`), endereços de SEO, sitemap, PDF e testes atualizados. DNS na Cloudflare: 4 registros A para o GitHub Pages + `www` (sem proxy), domínio verificado no GitHub
+- [ ] A autora, depois do deploy: Search Console com o domínio novo, endereço do site no GoatCounter, links no LinkedIn e Post Inspector
 
 ## Entrega 3 — Atualização do Angular (Fase 4)
 - [x] Node 24 LTS (Angular 22 exige Node `^22.22.3 || ^24.15.0`)

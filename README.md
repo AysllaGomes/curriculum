@@ -2,7 +2,7 @@
 
 Currículo e portfólio pessoal em página única, feito com **Angular 22** (sem framework de CSS: layout próprio com flex/grid, tema escuro, fontes Space Grotesk e Inter servidas pelo próprio site).
 
-🌐 **No ar:** https://aysllagomes.github.io/curriculum/
+🌐 **No ar:** https://aysllagomes.dev
 
 ## O que tem na página
 
@@ -55,7 +55,7 @@ npm run lint            # ESLint (angular-eslint)
 npm run build:pages     # mesmo build que vai para o ar (dist/curriculum/browser), com os PDFs
 npm run pdf             # só os PDFs (dist/curriculum/browser/cv), para conferir o layout de impressão
 npm run e2e             # testes de ponta a ponta (Playwright) no site gerado pelo build:pages
-node scripts/serve.mjs  # o site gerado pelo build:pages em http://127.0.0.1:4300/curriculum/, como no GitHub Pages
+node scripts/serve.mjs  # o site gerado pelo build:pages em http://127.0.0.1:4300/, como no GitHub Pages
 ```
 
 ## Atualizando o conteúdo
@@ -76,6 +76,8 @@ atualiza `src/app/data/github-projects.json`; se o GitHub não responder, vale a
 - `npm run projects` atualiza a lista na hora; `npm run projects -- --repos nome1,nome2` grava exatamente esses repositórios, sem depender do tópico.
 
 ## Publicando
+
+O site fica em **https://aysllagomes.dev** (domínio registrado na Cloudflare, com DNS apontando para o GitHub Pages; configurado em *Settings → Pages → Custom domain*). As imagens (foto e logos) vêm de **img.aysllagomes.dev**, o bucket R2 da Cloudflare com domínio próprio. O endereço antigo `aysllagomes.github.io/curriculum/` redireciona para o novo.
 
 A publicação é automática pelo **GitHub Actions** (`.github/workflows/deploy.yml`):
 

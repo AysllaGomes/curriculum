@@ -10,7 +10,7 @@ import { openBrowser, serve } from './lib/browser.mjs';
 const DIST = 'dist/curriculum/browser';
 const LOCALES = ['pt', 'en', 'es', 'it'];
 
-/** Mesmo endereço base do build (`/curriculum/` no GitHub Pages, `/` no build comum). */
+/** Mesmo endereço base do build (`<base href>`; `/` com o domínio próprio). */
 const html = await readFile(`${DIST}/${LOCALES[0]}/index.html`, 'utf8').catch(() => {
     throw new Error(`${DIST}/${LOCALES[0]}/index.html não existe: rode o build antes`);
 });

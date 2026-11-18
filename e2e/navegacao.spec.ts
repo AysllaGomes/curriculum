@@ -2,7 +2,7 @@ import { LOCALES, expect, test } from './fixtures';
 
 test.describe('Navegação e aparência', () => {
     test('os links do menu levam às seções', async ({ page, isMobile }) => {
-        await page.goto('/curriculum/pt/');
+        await page.goto('/pt/');
         const toggle = page.locator('.menu-toggle');
 
         if (isMobile) {
@@ -24,7 +24,7 @@ test.describe('Navegação e aparência', () => {
         const context = await browser.newContext({ colorScheme: 'dark' });
         const page = await context.newPage();
         await page.route('**/gc.zgo.at/**', route => route.fulfill({ contentType: 'text/javascript', body: '' }));
-        await page.goto('/curriculum/pt/');
+        await page.goto('/pt/');
         const html = page.locator('html');
         const fundo = () => page.evaluate(() => getComputedStyle(document.body).backgroundColor);
 
@@ -40,14 +40,14 @@ test.describe('Navegação e aparência', () => {
 
     for (const locale of LOCALES) {
         test(`nada sai da tela na largura da página (${locale.path})`, async ({ page }) => {
-            await page.goto(`/curriculum/${locale.path}/`);
+            await page.goto(`/${locale.path}/`);
             const sobra = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
             expect(sobra).toBe(0);
         });
     }
 
     test('experiências com resumo, destaques e a empresa anterior no mesmo cartão', async ({ page }) => {
-        await page.goto('/curriculum/pt/');
+        await page.goto('/pt/');
         const cartoes = page.locator('.experience');
 
         await expect(cartoes).toHaveCount(4);

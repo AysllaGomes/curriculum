@@ -5,7 +5,7 @@ import { defineConfig, devices } from '@playwright/test';
  * (scripts/serve.mjs), num Chrome de verdade — no computador e no celular.
  * Usa o Chrome instalado (no GitHub Actions, o que já vem no ubuntu-latest): nada de navegador baixado.
  *
- *   npm run build:pages   → gera o site com o endereço /curriculum/
+ *   npm run build:pages   → gera o site como vai para o ar
  *   npm run e2e           → roda os testes (relatório em playwright-report/ se algo falhar)
  */
 const PORT = 4300;
@@ -28,7 +28,7 @@ export default defineConfig({
     ],
     webServer: {
         command: `node scripts/serve.mjs ${PORT}`,
-        url: `http://127.0.0.1:${PORT}/curriculum/`,
+        url: `http://127.0.0.1:${PORT}/`,
         reuseExistingServer: !process.env['CI'],
     },
 });

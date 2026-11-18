@@ -1,7 +1,7 @@
 import { Resume } from '../shared/models/resume.model';
 import { projectsFor } from './projects';
 
-const R2 = 'https://pub-51456c379d4c4f7ba854a6e3e4b02278.r2.dev';
+const R2 = 'https://img.aysllagomes.dev';
 
 /**
  * Conteúdo do currículo em português — a fonte principal.

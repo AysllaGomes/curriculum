@@ -65,7 +65,7 @@ describe('CurriculumComponent (página completa)', () => {
         const fixture = TestBed.createComponent(CurriculumComponent);
         await fixture.whenStable();
         const og = (p: string) => document.querySelector(`meta[property="og:${p}"]`)?.getAttribute('content');
-        const site = 'https://aysllagomes.github.io/curriculum/';
+        const site = 'https://aysllagomes.dev/';
 
         expect(og('title')).toBe('Ayslla Gomes · Arquitecta Front-end');
         expect(og('description')).toMatch(/^\d+ años construyendo sistemas .+ Angular, microfrontends, Java y Node\.js\.$/);
