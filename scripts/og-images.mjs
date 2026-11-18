@@ -6,7 +6,7 @@
 //   npm run og        → build das páginas e, em seguida, as 4 imagens
 //
 // Os textos vêm das páginas já geradas no build (dist/curriculum/browser/<idioma>/index.html: og:title e
-// og:description), ou seja, são exatamente os do site. Usa o Chrome ou o Edge instalado no computador
+// a frase da abertura), ou seja, são exatamente os do site. Usa o Chrome ou o Edge instalado no computador
 // (ou o caminho em CHROME_PATH), sem dependência nova no projeto (ver scripts/lib/browser.mjs).
 import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
@@ -76,7 +76,9 @@ try {
             throw new Error(`${DIST}/${locale}/index.html não existe: rode o build antes (npm run og faz os dois)`);
         });
         const [name, role] = meta(html, 'og:title').split(' · ');
-        const headline = meta(html, 'og:description');
+        // A frase da abertura, sem as tecnologias que completam a descrição da página: na arte, a frase curta lê melhor
+        const headline = /class="headline"[^>]*>([^<]+)</.exec(html)?.[1]?.trim();
+        if (!headline) throw new Error(`frase da abertura não encontrada em ${locale}/index.html`);
         const lang = /<html[^>]+lang="([^"]+)"/.exec(html)?.[1] ?? locale;
 
         const file = join(dir, `${locale}.html`);

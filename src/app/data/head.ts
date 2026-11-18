@@ -20,7 +20,8 @@ export function updateHead(): void {
     const locale = inject(LOCALE);
     const resume = inject(RESUME);
     const profile = resume.profile;
-    const description = fillYears(profile.headline, resume.experiences);
+    // Abertura + tecnologias: 100+ caracteres, o mínimo que o LinkedIn recomenda para a descrição
+    const description = `${fillYears(profile.headline, resume.experiences)} ${profile.focus}`;
     const current = LOCALES.find(o => o.locale === locale) ?? LOCALES[0];
     const title = `${profile.shortName} · ${profile.role}`;
     const url = localeUrl(current);
