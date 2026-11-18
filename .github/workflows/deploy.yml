@@ -46,7 +46,8 @@ jobs:
         run: npm test -- --watch=false
 
       # Busca no GitHub os projetos com o tópico "portfolio" (scripts/fetch-projects.mjs), gera as páginas
-      # de cada idioma já prontas e, em seguida, index.html e 404.html (scripts/pages-fallback.mjs)
+      # de cada idioma já prontas e, em seguida, index.html e 404.html (scripts/pages-fallback.mjs) e o currículo
+      # em PDF de cada idioma (scripts/pdf.mjs, com o Chrome que já vem no ubuntu-latest)
       - name: Build de produção
         run: npm run build:pages
         env:

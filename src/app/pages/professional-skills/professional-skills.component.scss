@@ -26,3 +26,40 @@
     flex-wrap: wrap;
     gap: 8px;
 }
+
+/* Papel: um grupo por linha ("Arquitetura  Microfrontends, BFF…"), texto corrido que os sistemas de triagem leem */
+@media print {
+    .groups {
+        display: flex;
+        flex-direction: column;
+        gap: 3pt;
+    }
+
+    .group {
+        flex-direction: row;
+        align-items: baseline;
+        gap: 8pt;
+        break-inside: avoid;
+    }
+
+    .group-title {
+        flex: 0 0 26mm;
+        font-size: 8pt;
+    }
+
+    .skills {
+        display: block;
+
+        li {
+            display: inline;
+            padding: 0;
+            border: 0;
+            background: none;
+            font-size: 9.5pt;
+        }
+
+        li:not(:last-child)::after {
+            content: ', ';
+        }
+    }
+}

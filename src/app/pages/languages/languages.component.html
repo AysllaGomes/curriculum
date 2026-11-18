@@ -8,7 +8,7 @@
                     <strong class="language-name">{{ lang.name }}</strong>
                     <span class="language-level muted">{{ lang.nameLevel }} ({{ lang.level }})</span>
                 </div>
-                <div class="bars" aria-hidden="true">
+                <div class="bars no-print" aria-hidden="true">
                     @for (filled of lang.bars; track $index) {
                         <span class="bar" [class.filled]="filled"></span>
                     }

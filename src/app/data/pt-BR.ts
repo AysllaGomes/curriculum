@@ -59,7 +59,7 @@ export const RESUME_PT_BR: Resume = {
                 'Propus e conduzi a migração do portal de React para Angular: telas mais leves, navegação mais rápida e bugs praticamente zerados.',
                 'Desenvolvi o site institucional do produto (spid.bb.com.br) em Next.js e acompanhei a evolução do back-end do Node 10 ao 24.',
             ],
-            stack: ['Angular (até o 18)', 'React', 'Next.js', 'Node.js', 'RabbitMQ', 'Kafka', 'Grafana', 'OpenShift', 'Jenkins', 'Argo CD', 'GitHub Actions'],
+            stack: ['Angular (→ v18)', 'React', 'Next.js', 'Node.js', 'RabbitMQ', 'Kafka', 'Grafana', 'OpenShift', 'Jenkins', 'Argo CD', 'GitHub Actions'],
         },
         {
             company: 'Life Tecnologia e Consultoria', client: 'Ministério da Economia', start: '2019-02', end: '2021-06',

@@ -5,9 +5,9 @@
         @for (experience of experiencesList; track experience.company) {
             <li class="card experience" [class.current]="experience.current">
                 @if (experience.logoUrl) {
-                    <img class="logo" [ngSrc]="experience.logoUrl" width="48" height="48" alt="">
+                    <img class="logo no-print" [ngSrc]="experience.logoUrl" width="48" height="48" alt="">
                 } @else {
-                    <span class="logo logo-placeholder" aria-hidden="true">{{ experience.company.charAt(0) }}</span>
+                    <span class="logo logo-placeholder no-print" aria-hidden="true">{{ experience.company.charAt(0) }}</span>
                 }
 
                 <div class="main">

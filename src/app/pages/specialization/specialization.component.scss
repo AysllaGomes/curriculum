@@ -69,3 +69,14 @@ h5 {
     gap: 8px;
     font-size: 14px;
 }
+
+@media print {
+    .title {
+        margin-top: 6pt;
+        font-size: 9.5pt;
+    }
+
+    .full-list {
+        font-size: 8.5pt;
+    }
+}

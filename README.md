@@ -13,6 +13,7 @@ Abertura com cargo atual, "Sobre mim" com números (anos de experiência, empres
 - Não há backend: todo o conteúdo do currículo está em **`src/app/data/pt-BR.ts`** e os textos fixos da interface (menus, botões, títulos) em `src/app/data/labels.ts`.
 - O site existe em **português, inglês, espanhol e italiano**: `en.ts`, `es.ts` e `it.ts` trazem só os textos traduzidos; datas, links e empresas vêm do `pt-BR.ts`.
 - Durações ("3 anos e 7 meses") e números da abertura são calculados a partir das datas (`AAAA-MM`).
+- **Currículo em PDF:** botão "Baixar currículo (PDF)" na abertura. O PDF de cada idioma sai do próprio site, com o CSS de impressão (`@media print` em `src/styles.scss` e nos componentes): `scripts/pdf.mjs` abre as páginas do build no Chrome sem janela e salva `cv/ayslla-gomes-<idioma>.pdf`. Por isso o PDF nunca fica diferente do site e se atualiza a cada deploy. O mesmo layout vale para quem imprime o site pelo navegador. Foto no papel por idioma: `printPhoto` em `src/app/data/locales.ts`; quantos projetos entram: `printLimit` em `personal-projects.component.ts`.
 - Tema escuro e claro: segue o sistema, com botão no cabeçalho. As cores de cada tema ficam no início de `src/styles.scss`; a escolha é lembrada (`localStorage`, chave `tema`) e aplicada por um script curto no `index.html` antes da página aparecer.
 - As imagens (foto e logos) ficam no Cloudflare R2.
 - Componentes **standalone** com change detection **OnPush** e **sem zone.js** (`provideZonelessChangeDetection`).
@@ -49,7 +50,8 @@ npm install
 npm start               # http://localhost:4200
 npm test                # testes (Vitest)
 npm run lint            # ESLint (angular-eslint)
-npm run build:pages     # mesmo build que vai para o ar (dist/curriculum/browser)
+npm run build:pages     # mesmo build que vai para o ar (dist/curriculum/browser), com os PDFs
+npm run pdf             # só os PDFs (dist/curriculum/browser/cv), para conferir o layout de impressão
 ```
 
 ## Atualizando o conteúdo

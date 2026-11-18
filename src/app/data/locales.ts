@@ -16,14 +16,16 @@ export interface LocaleOption {
     name: string;
     /** Formato do Open Graph (prévia de links no LinkedIn, WhatsApp…) */
     ogLocale: string;
+    /** Foto no currículo impresso/PDF: comum no Brasil, na Itália e na Espanha; evitada em vagas internacionais em inglês */
+    printPhoto: boolean;
 }
 
 /** Idiomas do site, na ordem do seletor. O primeiro é o padrão. */
 export const LOCALES: readonly LocaleOption[] = [
-    { locale: 'pt-BR', path: 'pt', code: 'PT', name: 'Português', ogLocale: 'pt_BR' },
-    { locale: 'en', path: 'en', code: 'EN', name: 'English', ogLocale: 'en_US' },
-    { locale: 'es', path: 'es', code: 'ES', name: 'Español', ogLocale: 'es_ES' },
-    { locale: 'it', path: 'it', code: 'IT', name: 'Italiano', ogLocale: 'it_IT' },
+    { locale: 'pt-BR', path: 'pt', code: 'PT', name: 'Português', ogLocale: 'pt_BR', printPhoto: true },
+    { locale: 'en', path: 'en', code: 'EN', name: 'English', ogLocale: 'en_US', printPhoto: false },
+    { locale: 'es', path: 'es', code: 'ES', name: 'Español', ogLocale: 'es_ES', printPhoto: true },
+    { locale: 'it', path: 'it', code: 'IT', name: 'Italiano', ogLocale: 'it_IT', printPhoto: true },
 ];
 
 /**
@@ -38,6 +40,14 @@ export const SITE_URL = 'https://aysllagomes.github.io/curriculum/';
  */
 export function localeUrl(option: LocaleOption): string {
     return `${SITE_URL}${option.path}/`;
+}
+
+/**
+ * Currículo em PDF do idioma, relativo ao <base href> (cv/ayslla-gomes-pt.pdf…).
+ * Gerado no build por scripts/pdf.mjs, com o mesmo nome: mudou aqui, muda lá.
+ */
+export function cvPath(option: LocaleOption): string {
+    return `cv/ayslla-gomes-${option.path}.pdf`;
 }
 
 /** Troca idioma, conteúdo e textos da interface para tudo que estiver dentro da rota. */

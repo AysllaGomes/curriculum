@@ -46,3 +46,14 @@
         background: var(--accent);
     }
 }
+
+@media print {
+    .card,
+    .list {
+        gap: 4pt;
+    }
+
+    .language-info {
+        font-size: 9.5pt;
+    }
+}

@@ -128,3 +128,50 @@
         grid-column: 1 / -1;
     }
 }
+
+/* Papel: sem logos e sem moldura; cada experiência inteira na mesma página */
+@media print {
+    .list {
+        gap: 10pt;
+    }
+
+    .experience {
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 0 12pt;
+        padding: 0;
+        break-inside: avoid;
+    }
+
+    .company {
+        font-size: 10.5pt;
+    }
+
+    .client,
+    .date,
+    .duration,
+    .earlier {
+        font-size: 8.5pt;
+    }
+
+    .when {
+        grid-column: 2;
+        text-align: right;
+    }
+
+    .details {
+        grid-column: 1 / -1;
+        max-width: none;
+        gap: 4pt;
+        margin-top: 3pt;
+    }
+
+    .summary,
+    .highlights {
+        line-height: 1.45;
+    }
+
+    .highlights {
+        gap: 1pt;
+        padding-left: 12pt;
+    }
+}

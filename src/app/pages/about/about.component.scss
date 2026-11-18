@@ -38,3 +38,35 @@
     font-weight: 700;
     line-height: 1.1;
 }
+
+/* Papel: resumo em largura total e os números numa linha só, logo abaixo */
+@media print {
+    .about {
+        display: block;
+    }
+
+    .summary p {
+        font-size: 9.5pt;
+        color: var(--text-2);
+    }
+
+    .stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4pt 18pt;
+        margin-top: 7pt;
+    }
+
+    .stat {
+        flex-direction: row;
+        align-items: baseline;
+        gap: 4pt;
+        padding: 0;
+        font-size: 9pt;
+    }
+
+    .stat-value {
+        font-size: 12pt;
+        color: var(--accent);
+    }
+}

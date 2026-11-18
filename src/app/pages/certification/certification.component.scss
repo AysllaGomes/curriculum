@@ -39,3 +39,23 @@
 .year {
     font-size: 14px;
 }
+
+@media print {
+    .card,
+    .list {
+        gap: 4pt;
+    }
+
+    .info {
+        gap: 0;
+        font-size: 9.5pt;
+
+        .muted {
+            font-size: 8.5pt;
+        }
+    }
+
+    .year {
+        font-size: 8.5pt;
+    }
+}
