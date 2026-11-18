@@ -150,7 +150,7 @@ Revisão do texto feita em conjunto (doc "Análise do currículo online" no Clau
 - [x] Dados estruturados (JSON-LD `ProfilePage`/`Person`) em cada idioma
 - [x] Estatísticas com GoatCounter (visitas + downloads do PDF): https://ayslla-gomes.goatcounter.com
 - [x] Teste de pesquisa aprimorada do Google: "Página de perfil", 1 item válido (18/11/2026)
-- [x] Search Console: arquivo de verificação `src/googleb48ec4ebe4c46aad.html` publicado na raiz do site
+- [x] Search Console: verificação pela tag `google-site-verification` no `src/index.html`
 - [x] Testes de footer, professional-skills e academic-education (todos os componentes têm teste agora)
 
 ## Entrega 4 — Manutenção, qualidade e testes (Fases 5, 6, 7)
