@@ -48,7 +48,7 @@ Diagnóstico de origem: análise com o `repo-inspector` (MCP) + leitura do códi
 - [x] Depois do deploy: Enforce HTTPS, Search Console (propriedade de domínio + sitemap), endereço do site no GoatCounter
 - [x] E-mail no domínio: `ayslla@aysllagomes.dev`, encaminhado para a caixa pessoal pelo Cloudflare Email Routing (MX, SPF e DKIM criados pela Cloudflare; só recebe)
 - [x] Dependabot (`.github/dependabot.yml`): PRs semanais com as versões novas das dependências e das actions, validados pelo workflow
-- [ ] A autora: LinkedIn com os textos e links novos (aba LinkedIn da doc) e Post Inspector em `https://aysllagomes.dev/pt/`
+- [x] LinkedIn com os textos e links novos, em português e inglês (aba LinkedIn da doc), e Post Inspector em `/pt/` e `/en/` (18/11/2026)
 
 ## Entrega 3 — Atualização do Angular (Fase 4)
 - [x] Node 24 LTS (Angular 22 exige Node `^22.22.3 || ^24.15.0`)
@@ -157,6 +157,7 @@ Revisão do texto feita em conjunto (doc "Análise do currículo online" no Clau
 - [x] Teste de pesquisa aprimorada do Google: "Página de perfil", 1 item válido (18/11/2026)
 - [x] Search Console: verificação pela tag `google-site-verification` no `src/index.html`
 - [x] Testes de footer, professional-skills e academic-education (todos os componentes têm teste agora)
+- [x] Acessibilidade no deploy: axe-core (`e2e/acessibilidade.spec.ts`, WCAG 2.2 A/AA) nos 4 idiomas × 2 temas, menu do celular aberto e 404. O 100 do Lighthouse deixa de ser uma medição única: uma regressão (contraste, `alt`, rótulo) quebra o build
 
 ## Entrega 4 — Manutenção, qualidade e testes (Fases 5, 6, 7)
 
