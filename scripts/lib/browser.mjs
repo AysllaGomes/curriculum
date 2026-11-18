@@ -113,25 +113,38 @@ const TYPES = {
 };
 
 /**
- * Serve uma pasta como o GitHub Pages: `/curriculum/pt/` → `<pasta>/pt/index.html`.
+ * Serve uma pasta como o GitHub Pages: `/curriculum/pt/` → `<pasta>/pt/index.html`; `/curriculum/pt` (pasta sem a
+ * barra) → redireciona para `/curriculum/pt/`; endereço que não existe → status 404 com o `404.html` da pasta.
  * Necessário porque o build usa `<base href="/curriculum/">` e as páginas não abrem direto do disco.
  */
-export async function serve(dir, base = '/') {
+export async function serve(dir, base = '/', port = 0) {
+    const read = (path) => readFile(join(dir, path));
+    const send = (res, status, path, body) => {
+        res.writeHead(status, { 'content-type': TYPES[extname(path)] ?? 'application/octet-stream' });
+        res.end(body);
+    };
     const server = createServer(async (req, res) => {
-        let path = decodeURIComponent(new URL(req.url, 'http://x').pathname);
-        if (!path.startsWith(base)) path = base;
-        path = normalize(path.slice(base.length)).replace(/^([/\\])+/, '');
+        const pathname = decodeURIComponent(new URL(req.url, 'http://x').pathname);
+        if (!pathname.startsWith(base)) {
+            res.writeHead(302, { location: base });
+            return res.end();
+        }
+        let path = normalize(pathname.slice(base.length)).replace(/^([/\\])+/, '');
         if (path === '' || path.endsWith('/') || path.endsWith('\\')) path += 'index.html';
         try {
-            const body = await readFile(join(dir, path));
-            res.writeHead(200, { 'content-type': TYPES[extname(path)] ?? 'application/octet-stream' });
-            res.end(body);
+            return send(res, 200, path, await read(path));
         } catch {
-            res.writeHead(404);
-            res.end();
+            // Pasta pedida sem a barra final: o Pages redireciona para a versão com barra
+            const isDir = await read(join(path, 'index.html')).then(() => true, () => false);
+            if (isDir) {
+                res.writeHead(301, { location: `${pathname}/` });
+                return res.end();
+            }
+            const notFound = await read('404.html').catch(() => null);
+            return notFound ? send(res, 404, '404.html', notFound) : send(res, 404, '.txt', '');
         }
     });
-    await new Promise(ok => server.listen(0, '127.0.0.1', ok));
+    await new Promise(ok => server.listen(port, '127.0.0.1', ok));
     return {
         url: `http://127.0.0.1:${server.address().port}${base}`,
         close: () => new Promise(ok => server.close(ok)),

@@ -86,3 +86,7 @@ dist/
 
 # Build do GitHub Pages é gerado pelo workflow .github/workflows/deploy.yml
 /docs
+
+# Testes de ponta a ponta (Playwright)
+/playwright-report/
+/test-results/

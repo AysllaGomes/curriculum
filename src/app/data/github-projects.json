@@ -4,39 +4,58 @@
     "url": "https://github.com/AysllaGomes/angular-components",
     "description": "Build reusable UI components",
     "language": "TypeScript",
-    "topics": [],
+    "topics": [
+      "angular",
+      "components",
+      "sass"
+    ],
     "homepage": "https://aysllagomes.github.io/angular-components/"
   },
   {
     "name": "figma-context-cache-mcp",
     "url": "https://github.com/AysllaGomes/figma-context-cache-mcp",
-    "description": null,
+    "description": "MCP server that caches Figma design context for AI coding assistants",
     "language": "TypeScript",
-    "topics": [],
+    "topics": [
+      "ai",
+      "figma",
+      "mcp",
+      "typescript"
+    ],
     "homepage": null
   },
   {
     "name": "interstate-mobility-center",
     "url": "https://github.com/AysllaGomes/interstate-mobility-center",
-    "description": null,
+    "description": "App for planning and booking interstate bus and train trips",
     "language": "TypeScript",
-    "topics": [],
+    "topics": [
+      "nodejs",
+      "typescript"
+    ],
     "homepage": null
   },
   {
     "name": "pet-health-api",
     "url": "https://github.com/AysllaGomes/pet-health-api",
-    "description": null,
+    "description": "API for managing pets' health: vaccines, medication and email reminders",
     "language": "TypeScript",
-    "topics": [],
+    "topics": [
+      "api",
+      "nestjs",
+      "postgresql",
+      "prisma"
+    ],
     "homepage": null
   },
   {
     "name": "red-switch-realistic",
     "url": "https://github.com/AysllaGomes/red-switch-realistic",
-    "description": "Apenas uma tentativa para fazer mudanças realistas, utilizando apenas CSS.",
+    "description": "Experiment: a realistic-looking switch built with CSS only.",
     "language": "SCSS",
-    "topics": [],
+    "topics": [
+      "css"
+    ],
     "homepage": null
   }
 ]

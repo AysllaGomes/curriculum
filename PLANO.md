@@ -167,7 +167,7 @@ Revisão do texto feita em conjunto (doc "Análise do currículo online" no Clau
 
 ### Fase 7: Testes
 - [x] Teste por componente — todos os componentes têm teste (125 testes em 18 arquivos, Entrega S)
-- [ ] Teste ponta a ponta com Playwright
+- [x] Teste ponta a ponta com Playwright: 54 testes (27 no computador e 27 no celular) no site gerado pelo build, servido como no GitHub Pages; no workflow, antes de publicar
 - [x] Testes rodando no workflow (Entrega 3)
 
 ---
