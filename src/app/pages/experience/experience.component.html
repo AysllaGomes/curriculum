@@ -21,6 +21,37 @@
                     <p class="date">{{ experience.period }}</p>
                     <p class="duration muted">{{ experience.duration }}</p>
                 </div>
+
+                @if (experience.earlier.length || experience.summary || experience.highlights.length || experience.stack.length) {
+                    <div class="details">
+                        @for (prev of experience.earlier; track prev.company) {
+                            <p class="earlier muted">
+                                {{ labels.experience.earlier }} <strong class="earlier-company">{{ prev.company }}</strong>
+                                · <span class="earlier-period">{{ prev.period }}</span> · {{ prev.duration }}
+                            </p>
+                        }
+
+                        @if (experience.summary) {
+                            <p class="summary">{{ experience.summary }}</p>
+                        }
+
+                        @if (experience.highlights.length) {
+                            <ul class="highlights">
+                                @for (item of experience.highlights; track item) {
+                                    <li>{{ item }}</li>
+                                }
+                            </ul>
+                        }
+
+                        @if (experience.stack.length) {
+                            <ul class="stack" [attr.aria-label]="labels.experience.stack">
+                                @for (tech of experience.stack; track tech) {
+                                    <li class="chip">{{ tech }}</li>
+                                }
+                            </ul>
+                        }
+                    </div>
+                }
             </li>
         }
     </ol>

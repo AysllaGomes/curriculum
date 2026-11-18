@@ -69,6 +69,18 @@ describe('Traduções × pt-BR', () => {
         expect(facts(RESUMES[locale])).toEqual(facts(RESUME_PT_BR));
     });
 
+    it.each(locales.filter(l => l !== 'pt-BR'))('%s traduz o resumo e os destaques de todas as experiências', (locale) => {
+        RESUMES[locale].experiences.forEach((e, i) => {
+            const pt = RESUME_PT_BR.experiences[i];
+            expect(e.summary, e.company).not.toBe(pt.summary);
+            e.highlights?.forEach((h, j) => expect(h, `${e.company} [${j}]`).not.toBe(pt.highlights?.[j]));
+        });
+    });
+
+    it.each(locales)('a frase de abertura em %s traz os anos calculados', (locale) => {
+        expect(RESUMES[locale].profile.headline).toContain('{anos}');
+    });
+
     it.each(locales)('textos da interface em %s têm os mesmos campos do pt-BR, nenhum vazio', (locale) => {
         expect(shape(ALL_LABELS[locale])).toEqual(shape(ALL_LABELS['pt-BR']));
         expect(JSON.stringify(ALL_LABELS[locale])).not.toMatch(/""|"\s+"/);
@@ -80,7 +92,8 @@ function facts(r: Resume) {
     const { email, photoUrl, links, name, shortName } = r.profile;
     return {
         profile: { email, photoUrl, links, name, shortName },
-        experiences: r.experiences,
+        // resumo e destaques são texto; o resto (empresa, datas, stack, empresas anteriores) é fato
+        experiences: r.experiences.map(e => ({ ...e, summary: undefined, highlights: undefined })),
         projects: r.projects.map(p => p.url),
         education: r.education.map(e => [e.institution, e.startYear, e.endYear, e.url]),
         courses: r.courses,

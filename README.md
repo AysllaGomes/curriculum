@@ -54,8 +54,9 @@ npm run build:pages     # mesmo build que vai para o ar (dist/curriculum/browser
 
 ## Atualizando o conteúdo
 
-Edite `src/app/data/pt-BR.ts`. Experiências usam datas `AAAA-MM` (`end` ausente = emprego atual).
-Datas, links, empresas e cursos novos entram só ali; textos novos (resumo, descrição de projeto, nome de idioma) precisam também da tradução em `en.ts`, `es.ts` e `it.ts`.
+Edite `src/app/data/pt-BR.ts`. Experiências usam datas `AAAA-MM` (`end` ausente = emprego atual) e podem ter `summary` (uma frase de contexto), `highlights` (o que foi feito, um item por linha) e `stack`. Quando o mesmo trabalho passou por mais de uma empresa (o Spid, pela EngeSoftware e depois pela IBM), a anterior entra em `earlier` e aparece no mesmo cartão, com as próprias datas.
+Na frase de abertura (`headline`), `{anos}` vira os anos de experiência calculados.
+Datas, links, empresas e cursos novos entram só ali; textos novos (resumo, descrição de experiência ou de projeto, nome de idioma) precisam também da tradução em `en.ts`, `es.ts` e `it.ts` — experiência sem tradução quebra o build.
 Os testes verificam, por exemplo, se as datas são válidas e estão em ordem, se não há texto vazio e se nenhum idioma ficou com algo faltando — rode `npm test` antes de publicar.
 
 ### Projetos
@@ -77,7 +78,7 @@ A publicação é automática pelo **GitHub Actions** (`.github/workflows/deploy
 - **Toda segunda-feira, 6h (Brasília)** → build e deploy automáticos, para atualizar as durações calculadas.
 - **Manual** → aba *Actions* → *Build e deploy no GitHub Pages* → *Run workflow*.
 
-Se o cargo ou a chamada da abertura mudarem, as imagens de prévia em `src/assets/og/` precisam ser geradas de novo (elas trazem esses textos).
+Se o cargo ou a chamada da abertura mudarem, gere de novo as imagens de prévia em `src/assets/og/` com `npm run og` (faz o build e tira as imagens com o Chrome ou o Edge do computador). Como a chamada traz os anos de experiência, vale rodar também uma vez por ano.
 
 > Configuração necessária (uma vez): *Settings → Pages → Build and deployment → Source: **GitHub Actions***.
 

@@ -13,8 +13,8 @@ const LEVELS: Record<CefrLevel, number> = { 'C2': 6, 'C1': 5, 'B2': 4, 'B1': 3, 
 export class LanguagesComponent {
     protected readonly labels = inject(LABELS);
 
-    /** Do nível mais alto (C2) para o mais baixo (A1); `bars` = 6 segmentos, preenchidos até o nível */
+    /** Do nível mais alto (C2) para o mais baixo (A1); no mesmo nível, a ordem dos dados. `bars` = 6 segmentos, preenchidos até o nível */
     public languages = [...inject(RESUME).languages]
-        .sort((a, b): number => LEVELS[b.level] - LEVELS[a.level] || a.nameLevel.localeCompare(b.nameLevel))
+        .sort((a, b): number => LEVELS[b.level] - LEVELS[a.level])
         .map(l => ({ ...l, bars: [1, 2, 3, 4, 5, 6].map(n => n <= LEVELS[l.level]) }));
 }

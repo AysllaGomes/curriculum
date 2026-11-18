@@ -17,7 +17,10 @@ export interface Profile {
     shortName: string;
     /** Cargo atual, exibido abaixo do nome */
     role: string;
-    /** Frase curta de apresentação (abertura do site) */
+    /**
+     * Frase curta de apresentação (abertura do site, descrição da página e prévia de links).
+     * `{anos}` vira os anos de experiência calculados a partir das datas (ver `fillYears`).
+     */
     headline: string;
     summary: string;
     email: string;
@@ -26,14 +29,29 @@ export interface Profile {
     links: { linkedin: string; github: string };
 }
 
-export interface Experience {
+/** Um vínculo com uma empresa: nome, período e logo. */
+export interface Employment {
     company: string;
-    /** Cliente ou órgão atendido */
-    client?: string;
     start: YearMonth;
     /** Ausente = emprego atual */
     end?: YearMonth;
     logoUrl?: string;
+}
+
+export interface Experience extends Employment {
+    /** Cliente ou órgão atendido */
+    client?: string;
+    /**
+     * O mesmo trabalho feito antes por outra empresa, mais recente primeiro
+     * (ex.: o Spid, pela EngeSoftware até 2022 e depois pela IBM). Aparece no mesmo cartão, com as datas de cada uma.
+     */
+    earlier?: Employment[];
+    /** Uma frase de contexto: papel, time, produto */
+    summary?: string;
+    /** O que foi feito e os resultados, um item por linha */
+    highlights?: string[];
+    /** Tecnologias usadas (iguais em todos os idiomas) */
+    stack?: string[];
 }
 
 export interface Education {

@@ -16,7 +16,7 @@ describe('CurriculumComponent (página completa)', () => {
 
         expect(texto).toContain('Ayslla Gomes');
         expect(texto).toContain('Ayslla Caroline Prates Gomes');
-        expect(texto).toContain('Arquiteta de Software na Mirante Tecnologia');
+        expect(texto).toContain('Arquiteta Front-end na Mirante Tecnologia');
         expect(texto).toContain('ayslla.gomes@outlook.com');
         for (const secao of ['Sobre mim', 'Experiência', 'Projetos', 'Competências', 'Formação', 'Graduação',
                              'Especializações', 'Certificações', 'Idiomas', 'Vamos conversar?']) {
@@ -67,7 +67,8 @@ describe('CurriculumComponent (página completa)', () => {
         const og = (p: string) => document.querySelector(`meta[property="og:${p}"]`)?.getAttribute('content');
         const site = 'https://aysllagomes.github.io/curriculum/';
 
-        expect(og('title')).toBe('Ayslla Gomes · Arquitecta de Software');
+        expect(og('title')).toBe('Ayslla Gomes · Arquitecta Front-end');
+        expect(og('description')).toMatch(/^Arquitecta Front-end con \d+ años /);
         expect(og('url')).toBe(`${site}es/`);
         expect(og('image')).toBe(`${site}assets/og/es.jpg`);
         expect(og('locale')).toBe('es_ES');
@@ -83,17 +84,17 @@ describe('CurriculumComponent (página completa)', () => {
     it('define o idioma do documento, o título da aba e a descrição', async () => {
         await render();
         expect(document.documentElement.lang).toBe('pt-BR');
-        expect(document.title).toBe('Ayslla Gomes · Arquiteta de Software');
-        expect(document.querySelector('meta[name="description"]')?.getAttribute('content')).toContain('Estudiosa incansável');
+        expect(document.title).toBe('Ayslla Gomes · Arquiteta Front-end');
+        expect(document.querySelector('meta[name="description"]')?.getAttribute('content')).toMatch(/^Arquiteta Front-end com \d+ anos construindo sistemas/);
     });
 });
 
 describe.each([
-    { locale: 'en' as const, badge: 'Software Architect at Mirante Tecnologia', period: 'Jun 2022 – Dec 2025', duration: '3 years and 7 months',
+    { locale: 'en' as const, badge: 'Front-end Architect at Mirante Tecnologia', period: 'Jun 2022 – Dec 2025', duration: '3 years and 7 months',
       sections: ['About me', 'Experience', 'Projects', 'Skills', 'Education', 'Degree', 'Certifications', 'Languages', 'Let\'s talk'] },
-    { locale: 'es' as const, badge: 'Arquitecta de Software en Mirante Tecnologia', period: 'Jun 2022 – Dic 2025', duration: '3 años y 7 meses',
+    { locale: 'es' as const, badge: 'Arquitecta Front-end en Mirante Tecnologia', period: 'Jun 2022 – Dic 2025', duration: '3 años y 7 meses',
       sections: ['Sobre mí', 'Experiencia', 'Proyectos', 'Competencias', 'Formación', 'Grado', 'Certificaciones', 'Idiomas', '¿Hablamos?'] },
-    { locale: 'it' as const, badge: 'Architetta Software presso Mirante Tecnologia', period: 'Giu 2022 – Dic 2025', duration: '3 anni e 7 mesi',
+    { locale: 'it' as const, badge: 'Architetta Front-end presso Mirante Tecnologia', period: 'Giu 2022 – Dic 2025', duration: '3 anni e 7 mesi',
       sections: ['Chi sono', 'Esperienza', 'Progetti', 'Competenze', 'Formazione', 'Laurea', 'Certificazioni', 'Lingue', 'Parliamo?'] },
 ])('CurriculumComponent em $locale', ({ locale, badge, period, duration, sections }) => {
     it('a página inteira muda de idioma: textos, datas, durações, lang e título', async () => {

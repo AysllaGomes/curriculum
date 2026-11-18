@@ -4,6 +4,7 @@ import { Meta, Title } from '@angular/platform-browser';
 
 import { LOCALE, RESUME } from './resume';
 import { LOCALES, SITE_URL, localeUrl } from './locales';
+import { fillYears } from '../shared/utils/dates';
 
 /**
  * Preenche o <head> da página do idioma atual. Roda no build (pré-render), então tudo isso
@@ -17,7 +18,9 @@ export function updateHead(): void {
     const doc = inject(DOCUMENT);
     const meta = inject(Meta);
     const locale = inject(LOCALE);
-    const profile = inject(RESUME).profile;
+    const resume = inject(RESUME);
+    const profile = resume.profile;
+    const description = fillYears(profile.headline, resume.experiences);
     const current = LOCALES.find(o => o.locale === locale) ?? LOCALES[0];
     const title = `${profile.shortName} · ${profile.role}`;
     const url = localeUrl(current);
@@ -25,11 +28,11 @@ export function updateHead(): void {
     doc.documentElement.lang = locale;
     inject(Title).setTitle(title);
 
-    meta.updateTag({ name: 'description', content: profile.headline });
+    meta.updateTag({ name: 'description', content: description });
     meta.updateTag({ property: 'og:type', content: 'profile' });
     meta.updateTag({ property: 'og:site_name', content: profile.shortName });
     meta.updateTag({ property: 'og:title', content: title });
-    meta.updateTag({ property: 'og:description', content: profile.headline });
+    meta.updateTag({ property: 'og:description', content: description });
     meta.updateTag({ property: 'og:url', content: url });
     meta.updateTag({ property: 'og:locale', content: current.ogLocale });
     meta.updateTag({ property: 'og:image', content: `${SITE_URL}assets/og/${current.path}.jpg` });

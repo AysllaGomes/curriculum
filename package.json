@@ -8,6 +8,7 @@
     "build:pages": "node scripts/fetch-projects.mjs && ng build --configuration production --base-href /curriculum/ && node scripts/pages-fallback.mjs",
     "test": "ng test",
     "projects": "node scripts/fetch-projects.mjs",
+    "og": "ng build --configuration production && node scripts/og-images.mjs",
     "lint": "ng lint"
   },
   "engines": {

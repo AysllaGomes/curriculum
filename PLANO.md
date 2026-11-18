@@ -127,6 +127,16 @@ bloco final "Vamos conversar?". Cada fase termina com o site publicável e print
 - [x] Revisão no celular, foco visível, contraste AA — Lighthouse (celular / desktop): desempenho 95–97 / 100, acessibilidade 100 (temas claro e escuro), boas práticas 100, SEO 100
 - [x] Testes dos componentes novos — 82 testes
 
+## Entrega C — Conteúdo do currículo
+Revisão do texto feita em conjunto (doc "Análise do currículo online" no Claude).
+- [x] Cargo: Arquiteta de Software → Arquiteta Front-end (site, título, prévia de links)
+- [x] Abertura e "Sobre mim" reescritos com fatos (Mirante/Sicoob, Spid/BB, Ministério da Economia); anos da abertura calculados (`{anos}`)
+- [x] Experiências com resumo, destaques e stack nos 4 idiomas; EngeSoftware e IBM no mesmo cartão (Spid), com as datas de cada empresa
+- [x] Competências reorganizadas (Arquitetura, Back-end, Front-end, Dados, DevOps); "Grafeno" → Grafana; tecnologias antigas fora
+- [x] Cursos de 2012/2013 fora da lista; curso de 2024 no fim
+- [x] Idiomas no mesmo nível seguem a ordem dos dados
+- [x] `npm run og`: imagens de prévia geradas por script a partir das páginas do build
+
 ## Entrega 4 — Manutenção, qualidade e testes (Fases 5, 6, 7)
 
 ### Fase 5: Dados separados do código

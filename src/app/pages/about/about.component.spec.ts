@@ -13,7 +13,7 @@ describe('AboutComponent', () => {
             .map(e => e.textContent?.trim());
 
         expect(valores[0]).toMatch(/^\d+\+$/);
-        expect(valores.slice(1)).toEqual(['5', '22', '3']);
+        expect(valores.slice(1)).toEqual(['5', '20', '3']);
     });
 
     it('a mesma empresa em duas experiências conta uma vez só', async () => {

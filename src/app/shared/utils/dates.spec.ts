@@ -1,5 +1,6 @@
 import {
-    currentYearMonth, experienceMonths, formatDuration, formatYearMonth, monthsBetween, parseYearMonth, yearsOfExperience,
+    currentYearMonth, employments, experienceMonths, fillYears, formatDuration, formatYearMonth, monthsBetween, parseYearMonth,
+    yearsOfExperience,
 } from './dates';
 import { YearMonth } from '../models/resume.model';
 
@@ -58,5 +59,21 @@ describe('datas do currículo', () => {
         expect(yearsOfExperience(experiencias, '2026-11')).toBe(8);
         expect(yearsOfExperience(experiencias, '2026-08')).toBe(7);
         expect(yearsOfExperience([], '2026-11')).toBe(0);
+    });
+
+    it('empresas anteriores no mesmo trabalho (earlier) também contam', () => {
+        const experiencias = [{
+            company: 'IBM', start: '2022-06' as YearMonth, end: '2025-12' as YearMonth,
+            earlier: [{ company: 'EngeSoftware', start: '2017-01' as YearMonth, end: '2022-06' as YearMonth }],
+        }];
+        expect(employments(experiencias).map(e => e.company)).toEqual(['IBM', 'EngeSoftware']);
+        expect(yearsOfExperience(experiencias, '2026-11')).toBe(9);
+    });
+
+    it('a frase de abertura usa os anos calculados, sem ficar desatualizada', () => {
+        const experiencias = [{ company: 'A', start: '2018-09' as YearMonth }];
+        expect(fillYears('Arquiteta com {anos} anos.', experiencias, '2026-11')).toBe('Arquiteta com 8 anos.');
+        expect(fillYears('Arquiteta com {anos} anos.', experiencias, '2027-09')).toBe('Arquiteta com 9 anos.');
+        expect(fillYears('Sem número.', experiencias, '2026-11')).toBe('Sem número.');
     });
 });
