@@ -14,7 +14,7 @@ Currículo e portfólio em página única, em **português, inglês, espanhol e 
 - **PDF de 2 páginas A4 por idioma**, gerado no build a partir do CSS de impressão do site: nunca fica diferente da página e é legível por sistemas de triagem (ATS).
 - **Busca e prévia de links:** `canonical`, `hreflang`, Open Graph com imagem por idioma, dados estruturados (JSON-LD) e sitemap.
 - **Projetos vindos do GitHub:** entram os repositórios com o tópico `portfolio`.
-- **Qualidade no deploy:** 126 testes de unidade (Vitest) e 54 de ponta a ponta (Playwright, no computador e no celular) rodam antes de cada publicação.
+- **Qualidade no deploy:** 126 testes de unidade (Vitest) e 73 de ponta a ponta (Playwright, no computador e no celular), com verificação de acessibilidade (axe-core) nos 4 idiomas e nos 2 temas, rodam antes de cada publicação.
 - **Sem cookies:** estatísticas com GoatCounter; nenhum banner de consentimento.
 - Layout próprio com flex/grid, sem framework de CSS; tema claro e escuro; fontes servidas pelo próprio site.
 
@@ -99,7 +99,8 @@ npm run projects        # atualiza a lista de projetos a partir do GitHub
 | Verificação | Como |
 | --- | --- |
 | Testes de unidade | 126 testes (Vitest): dados e traduções, datas, componentes, dados estruturados, estatísticas |
-| Testes de ponta a ponta | 27 cenários no computador e no celular (54 no total, Playwright) no site gerado pelo build: idiomas e redirecionamentos, tema, menu, PDF, impressão, 404, dados para o Google |
+| Testes de ponta a ponta | 37 cenários no computador e no celular (73 no total, Playwright) no site gerado pelo build: idiomas e redirecionamentos, tema, menu, PDF, impressão, 404, dados para o Google |
+| Acessibilidade | axe-core (WCAG 2.2 A e AA, contraste incluído) em cada idioma, nos temas claro e escuro, com o menu do celular aberto e na 404: uma cor ilegível quebra o build |
 | Lint | ESLint com angular-eslint |
 | Lighthouse | Desempenho 95–97 no celular e 100 no computador; acessibilidade, boas práticas e SEO 100 (medição de 07/11/2026) |
 | Dependências | Dependabot abre PRs toda segunda; o workflow valida cada um |
